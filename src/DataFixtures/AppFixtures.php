@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use Faker\Factory;
 use App\Entity\User;
+use App\Entity\Recipe;
 use App\Entity\Season;
 use DateTimeImmutable;
 use App\Entity\Ingredient;
@@ -47,6 +48,7 @@ class AppFixtures extends Fixture
             $manager->persist($ingredient);
             $ingredients[]=$ingredient; 
         }
+
         
         $summerStart = new \DateTimeImmutable('2023-06-21');
         $fallStart = new \DateTimeImmutable('2023-09-23');
@@ -55,35 +57,51 @@ class AppFixtures extends Fixture
 
         $summer = new Season;
         $summer
-        ->setName('Summer')
-        ->setStartAt($summerStart)
-        ->setEndAt($fallStart)
+            ->setName('Summer')
+            ->setStartAt($summerStart)
+            ->setEndAt($fallStart)
         ;   
         $manager->persist($summer);
         
         $spring = new Season;
         $spring
-        ->setName('Spring')
-        ->setStartAt($springStart)
-        ->setEndAt($summerStart)
+            ->setName('Spring')
+            ->setStartAt($springStart)
+            ->setEndAt($summerStart)
         ;
         $manager->persist($spring);
         
         $winter = new Season;
         $winter
-        ->setName('Winter')
-        ->setStartAt($winterStart)
-        ->setEndAt($springStart)
+            ->setName('Winter')
+            ->setStartAt($winterStart)
+            ->setEndAt($springStart)
         ;
         $manager->persist($winter);
         
         $fall = new Season;
         $fall
-        ->setName('Fall')
-        ->setStartAt($fallStart)
-        ->setEndAt($winterStart)
+            ->setName('Fall')
+            ->setStartAt($fallStart)
+            ->setEndAt($winterStart)
         ;
         $manager->persist($fall);
+
+        $seasons = [$summer,$spring,$winter,$fall];
+
+        for($i = 0; $i < 10; $i++ ) // recipe
+        {
+            $recipe= new Recipe();
+            $recipe
+                ->setName($faker->words(10, true))
+                ->setDescription($faker->text())
+                ->setLevel($faker->numberBetween(1,3))
+                ->setImage($faker->imageUrl(640, 480, 'recipe', true))
+                ->addSeason($faker->randomElement($seasons))
+            ;
+            $manager->persist($recipe);
+            $recipes[] = $recipe;
+        }
 
         $manager->flush();
     }
