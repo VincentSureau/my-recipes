@@ -11,6 +11,7 @@ use App\Entity\Comment;
 use App\Entity\Ingredient;
 use App\Entity\Newsletter;
 use App\Entity\RecipeIngredient;
+use App\Entity\Newsletter;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 
@@ -21,7 +22,8 @@ class AppFixtures extends Fixture
         // $product = new Product();
         // $manager->persist($product);
         $faker = Factory::create('fr_FR');
-
+        
+        $users=[];
         $users = [];
         for($i = 0; $i < 10; $i++)
         {
@@ -150,6 +152,35 @@ class AppFixtures extends Fixture
 
             $manager->persist($recipeIngredient);
             $recipeIngredients[] = $recipeIngredient;
+        }
+
+        $comments = [];
+        for($i = 0; $i < 30; $i++ ) // comment
+        {
+            $comment= new Comment();
+            $comment
+                ->setContent($faker->sentence())
+                ->setRecipe($faker->randomElement($recipes))
+                ->setUser($faker->randomElement($users))
+            ;
+            $manager->persist($comment);
+            $comments[] = $comment;
+        }
+
+        $newsletters = [];
+        for($i = 0; $i < 10; $i++ )
+        {
+            $newsletter= new Newsletter();
+            $newsletter
+                ->setContent($faker->sentence(30))
+                ->setSendAt(DateTimeImmutable::createFromMutable($faker->dateTime()))
+                ->addRecipe($faker->randomElement($recipes))
+                ->addRecipe($faker->randomElement($recipes))
+                ->addRecipe($faker->randomElement($recipes))
+                ->addRecipe($faker->randomElement($recipes))
+            ;
+            $manager->persist($newsletter);
+            $newsletters[] = $newsletter;
         }
 
         $manager->flush();
