@@ -7,6 +7,7 @@ use App\Entity\User;
 use App\Entity\Recipe;
 use App\Entity\Season;
 use DateTimeImmutable;
+use App\Entity\Comment;
 use App\Entity\Ingredient;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -18,7 +19,8 @@ class AppFixtures extends Fixture
         // $product = new Product();
         // $manager->persist($product);
         $faker = Factory::create('fr_FR');
-
+        
+        $users=[];
         for($i = 0; $i < 10; $i++)
         {
             $user = new User;
@@ -32,6 +34,7 @@ class AppFixtures extends Fixture
             ;
     
             $manager->persist($user);
+            $users[] = $user;
         }
 
         $ingredients=[];
@@ -101,6 +104,19 @@ class AppFixtures extends Fixture
             ;
             $manager->persist($recipe);
             $recipes[] = $recipe;
+        }
+
+        $comments = [];
+        for($i = 0; $i < 30; $i++ ) // comment
+        {
+            $comment= new Comment();
+            $comment
+                ->setContent($faker->sentence())
+                ->setRecipe($faker->randomElement($recipes))
+                ->setUser($faker->randomElement($users))
+            ;
+            $manager->persist($comment);
+            $comments[] = $comment;
         }
 
         $manager->flush();
