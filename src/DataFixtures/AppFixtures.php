@@ -7,7 +7,10 @@ use App\Entity\User;
 use App\Entity\Recipe;
 use App\Entity\Season;
 use DateTimeImmutable;
+use App\Entity\Comment;
 use App\Entity\Ingredient;
+use App\Entity\Newsletter;
+use App\Entity\RecipeIngredient;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 
@@ -19,6 +22,7 @@ class AppFixtures extends Fixture
         // $manager->persist($product);
         $faker = Factory::create('fr_FR');
 
+        $users = [];
         for($i = 0; $i < 10; $i++)
         {
             $user = new User;
@@ -32,6 +36,7 @@ class AppFixtures extends Fixture
             ;
     
             $manager->persist($user);
+            $users[] = $user;
         }
 
         $ingredients=[];
@@ -101,6 +106,50 @@ class AppFixtures extends Fixture
             ;
             $manager->persist($recipe);
             $recipes[] = $recipe;
+        }
+
+        $comments = [];
+        for ($i = 0; $i < 30; $i++) 
+        {
+            $comment = new Comment();
+            $comment
+            ->setContent($faker->text())
+            ->setUser($faker->randomElement($users))
+            ->setRecipe($faker->randomElement($recipes))
+            ;
+            
+            $manager->persist($comment);  
+            $comments[] = $comment;
+        }
+
+        $newsletters = [];
+        for ($i = 0; $i < 10; $i++)
+        {
+            $newsletter = new Newsletter();
+            $newsletter 
+                ->setContent($faker->sentence(30))
+                ->setSendAt(DateTimeImmutable::createFromMutable($faker->dateTime()))
+                ->addRecipe($faker->randomElement($recipes))
+                ->addRecipe($faker->randomElement($recipes))
+                ->addRecipe($faker->randomElement($recipes))
+            ;
+
+            $manager->persist($newsletter);
+            $newsletters[] = $newsletter;
+        }
+
+        $recipeIngredients = [];
+        for ($i = 0; $i < 53; $i++)
+        {
+            $recipeIngredient = new RecipeIngredient();
+            $recipeIngredient 
+                ->setRecipe($faker->randomElement($recipes))
+                ->setIngredient($faker->randomElement($ingredients))
+                ->setQuantity($faker->randomDigitNotNull() . ' ' . $faker->randomElement(['Kg', 'g', 'L', 'ml']))
+            ;
+
+            $manager->persist($recipeIngredient);
+            $recipeIngredients[] = $recipeIngredient;
         }
 
         $manager->flush();
