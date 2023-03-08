@@ -22,7 +22,7 @@ class AppFixtures extends Fixture
         // $manager->persist($product);
         $faker = Factory::create('fr_FR');
         
-        $users=[];
+       
         $users = [];
         for($i = 0; $i < 10; $i++)
         {
@@ -34,26 +34,13 @@ class AppFixtures extends Fixture
                 ->setPassword($faker->sha256())
                 ->setIsSubscribed($faker->boolean())
                 ->setRoles(['ROLE_USER'])
+             
             ;
     
             $manager->persist($user);
             $users[] = $user;
         }
 
-        $ingredients=[];
-        for($i = 0; $i < 10; $i++)
-        {
-            $ingredient = new Ingredient;
-            $ingredient
-            
-                ->setType($faker->randomElement(['fruit', 'légume']))
-                ->setDescription($faker->text())
-                ->setImage($faker->imageUrl(640, 480, 'food', true))
-                ->setName($faker->word())
-            ;
-            $manager->persist($ingredient);
-            $ingredients[]=$ingredient; 
-        }
 
         
         $summerStart = new \DateTimeImmutable('2023-06-21');
@@ -95,6 +82,24 @@ class AppFixtures extends Fixture
 
         $seasons = [$summer,$spring,$winter,$fall];
 
+
+        $ingredients=[];
+        for($i = 0; $i < 10; $i++)
+        {
+            $ingredient = new Ingredient;
+            $ingredient
+            
+                ->setType($faker->randomElement(['fruit', 'légume']))
+                ->setDescription($faker->text())
+                ->setImage($faker->imageUrl(640, 480, 'food', true))
+                ->setName($faker->word())
+                ->addSeason($faker->randomElement($seasons))
+            ;
+            $manager->persist($ingredient);
+            $ingredients[]=$ingredient; 
+        }
+
+        $recipes = [];
         for($i = 0; $i < 10; $i++ ) // recipe
         {
             $recipe= new Recipe();
@@ -104,6 +109,8 @@ class AppFixtures extends Fixture
                 ->setLevel($faker->numberBetween(1,3))
                 ->setImage($faker->imageUrl(640, 480, 'recipe', true))
                 ->addSeason($faker->randomElement($seasons))
+                ->addUser($faker->randomElement($users))
+            
             ;
             $manager->persist($recipe);
             $recipes[] = $recipe;
@@ -147,40 +154,15 @@ class AppFixtures extends Fixture
                 ->setRecipe($faker->randomElement($recipes))
                 ->setIngredient($faker->randomElement($ingredients))
                 ->setQuantity($faker->randomDigitNotNull() . ' ' . $faker->randomElement(['Kg', 'g', 'L', 'ml']))
+                
             ;
 
             $manager->persist($recipeIngredient);
             $recipeIngredients[] = $recipeIngredient;
         }
 
-        $comments = [];
-        for($i = 0; $i < 30; $i++ ) // comment
-        {
-            $comment= new Comment();
-            $comment
-                ->setContent($faker->sentence())
-                ->setRecipe($faker->randomElement($recipes))
-                ->setUser($faker->randomElement($users))
-            ;
-            $manager->persist($comment);
-            $comments[] = $comment;
-        }
+        // $seasons = [$summer,$spring,$winter,$fall];
 
-        $newsletters = [];
-        for($i = 0; $i < 10; $i++ )
-        {
-            $newsletter= new Newsletter();
-            $newsletter
-                ->setContent($faker->sentence(30))
-                ->setSendAt(DateTimeImmutable::createFromMutable($faker->dateTime()))
-                ->addRecipe($faker->randomElement($recipes))
-                ->addRecipe($faker->randomElement($recipes))
-                ->addRecipe($faker->randomElement($recipes))
-                ->addRecipe($faker->randomElement($recipes))
-            ;
-            $manager->persist($newsletter);
-            $newsletters[] = $newsletter;
-        }
 
         $manager->flush();
     }
