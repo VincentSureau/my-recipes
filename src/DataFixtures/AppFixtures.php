@@ -39,22 +39,6 @@ class AppFixtures extends Fixture
             $manager->persist($user);
             $users[] = $user;
         }
-
-        $ingredients=[];
-        for($i = 0; $i < 10; $i++)
-        {
-            $ingredient = new Ingredient;
-            $ingredient
-            
-                ->setType($faker->randomElement(['fruit', 'légume']))
-                ->setDescription($faker->text())
-                ->setImage($faker->imageUrl(640, 480, 'food', true))
-                ->setName($faker->word())
-            ;
-            $manager->persist($ingredient);
-            $ingredients[]=$ingredient; 
-        }
-
         
         $summerStart = new \DateTimeImmutable('2023-06-21');
         $fallStart = new \DateTimeImmutable('2023-09-23');
@@ -94,6 +78,21 @@ class AppFixtures extends Fixture
         $manager->persist($fall);
 
         $seasons = [$summer,$spring,$winter,$fall];
+
+        $ingredients=[];
+        for($i = 0; $i < 10; $i++)
+        {
+            $ingredient = new Ingredient;
+            $ingredient
+            
+                ->setType($faker->randomElement(['fruit', 'légume']))
+                ->setDescription($faker->text())
+                ->setImage($faker->imageUrl(640, 480, 'food', true))
+                ->setName($faker->word())
+            ;
+            $manager->persist($ingredient);
+            $ingredients[]=$ingredient; 
+        }
 
         for($i = 0; $i < 10; $i++ ) // recipe
         {
