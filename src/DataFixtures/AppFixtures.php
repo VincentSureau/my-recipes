@@ -9,6 +9,7 @@ use App\Entity\Season;
 use DateTimeImmutable;
 use App\Entity\Comment;
 use App\Entity\Ingredient;
+use App\Entity\Newsletter;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 
@@ -117,6 +118,22 @@ class AppFixtures extends Fixture
             ;
             $manager->persist($comment);
             $comments[] = $comment;
+        }
+
+        $newsletters = [];
+        for($i = 0; $i < 10; $i++ )
+        {
+            $newsletter= new Newsletter();
+            $newsletter
+                ->setContent($faker->sentence(30))
+                ->setSendAt(DateTimeImmutable::createFromMutable($faker->dateTime()))
+                ->addRecipe($faker->randomElement($recipes))
+                ->addRecipe($faker->randomElement($recipes))
+                ->addRecipe($faker->randomElement($recipes))
+                ->addRecipe($faker->randomElement($recipes))
+            ;
+            $manager->persist($newsletter);
+            $newsletters[] = $newsletter;
         }
 
         $manager->flush();
