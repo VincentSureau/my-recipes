@@ -23,7 +23,6 @@ class AppFixtures extends Fixture
         $faker = Factory::create('fr_FR');
         
         $users=[];
-        $users = [];
         for($i = 0; $i < 10; $i++)
         {
             $user = new User;
@@ -79,7 +78,7 @@ class AppFixtures extends Fixture
 
         $seasons = [$summer,$spring,$winter,$fall];
 
-        $ingredients=[];
+        $ingredients = [];
         for($i = 0; $i < 10; $i++)
         {
             $ingredient = new Ingredient;
@@ -89,11 +88,13 @@ class AppFixtures extends Fixture
                 ->setDescription($faker->text())
                 ->setImage($faker->imageUrl(640, 480, 'food', true))
                 ->setName($faker->word())
+                ->addSeason($faker->randomElement($seasons))
             ;
             $manager->persist($ingredient);
-            $ingredients[]=$ingredient; 
+            $ingredients[] = $ingredient; 
         }
 
+        $recipes = [];
         for($i = 0; $i < 10; $i++ ) // recipe
         {
             $recipe= new Recipe();
@@ -103,6 +104,7 @@ class AppFixtures extends Fixture
                 ->setLevel($faker->numberBetween(1,3))
                 ->setImage($faker->imageUrl(640, 480, 'recipe', true))
                 ->addSeason($faker->randomElement($seasons))
+                ->addUser($faker->randomElement($users))
             ;
             $manager->persist($recipe);
             $recipes[] = $recipe;
@@ -151,36 +153,7 @@ class AppFixtures extends Fixture
             $manager->persist($recipeIngredient);
             $recipeIngredients[] = $recipeIngredient;
         }
-
-        $comments = [];
-        for($i = 0; $i < 30; $i++ ) // comment
-        {
-            $comment= new Comment();
-            $comment
-                ->setContent($faker->sentence())
-                ->setRecipe($faker->randomElement($recipes))
-                ->setUser($faker->randomElement($users))
-            ;
-            $manager->persist($comment);
-            $comments[] = $comment;
-        }
-
-        $newsletters = [];
-        for($i = 0; $i < 10; $i++ )
-        {
-            $newsletter= new Newsletter();
-            $newsletter
-                ->setContent($faker->sentence(30))
-                ->setSendAt(DateTimeImmutable::createFromMutable($faker->dateTime()))
-                ->addRecipe($faker->randomElement($recipes))
-                ->addRecipe($faker->randomElement($recipes))
-                ->addRecipe($faker->randomElement($recipes))
-                ->addRecipe($faker->randomElement($recipes))
-            ;
-            $manager->persist($newsletter);
-            $newsletters[] = $newsletter;
-        }
-
+        
         $manager->flush();
     }
 }
