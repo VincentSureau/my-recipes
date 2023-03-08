@@ -11,7 +11,6 @@ use App\Entity\Comment;
 use App\Entity\Ingredient;
 use App\Entity\Newsletter;
 use App\Entity\RecipeIngredient;
-use App\Entity\Newsletter;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 
