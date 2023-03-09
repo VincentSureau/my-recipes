@@ -1,0 +1,28 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.contact_section {
+    background-image: url(https://cdn.pixabay.com/photo/2016/12/10/21/26/food-1898194_960_720.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    main {
+        display: flex;
+        margin: auto;
+        width: 50%;
+
+        .container_left {
+            img {
+                height: 25vh;
+            }
+        }
+
+        .container_right {
+            display: flex;
+        }
+    }
+}

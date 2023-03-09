@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+	{{ parent() }}
+
+	<link href="{{ asset('./contact_css/contact.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block title %}Hello ContactController!
+{% endblock %}
+
+{% block body %}
+	<style>
+		.example-wrapper {
+			margin: 1em auto;
+			max-width: 800px;
+			width: 95%;
+			font: 18px / 1.5 sans-serif;
+		}
+		.example-wrapper code {
+			background: #F5F5F5;
+			padding: 2px 6px;
+		}
+	</style>
+	<body class="body_contact">
+	<section class="contact_section">
+		<main>
+			<div class="container left">
+				<div class"container_contact">
+					<label type="text">Nos coordonées</label>
+					<h2>Numéro de téléphone</h2>
+					<a href="">XX XX XX XX XX</a>
+
+					<h2>Adresse E-mail</h2>
+					<a href="">mets4saisons@test.com</a>
+
+					<h2>Adresse de l'entreprise</h2>
+					<a href="">1675 chemin de trespaux, 30100 Alès</a>
+				</div>
+			</div>
+
+
+			<form class="container right">
+				<div>
+					<div class="mb-3">
+						<label for="lastName" class="name-label">Nom</label>
+						<input type="name" class="form-control" id="lastNameInput" aria-describedby="lastNameHelp">
+						<label for="firstName" class="name-label">Prenom</label>
+						<input type="name" class="form-control" id="firstNameInput" aria-describedby="firstNameHelp">
+					</div>
+
+					<div class="mb-3">
+						<label for="exampleInputEmail1" class="form-label">Adresse e-mail</label>
+						<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+						<div id="emailHelp" class="form-text">Votre email ne sera jamais partagé.</div>
+					</div>
+
+					<div class="form-outline">
+						<label class="form-label" for="typePhone">Numero de telephone</label>
+						<input type="tel" id="typePhone" class="form-control"/>
+					</div>
+
+					<div class="mb-3">
+						<label for="exampleFormControlTextarea1" class="form-label">Ecrivez votre texte</label>
+						<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+					</div>
+
+					<div class="mb-3 form-check">
+						<input type="checkbox" class="form-check-input" id="exampleCheck1">
+						<label class="form-check-label" for="exampleCheck1">Se souvenir de moi</label>
+					</div>
+					<button type="submit" class="btn btn-primary">Envoyer</button>
+				</div>
+
+			</form>
+		</main>
+	</section>
+	</body>
+{% endblock %}
