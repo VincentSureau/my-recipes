@@ -41,7 +41,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Comment::class)]
     private Collection $comments;
 
-    #[ORM\ManyToMany(targetEntity: Recipe::class, inversedBy: 'users')]
+    #[ORM\ManyToMany(targetEntity: Recipe::class, inversedBy: 'liked_by')]
+    #[ORM\JoinTable('liked_recipes')]
     private Collection $likes;
 
     public function __construct()

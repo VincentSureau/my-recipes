@@ -35,7 +35,7 @@ class Recipe
     private Collection $comments;
 
     #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'likes')]
-    private Collection $users;
+    private Collection $liked_by;
 
     #[ORM\ManyToMany(targetEntity: Season::class, inversedBy: 'recipes')]
     private Collection $seasons;
@@ -44,7 +44,7 @@ class Recipe
     {
         $this->recipeIngredients = new ArrayCollection();
         $this->comments = new ArrayCollection();
-        $this->users = new ArrayCollection();
+        $this->liked_by = new ArrayCollection();
         $this->seasons = new ArrayCollection();
     }
 
@@ -166,13 +166,13 @@ class Recipe
      */
     public function getUsers(): Collection
     {
-        return $this->users;
+        return $this->liked_by;
     }
 
     public function addUser(User $user): self
     {
-        if (!$this->users->contains($user)) {
-            $this->users->add($user);
+        if (!$this->liked_by->contains($user)) {
+            $this->liked_by->add($user);
             $user->addLike($this);
         }
 
@@ -181,7 +181,7 @@ class Recipe
 
     public function removeUser(User $user): self
     {
-        if ($this->users->removeElement($user)) {
+        if ($this->liked_by->removeElement($user)) {
             $user->removeLike($this);
         }
 
