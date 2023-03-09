@@ -1,0 +1,115 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nom de la recette{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+<main class="bg-light">
+    <div class="card mb-3 mt-5 container-lg">
+        <img src="{{ asset('images/paella.jpg') }}" class="card-img-top  mt-2" alt="Image recipe">
+        <div class="card-body">
+            <div class="d-flex justify-content-end align-items-center gap-1">
+                <button type="button" class="btn btn-success btn-lg rounded-4 "><i class="fa-regular fa-thumbs-up"></i></button>
+                <p class="mb-0 text-secondary">150k<p>
+            </div>
+            <h5 class="card-title fs-3 text-success">Titre de notre recette</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            
+            <h2 class="fs-3 mt-5 text-success">Ingredients</h2>
+            <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Ingredient 1
+                    <span class="badge bg-success rounded-pill">Quantity</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Ingredient 2
+                    <span class="badge bg-success rounded-pill">Quantity</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Ingredient 3
+                    <span class="badge bg-success rounded-pill">Quantity</span>
+                </li>
+            </ul>
+            <div class="container-sm mb-5 mt-5">
+            <section class="splide" aria-label="Splide Basic HTML Example">
+                <div class="splide__track">
+                        <ul class="splide__list">
+                            <li class="splide__slide">Slide 01</li>
+                            <li class="splide__slide">Slide 02</li>
+                            <li class="splide__slide">Slide 03</li>
+                        </ul>
+                </div>
+            </section>
+            </div>
+        </div>
+    </div>
+
+    <div class="mb-3 container-sm mt-3">
+        <form methode="POST">
+            <label for="exampleFormControlTextarea1" class="form-label">Comment</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <input class="btn btn-success mt-2" type="submit" value="envoie">
+        </form>
+    </div>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="d-flex media g-mb-30 media-comment">
+                    <img class="d-flex rounded-circle img-fluid w-50 h-50" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Image Description">
+                    <div class="media-body u-shadow-v18 g-bg-secondary g-pa-30">
+                        <div class="g-mb-15">
+                            <h5 class="h5 mb-0 text-success">John Doe</h5>
+                            <span class="g-font-size-12 text-secondary">5 days ago</span>
+                        </div>
+                        
+                
+                        <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue
+                        felis in faucibus ras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
+                
+                        <ul class="list-inline d-sm-flex my-0">
+                            <li class="list-inline-item g-mr-20">
+                                <a class="u-link-v5 text-success" href="#!">
+                                    <i class="fa fa-thumbs-up g-pos-rel g-top-1 g-mr-3"></i>
+                                    178
+                                </a>
+                            </li>
+                            <li class="list-inline-item g-mr-20">
+                                <a class="u-link-v5 text-success" href="#!">
+                                    <i class="fa fa-thumbs-down g-pos-rel g-top-1 g-mr-3"></i>
+                                    34
+                                </a>
+                            </li>
+                            <li class="list-inline-item ml-auto">
+                                <a class="u-link-v5 text-success" href="#!">
+                                    <i class="fa fa-reply g-pos-rel g-top-1 g-mr-3"></i>
+                                    Reply
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        var splide = new Splide( '.splide', {
+            type   : 'loop',
+            drag   : 'free',
+            perPage: 3,
+            perMove: 1,
+        }   );
+
+        splide.mount();
+    </script>
+{% endblock %}
