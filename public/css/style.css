@@ -1,10 +1,23 @@
+#password {
+  border-radius: 40px;
+}
 
 .bg {
-  background-color:hsl(160, 30%, 96.1%);
+  background-color: #f1f8f5;;
 }/*# sourceMappingURL=style.css.map */
-.green{
-color: #2d4739;
+
+.sendBtn{
+  background-color:  white;
+  color: black;
+  border: 2px solid #84c0a5;
+  border-radius: 20px;
+  padding: 10px;
+    
 }
-.marron{
-  color: hsl(40.2, 64.4%, 71.4%);
+.black{
+  color: black;
+  font-weight: bold;
+}
+.green{
+  color: #2c4638;
 }
