@@ -22,17 +22,20 @@
 
 .sendBtn {
   color: black;
-  border: 2px solid rgb(132, 192, 165);
+  border: 2px solid rgb(44, 70, 56);
   padding: 10px;
+  align-content: center;
 }
 
 .input {
   border-radius: 40px;
+  border-bottom: 2px solid rgb(44, 70, 56);
 }
 
 body > img {
   width: 50%;
-  position: absolute;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
 .container {
