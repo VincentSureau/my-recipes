@@ -107,7 +107,7 @@ class AppFixtures extends Fixture
                 ->setName($faker->words(10, true))
                 ->setDescription($faker->text())
                 ->setLevel($faker->numberBetween(1,3))
-                ->setImage($faker->imageUrl(640, 480, 'recipe', true))
+                ->setImage("http://www.cuisine-francaise.org/blog/wp-content/uploads/2009/10/COQUILLES-SAINT-JACQUES-PIERRTTES-GUIDE.jpg")
                 ->addSeason($faker->randomElement($seasons))
                 ->addUser($faker->randomElement($users))
             
