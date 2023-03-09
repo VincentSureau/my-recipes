@@ -34,6 +34,12 @@
 			margin: auto;
 			width: 80%;
 		}
+
+		.card {
+			height: 450px; 
+		}
+
+		
 	</style>
 
 	<header>
@@ -69,15 +75,13 @@
 	</header>
 
 	<main>
-		<div class="row row-cols-1 row-cols-md-3 g-4 list flex-wrap">
+		<div class="row row-cols-1 row-cols-md-3 g-4 list">
 			{% for recipe in recipes %}
-				<div class="col ">
-					<div class="card border-success ">
-
+				<div class="col">
+					<div class="card border-success">
 						<img src="{{recipe.image}}" class="card-img-top" alt="...">
 						<div class="card-body">
 							<h5 class="card-title">{{recipe.name}}</h5>
-							<p class="card-text">{{recipe.description}}</p>
 						</div>
 
 					</div>
