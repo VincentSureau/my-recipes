@@ -51,7 +51,6 @@ body > img {
 
 .h3 {
   font-size: 35px;
-  padding-bottom: 30px;
 }
 
 .form-group {
@@ -86,4 +85,40 @@ body > img {
 .imageContainer .box-connexion #login-box #login-form .form {
   padding: 100px;
   border-radius: 10px;
+}
+
+@media screen and (min-width: 400px) and (max-width: 600px) {
+  .mainContainer {
+    display: flex;
+    flex-direction: column;
+    background-image: url(../img/bgimg.jpg);
+    background-size: cover;
+    border-radius: 20px;
+    height: 100%;
+  }
+  .imageContainer {
+    width: 70%;
+    background-image: url(../img/bgimg.jpg);
+    background-size: cover;
+  }
+  .col-md-6 {
+    margin-top: 50%;
+    width: 100%;
+  }
+  .col-md-12 {
+    width: 100%;
+    height: 800Px;
+  }
+  .form {
+    height: 100%;
+  }
+  .form .form-group > label {
+    font-size: 27px;
+  }
+  .form .form-group #password {
+    border-bottom: 2px solid rgb(44, 70, 56);
+  }
+  .h3 {
+    font-size: 55px;
+  }
 }/*# sourceMappingURL=style.css.map */
