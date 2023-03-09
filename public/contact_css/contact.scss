@@ -1,3 +1,7 @@
+$textColor: #edfcd9;
+$bgColor: #edfcd9;
+$btnColor: #58cc73;
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -5,24 +9,56 @@
 }
 
 .contact_section {
-    background-image: url(https://cdn.pixabay.com/photo/2016/12/10/21/26/food-1898194_960_720.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
 
     main {
         display: flex;
         margin: auto;
-        width: 50%;
+        width: 80%;
+        padding: 80px 0px;
 
-        .container_left {
-            img {
+        & .left {
+            background-image: url(https://cdn.discordapp.com/attachments/1049380210514067467/1083345855718887506/fond3.jpg);
+            & .container_contact {
+                display: flex;
+                justify-content: space-between;
+            }
+            & img {
                 height: 25vh;
             }
         }
 
-        .container_right {
-            display: flex;
+        & .right {
+            background: $bgColor;
+            filter: saturate(0.7);
+            padding: 25px;
+            border-radius: 10px;
+
+            & .name {
+                display: flex;
+                align-items: center;
+            }
+
+            & .form-text {
+                color: blue;
+            }
+
+            & .btn-primary {
+                color: $bgColor;
+                margin: auto;
+                width: 100%;
+                text-align: center;
+                border: none;
+
+
+                &:hover {
+                    background: $btnColor;
+                    color: $textColor;
+                    box-shadow: 0px 3px 22px 10px rgba(0,0,0,0.19);
+                    transition: .2s;
+                }
+            }
+
+
         }
     }
 }
