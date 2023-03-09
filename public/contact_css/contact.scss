@@ -134,6 +134,10 @@ $btnColor: #f3f3f3;
         }
 
         & .right {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             background: $bgColor;
             filter: saturate(0.7);
             padding: 35px 25px;
