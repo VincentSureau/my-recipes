@@ -20,18 +20,18 @@ $btnColor: #f3f3f3;
 }
 
 .main_reseau li a {
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     background-color: #fff;
     text-align: center;
-    line-height: 80px;
-    font-size: 35px;
+    line-height: 60px;
+    font-size: 30px;
     margin: 0 10px;
     display: block;
-    border-radius: 50%;
+    border-radius: 15%;
     position: relative;
     overflow: hidden;
-    border: 3px solid #fff;
+    border: 2px solid #fff;
     z-index: 1;
 }
 
@@ -85,6 +85,7 @@ $btnColor: #f3f3f3;
         display: flex;
         margin: auto;
         width: 80%;
+        height: 95vh;
         padding: 80px 0px;
 
         .left {
@@ -120,7 +121,7 @@ $btnColor: #f3f3f3;
 
             }
 
-            .container_link_a{
+            .container_link_a {
                 color: white;
                 text-decoration: none;
             }
@@ -133,9 +134,11 @@ $btnColor: #f3f3f3;
         }
 
         & .right {
+            display: flex;
+            align-items: center;
             background: $bgColor;
             filter: saturate(0.7);
-            padding: 50px;
+            padding: 35px 25px;
             border-radius: 0 50px 50px 0;
 
 

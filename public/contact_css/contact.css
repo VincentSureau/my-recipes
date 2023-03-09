@@ -15,18 +15,18 @@
 }
 
 .main_reseau li a {
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   background-color: #fff;
   text-align: center;
-  line-height: 80px;
-  font-size: 35px;
+  line-height: 60px;
+  font-size: 30px;
   margin: 0 10px;
   display: block;
-  border-radius: 50%;
+  border-radius: 15%;
   position: relative;
   overflow: hidden;
-  border: 3px solid #fff;
+  border: 2px solid #fff;
   z-index: 1;
 }
 
@@ -78,6 +78,7 @@
   display: flex;
   margin: auto;
   width: 80%;
+  height: 95vh;
   padding: 80px 0px;
 }
 .contact_section main .left {
@@ -119,9 +120,11 @@
   text-underline-offset: 8px;
 }
 .contact_section main .right {
+  display: flex;
+  align-items: center;
   background: #f3f3f3;
   filter: saturate(0.7);
-  padding: 50px;
+  padding: 35px 25px;
   border-radius: 0 50px 50px 0;
 }
 .contact_section main .right .name {
