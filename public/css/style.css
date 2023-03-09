@@ -1,7 +1,10 @@
-#password {
-  border-radius: 40px;
-}
 
 .bg {
-  background-color: rgb(66, 60, 102);
+  background-color:hsl(160, 30%, 96.1%);
 }/*# sourceMappingURL=style.css.map */
+.green{
+color: #2d4739;
+}
+.marron{
+  color: hsl(40.2, 64.4%, 71.4%);
+}
