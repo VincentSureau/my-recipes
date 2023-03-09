@@ -10,79 +10,84 @@
 {% endblock %}
 
 {% block body %}
-	<style>
-		.example-wrapper {
-			margin: 1em auto;
-			max-width: 800px;
-			width: 95%;
-			font: 18px / 1.5 sans-serif;
-		}
-		.example-wrapper code {
-			background: #F5F5F5;
-			padding: 2px 6px;
-		}
-	</style>
-	<body class="body_contact">
-	<section class="contact_section">
-		<main>
-			<div class="container left">
-				<div class="container_contact">
-					<h2>Où nous trouver</h2>
-					 <div class="container_link">
-					    <a href="" class="container_link_a">Chemin Des pommiers, 30100 Alès <br></a>
-					    <a href="" class="container_link_a">0007898787665 <br></a>
-					    <a href="" class="container_link_a">mets4saisons@test.com</a>
+	<div class="body_contact">
+		<section class="contact_section">
+			<div class="main">
+				<div class="left">
+					<div class="container_contact">
+						<h2>Où nous trouver</h2>
+						<div class="container_link">
+							<a href="" class="container_link_a">Chemin Des pommiers, 30100 Alès
+								<br></a>
+							<a href="" class="container_link_a">0007898787665
+								<br></a>
+							<a href="" class="container_link_a">mets4saisons@test.com</a>
+						</div>
+					</div>
+					<div class="logo_link">
+
+						<div class="main_reseau">
+							<li class="content_reseau">
+								<a href="#">
+									<i class="fab fa-facebook-f icon"></i>
+								</a>
+							</li>
+							<li class="content_reseau">
+								<a href="#">
+									<i class="fab fa-pinterest icon"></i>
+								</a>
+							</li>
+							<li class="content_reseau">
+								<a href="#">
+									<i class="fab fa-instagram icon"></i>
+								</a>
+							</li>
+							<li class="content_reseau">
+								<a href="#">
+									<i class="fab fa-tiktok icon"></i>
+								</a>
+							</li>
+						</div>
 					</div>
 				</div>
-		    <div class="logo_link">
-			
-				<div class="main_reseau">
-        			<li class="content_reseau">
-         	 			<a href="#">
-        			    <i class="fab fa-facebook-f icon"></i></a>
-        		    </li>
-        		    <li class="content_reseau">
-          		        <a href="#"><i class="fab fa-twitter icon"></i></a>
-       		 	    </li>
-        		    <li class="content_reseau">
-        	            <a href="#"><i class="fab fa-linkedin-in icon"></i></a></li>
-       	 		    <li class="content_reseau">
-          		        <a href="#"><i class="fab fa-google-plus-g icon"></i></a></li>
-    			</div>
+
+
+				<form class="right flex-grow-1">
+					<h2>Contactez Nous</h2>
+					<div class="w-75">
+						<div class="d-lg-flex mb-3">
+							<div class="col">
+								<label for="lastName" class="name-label"></label>
+								<input type="name" class="form-control" id="lastNameInput" aria-describedby="lastNameHelp" placeholder="Nom">
+							</div>
+							<div class="col">
+								<label for="firstName" class="name-label"></label>
+								<input type="name" class="form-control" id="firstNameInput" aria-describedby="firstNameHelp" placeholder="Prénom">
+							</div>
+						</div>
+
+
+						<div class="mb-3">
+							<label for="exampleInputEmail1" class="form-label sr-only"></label>
+							<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Adresse E-mail">
+							<div id="emailHelp" class="form-text">Votre email ne sera jamais partagé.</div>
+						</div>
+
+						<div class="form-outline mb-3">
+							<label class="form-label sr-only" for="typePhone"></label>
+							<input type="tel" id="typePhone" class="form-control" placeholder="Numéro de téléphone"/>
+						</div>
+
+						<div class="mb-3">
+							<label for="exampleFormControlTextarea1" class="form-label sr-only"></label>
+							<textarea class="form-control" id="exampleFormControlTextarea1" rows="10" placeholder="Ecrivez votre texte"></textarea>
+						</div>
+
+						<button type="submit" class="btn btn-primary">Envoyer</button>
+					</div>
+
+				</form>
 			</div>
-			</div>
-
-
-			<form class="container right">
-				<div class="w-75">
-					<div class="mb-2 name">
-						<label for="lastName" class="name-label"></label>
-						 <input type="name" class="form-control" id="lastNameInput" aria-describedby="lastNameHelp" placeholder="Nom">
-						 <label for="firstName" class="name-label"></label>
-						<input type="name" class="form-control" id="firstNameInput" aria-describedby="firstNameHelp" placeholder="Prénom">
-					</div>
-
-					<div class="mb-2">
-						<label for="exampleInputEmail1" class="form-label"></label>
-						<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Adresse E-mail">
-						<div id="emailHelp" class="form-text">Votre email ne sera jamais partagé.</div>
-					</div>
-
-					<div class="form-outline">
-						<label class="form-label" for="typePhone"></label>
-						<input type="tel" id="typePhone" class="form-control" placeholder="Numéro de téléphone"/>
-					</div>
-
-					<div class="mb-2">
-						<label for="exampleFormControlTextarea1" class="form-label"></label>
-						<textarea class="form-control" id="exampleFormControlTextarea1" rows="10" placeholder="Ecrivez votre texte"></textarea>
-					</div>
-
-					<button type="submit" class="btn btn-primary">Envoyer</button>
-				</div>
-
-			</form>
-		</main>
-	</section>
-	</body>
+		</section>
+	</div>
 {% endblock %}

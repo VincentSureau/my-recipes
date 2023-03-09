@@ -63,63 +63,77 @@
 }
 
 .main_reseau li:nth-child(2) a:before {
-  background: #55acee;
+  background: red;
 }
 
 .main_reseau li:nth-child(3) a:before {
-  background: #0077b5;
+  background: violet;
 }
 
 .main_reseau li:nth-child(4) a:before {
-  background: #dd4b39;
+  background: black;
 }
 
-.contact_section main {
+.contact_section .main {
   display: flex;
-  margin: auto;
-  width: 80%;
-  height: 95vh;
-  padding: 80px 0px;
+  height: 100vh;
 }
-.contact_section main .left {
+.contact_section .main .left, .contact_section .main .right {
+  width: 50%;
+}
+@media screen and (max-width: 1024px) {
+  .contact_section .main {
+    display: flex;
+    flex-direction: column;
+  }
+  .contact_section .main .left, .contact_section .main .right {
+    width: 100%;
+  }
+}
+.contact_section .main .left {
   background-image: url(https://cdn.discordapp.com/attachments/1049380210514067467/1083345855718887506/fond3.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-  border-radius: 50px 0 0 50px;
   display: flex;
   gap: 40px;
   justify-content: center;
   flex-direction: column;
   align-items: center;
 }
-.contact_section main .left .container_contact {
+@media screen and (max-width: 1024px) {
+  .contact_section .main .left {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+}
+.contact_section .main .left .container_contact {
   background: rgba(0, 0, 0, 0.5098039216);
   -webkit-backdrop-filter: blur(4px);
           backdrop-filter: blur(4px);
   padding: 50px;
   justify-content: space-between;
 }
-.contact_section main .left .container_link {
+.contact_section .main .left .container_link {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
-.contact_section main .left img {
+.contact_section .main .left img {
   height: 25vh;
 }
-.contact_section main .left h2 {
+.contact_section .main .left h2 {
   color: white;
 }
-.contact_section main .left .container_link_a {
+.contact_section .main .left .container_link_a {
   color: white;
   text-decoration: none;
 }
-.contact_section main .left .container_link_a:hover {
+.contact_section .main .left .container_link_a:hover {
   -webkit-text-decoration: underline 2px green;
           text-decoration: underline 2px green;
   text-underline-offset: 8px;
 }
-.contact_section main .right {
+.contact_section .main .right {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -127,16 +141,15 @@
   background: #f3f3f3;
   filter: saturate(0.7);
   padding: 35px 25px;
-  border-radius: 0 50px 50px 0;
 }
-.contact_section main .right .name {
+.contact_section .main .right .name {
   display: flex;
   align-items: center;
 }
-.contact_section main .right .form-text {
+.contact_section .main .right .form-text {
   color: green;
 }
-.contact_section main .right .btn-primary {
+.contact_section .main .right .btn-primary {
   background-color: green;
   color: #f3f3f3;
   margin: auto;
@@ -145,7 +158,7 @@
   border: none;
   transition: 0.3s;
 }
-.contact_section main .right .btn-primary:hover {
+.contact_section .main .right .btn-primary:hover {
   color: green;
   background-color: #fff;
   transition: 0.2s;
