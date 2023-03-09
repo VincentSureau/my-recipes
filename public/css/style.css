@@ -1,10 +1,22 @@
+html{
+
+}
+
 #password {
   border-radius: 40px;
 }
 
-.bg {
-  background-color: #f1f8f5;;
+body {
+  background-image: url(../img/fond.png);
+  background-repeat: no-repeat;
+  background-size:  contain;
+  background-position: left;
+  width: 100vw;
+  height: 80vh;
+  
+
 }/*# sourceMappingURL=style.css.map */
+
 
 .sendBtn{
   background-color:  white;
@@ -15,9 +27,27 @@
     
 }
 .black{
-  color: black;
+  color: #2c4638;
   font-weight: bold;
+}
+.marron{
+  color:  #e5c688;;
 }
 .green{
   color: #2c4638;
+}
+.form{
+border: 3px solid;
+padding: 100px;
+border-color: #2c4638;
+animation-delay: 1s;
+
+
+}
+input{
+  margin-top: 10px;
+}
+
+.img-carroussel{
+  width: inherit;
 }
