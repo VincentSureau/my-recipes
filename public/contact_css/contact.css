@@ -120,8 +120,6 @@
   text-underline-offset: 8px;
 }
 .contact_section main .right {
-  display: flex;
-  align-items: center;
   background: #f3f3f3;
   filter: saturate(0.7);
   padding: 35px 25px;
