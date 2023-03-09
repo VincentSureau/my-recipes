@@ -1,10 +1,11 @@
 html {
     height: 100%;
+
+    body {
+        height: 100%;
+    }
 }
 
-body {
-    height: 100%;
-}
 
 #password {
     border-radius: 40px;
@@ -22,11 +23,7 @@ body {
     color: black;
 }
 
-.form {
-       padding: 100px;
-    border-radius: 10px;
 
-}
 
 .sendBtn {
     color: black;
@@ -39,6 +36,7 @@ body {
 .input {
     border-radius: 40px;
     border-bottom: 2px solid rgb(44, 70, 56);
+    margin-bottom: 15px;
 
 }
 
@@ -57,7 +55,12 @@ body>img {
 }
 
 .h3 {
-    font-size: 40px;
+    font-size: 35px;
+    padding-bottom: 30px;
+}
+
+.form-group {
+    margin-top: 20px;
 
 }
 
@@ -67,22 +70,31 @@ body>img {
     height: 100%;
     background-image: url(../img/bgimg.jpg);
     background-size: cover;
+    border-radius: 20px;
 }
 
 .imageContainer {
     width: 70%;
     background-image: url(../img/bgimg.jpg);
     background-size: cover;
-}
-.box-connexion{
-    display:flex ;
-
-}
-#login-box{
-    align-self: center;
-    height: 100%;
-
-        #login-form{
+    .box-connexion {
+        display: flex;
+    
+        #login-box {
             height: 100%;
+    
+    
+            #login-form {
+                height: 100%;
+    
+                .form {
+                    padding: 100px;
+                    border-radius: 10px;
+    
+                }
+    
+            }
         }
+    }
 }
+
