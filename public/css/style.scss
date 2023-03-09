@@ -37,6 +37,8 @@ html {
     border-radius: 40px;
     border-bottom: 2px solid rgb(44, 70, 56);
     margin-bottom: 15px;
+    width: 50%;
+
 
 }
 
@@ -60,14 +62,17 @@ body>img {
 }
 
 .form-group {
-    margin-top: 20px;
+
+    margin-top: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
 }
 
 .mainContainer {
     display: flex;
     flex-direction: row;
-    height: 100%;
     background-image: url(../img/bgimg.jpg);
     background-size: cover;
     border-radius: 20px;
@@ -77,24 +82,24 @@ body>img {
     width: 70%;
     background-image: url(../img/bgimg.jpg);
     background-size: cover;
+
     .box-connexion {
         display: flex;
-    
+
         #login-box {
             height: 100%;
-    
-    
+
+
             #login-form {
                 height: 100%;
-    
+
                 .form {
                     padding: 100px;
                     border-radius: 10px;
-    
+
                 }
-    
+
             }
         }
     }
 }
-
