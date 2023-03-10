@@ -1,0 +1,7 @@
+{
+    "emmet.includeLanguages": {"twig": "html"},
+
+    "liveSassCompile.settings.includeItems": [
+    
+    ]
+}

@@ -1,0 +1,39 @@
+body {
+    background-color: white;
+}
+
+.navbar-brand {
+    font-size: 30px;
+    color: #2d4739;
+}
+
+.navbar-brand:hover{
+    font-size: 30px;
+    color: #2d4739bd;
+}
+
+.btn-outline-primary {
+    color: success;
+}
+
+.navbar-toggler {
+    border: none;
+}
+
+.material-symbols-outlined {
+    display: flex;
+    justify-content: end;
+}
+
+.social_media {
+    display: inline;
+}
+
+.footer_social_media {
+text-align: center;
+}
+
+.logo_nom {
+    display: flex;
+    
+}
