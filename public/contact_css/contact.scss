@@ -229,3 +229,130 @@ $btnColor: #f3f3f3;
 .main_reseau li:nth-child(4) a:before {
     background: black;
 }
+
+.contact_section {
+
+    .main {
+        display: flex;
+        // margin: auto;
+        // width: 80%;
+        height: 100vh;
+        // padding: 80px 0px;
+        .left, .right {
+            width: 50%;
+        }
+
+        @media screen and (max-width: 1024px) {
+            display: flex;
+            flex-direction: column;
+            .left, .right {
+                width: 100%;
+            }
+        }
+
+        .left {
+            background-image: url("https://cdn.pixabay.com/photo/2015/05/31/13/02/salad-791643_960_720.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            // border-radius: 50px 0 0 50px;
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+
+            @media screen and (max-width: 1024px) {
+            // border-radius: 50px 50px 0 0;
+                padding-top: 20px;
+                padding-bottom: 20px;
+            }
+
+            .container_contact {
+                background: #00000082;
+                backdrop-filter: blur(4px);
+                padding: 50px;
+                justify-content: space-between;
+
+                h2 {
+                    text-align: center;
+                }
+            }
+
+            .container_link {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            & img {
+                height: 25vh;
+            }
+
+            & h2 {
+                color: white;
+
+            }
+
+            .container_link_a {
+                color: white;
+                text-decoration: none;
+            }
+
+            .container_link_a:hover {
+                text-decoration: underline 2px green;
+                text-underline-offset: 8px;
+            }
+
+        }
+
+        & .right {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: $bgColor;
+            filter: saturate(0.7);
+            padding: 35px 25px;
+            // border-radius: 0 50px 50px 0;
+
+            @media screen and (max-width: 1024px) {
+                // border-radius: 0 0 50px 50px;
+                }
+
+
+            & .name {
+                display: flex;
+                align-items: center;
+            }
+
+            & .form-text {
+                color: green;
+            }
+
+            & .btn-primary {
+                background-color: green;
+                color: $bgColor;
+                margin: auto;
+                width: 100%;
+                text-align: center;
+                border: none;
+                transition: .3s;
+
+                &:hover {
+                    color: green;
+                    background-color: #fff;
+                    transition: .2s;
+                    box-shadow: 0px 3px 22px 10px rgba(0, 0, 0, 0.19);
+                    transition: .2s;
+                }
+            }
+
+
+        }
+    }
+}
+
+#show, #hide{
+    float: right;
+    cursor: pointer;
+}

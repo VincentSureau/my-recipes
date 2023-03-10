@@ -6,10 +6,10 @@
 	<link href="{{ asset('./contact_css/contact.css') }}" rel="stylesheet">
 {% endblock %}
 
-{% block script %}
+{% block javascripts %}
 	{{ parent() }}
 
-	<script src="{{ asset('../../public/js/password.js') }}"></script>
+	<script src="{{ asset('js/password.js') }}"></script>
 {% endblock %}
 
 {% block title %}Hello ContactController!
@@ -57,8 +57,8 @@
 					</div>
 				</div>
 
-
 				<form class="right flex-grow-1 d-flex align-items">
+				<form class="right flex-grow-1 d-flex align-items-center">
 					<h2>Inscription</h2>
 					<div class="w-75">
 
@@ -75,13 +75,11 @@
 
 						<div class="form-outline mb-3 d-flex align-items-center">
 							<label class="form-label sr-only" for="typePhone"></label>
-							<input type="password" id="typePhone" class="form-control" placeholder="Mot de passe"/>
-							<i class="bi bi-eye-slash" id="togglePassword"></i>
+							<input type="password" id="password" class="form-control" placeholder="Mot de passe"> <i class="bi bi-eye-slash show"  onclick="myFunction()"></i></input>
 						</div>
 						<div class="form-outline mb-3 d-flex align-items-center">
 							<label class="form-label sr-only" for="typePhone"></label>
-							<input type="password" id="typePhone" class="form-control" placeholder="confirmer le mot de passe"/>
-							<i class="bi bi-eye-slash" id="togglePassword"></i>
+							<input type="password" id="typePhone" class="form-control" placeholder="confirmer le mot de passe"></input>
 						</div>
 						
 						<button type="submit" class="btn btn-primary">Continue</button>

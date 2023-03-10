@@ -1,18 +1,20 @@
-const togglePassword = document
-.querySelector('#togglePassword');
+function myFunction(){
+    var x = document.getElementById('typePhone');
+    if(x.type === "password") {
+        x.type = "text";
+        document.getElementById('hide').style.display= "inline-block";
+        document.getElementById('hide').style.display= "none";
+    }
+    else{
+        x.type= "password";
+        document.getElementById('hide').style.display= "none";
+        document.getElementById('show').style.display= "inline-block";
+    }
 
-const password = document.querySelector('#password');
+}
 
-togglePassword.addEventListener('click', () => {
-
-// Toggle the type attribute using
-// getAttribure() method
-const type = password
-    .getAttribute('type') === 'password' ?
-    'text' : 'password';
-      
-password.setAttribute('type', type);
-
-// Toggle the eye and bi-eye icon
-this.classList.toggle('bi-eye');
-});
+document.querySelector('.show').addEventListener('click', function(event) {
+    event.currentTarget.classList.toggle('bi-eye');
+    event.currentTarget.classList.toggle('bi-eye-slash');
+    document.querySelector('#password').type = document.querySelector('#password').type == 'password' ? 'test' : 'password';
+})
