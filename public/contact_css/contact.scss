@@ -8,77 +8,6 @@ $btnColor: #f3f3f3;
     padding: 0;
 }
 
-.main_reseau {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
-.main_reseau li {
-    list-style: none;
-
-}
-
-.main_reseau li a {
-    width: 60px;
-    height: 60px;
-    background-color: #fff;
-    text-align: center;
-    line-height: 60px;
-    font-size: 30px;
-    margin: 0 10px;
-    display: block;
-    border-radius: 15%;
-    position: relative;
-    overflow: hidden;
-    border: 2px solid #fff;
-    z-index: 1;
-}
-
-.main_reseau li a .icon {
-    position: relative;
-    color: #262626;
-    transition: .5s;
-    z-index: 3;
-}
-
-.main_reseau li a:hover .icon {
-    color: #fff;
-    transform: rotateY(360deg);
-}
-
-.main_reseau li a:before {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #f00;
-    transition: .5s;
-    z-index: 2;
-}
-
-.main_reseau li a:hover:before {
-    top: 0;
-}
-
-.main_reseau li:nth-child(1) a:before {
-    background: #3b5999;
-}
-
-.main_reseau li:nth-child(2) a:before {
-    background: red;
-}
-
-.main_reseau li:nth-child(3) a:before {
-    background: violet;
-}
-
-.main_reseau li:nth-child(4) a:before {
-    background: black;
-}
-
 .contact_section {
 
     .main {
@@ -100,15 +29,30 @@ $btnColor: #f3f3f3;
         }
 
         .left {
-            background-image: url("https://cdn.pixabay.com/photo/2015/05/31/13/02/salad-791643_960_720.jpg");
-            background-repeat: no-repeat;
-            background-size: cover;
             // border-radius: 50px 0 0 50px;
             display: flex;
             gap: 40px;
             justify-content: center;
             flex-direction: column;
             align-items: center;
+
+            &.left_login {
+                background-image: url("https://cdn.pixabay.com/photo/2015/05/31/13/02/salad-791643_960_720.jpg");
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+
+            &.left_subsribed {
+                background-image: url("https://cdn.pixabay.com/photo/2015/05/31/13/02/salad-791643_960_720.jpg");
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+
+            &.contact_left {
+                background-image: url("https://cdn.discordapp.com/attachments/1049380210514067467/1083345855718887506/fond3.jpg");
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
 
             @media screen and (max-width: 1024px) {
             // border-radius: 50px 50px 0 0;
@@ -121,10 +65,18 @@ $btnColor: #f3f3f3;
                 backdrop-filter: blur(4px);
                 padding: 50px;
                 justify-content: space-between;
+                
+                &.contain_sub {
+                    display: flex;
+                }
 
                 h2 {
                     text-align: center;
                 }
+            }
+
+            .contain_Auth {
+                display: flex;
             }
 
             .container_link {
@@ -195,8 +147,85 @@ $btnColor: #f3f3f3;
                     transition: .2s;
                 }
             }
+            .subBtn {
+                width: 75%;
+                margin: 15px;
 
-
+                & .form-check {
+                    margin: 10px 0;
+                }
+            }
         }
     }
+}
+
+.main_reseau {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.main_reseau li {
+    list-style: none;
+
+}
+
+.main_reseau li a {
+    width: 60px;
+    height: 60px;
+    background-color: #fff;
+    text-align: center;
+    line-height: 60px;
+    font-size: 30px;
+    margin: 0 10px;
+    display: block;
+    border-radius: 15%;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid #fff;
+    z-index: 1;
+}
+
+.main_reseau li a .icon {
+    position: relative;
+    color: #262626;
+    transition: .5s;
+    z-index: 3;
+}
+
+.main_reseau li a:hover .icon {
+    color: #fff;
+    transform: rotateY(360deg);
+}
+
+.main_reseau li a:before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #f00;
+    transition: .5s;
+    z-index: 2;
+}
+
+.main_reseau li a:hover:before {
+    top: 0;
+}
+
+.main_reseau li:nth-child(1) a:before {
+    background: #3b5999;
+}
+
+.main_reseau li:nth-child(2) a:before {
+    background: red;
+}
+
+.main_reseau li:nth-child(3) a:before {
+    background: violet;
+}
+
+.main_reseau li:nth-child(4) a:before {
+    background: black;
 }
