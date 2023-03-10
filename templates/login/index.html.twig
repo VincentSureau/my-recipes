@@ -6,10 +6,10 @@
 	<link href="{{ asset('./contact_css/contact.css') }}" rel="stylesheet">
 {% endblock %}
 
-{% block script %}
+{% block javascripts  %}
 	{{ parent() }}
 
-	<script src="{{ asset('./js/password.js') }}"></script>
+	<script src="{{ asset('js/password.js') }}"></script>
 {% endblock %}
 
 {% block title %}Hello ContactController!
@@ -76,7 +76,7 @@
 						<div class="form-outline mb-3">
 							<label class="form-label sr-only" for="typePhone"></label>
 							<input type="password" name="password" id="typePhone" class="form-control" placeholder="Mot de passe"/>
-							<i class="bi bi-eye-slash" id="togglePassword"></i>
+							<i class="bi bi-eye-slash show"  onclick="myFunction()"></i></input>
 						</div>
 						<button type="submit" class="btn btn-primary">Continue</button>
                         <a href="{{ path('app_subscribed') }}">S'inscire ici !</a>

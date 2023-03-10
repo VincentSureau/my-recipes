@@ -287,9 +287,4 @@
   transition: 0.2s;
   box-shadow: 0px 3px 22px 10px rgba(0, 0, 0, 0.19);
   transition: 0.2s;
-}
-
-#show, #hide {
-  float: right;
-  cursor: pointer;
 }/*# sourceMappingURL=contact.css.map */
