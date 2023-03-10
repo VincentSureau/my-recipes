@@ -6,6 +6,12 @@
 	<link href="{{ asset('./contact_css/contact.css') }}" rel="stylesheet">
 {% endblock %}
 
+{% block script %}
+	{{ parent() }}
+
+	<script src="{{ asset('../../public/js/password.js') }}"></script>
+{% endblock %}
+
 {% block title %}Hello ContactController!
 {% endblock %}
 
@@ -15,13 +21,13 @@
 			<div class="main">
 				<div class="left">
 					<div class="container_contact">
-						<h2>Où nous trouver</h2>
+						<h2>Nos créations <br>Originales</h2>
 						<div class="container_link">
-							<a href="" class="container_link_a">Chemin Des pommiers, 30100 Alès
+							<a href="" class="container_link_a">
 								<br></a>
-							<a href="" class="container_link_a">0007898787665
+							<a href="" class="container_link_a">
 								<br></a>
-							<a href="" class="container_link_a">argentfacile@vincentpasjerry.fr</a>
+							<a href="" class="container_link_a"></a>
 						</div>
 					</div>
 					<div class="logo_link">

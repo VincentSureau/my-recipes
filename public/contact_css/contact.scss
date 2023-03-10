@@ -100,7 +100,7 @@ $btnColor: #f3f3f3;
         }
 
         .left {
-            background-image: url(https://cdn.discordapp.com/attachments/1049380210514067467/1083345855718887506/fond3.jpg);
+            background-image: url("https://cdn.pixabay.com/photo/2015/05/31/13/02/salad-791643_960_720.jpg");
             background-repeat: no-repeat;
             background-size: cover;
             // border-radius: 50px 0 0 50px;
@@ -121,6 +121,10 @@ $btnColor: #f3f3f3;
                 backdrop-filter: blur(4px);
                 padding: 50px;
                 justify-content: space-between;
+
+                h2 {
+                    text-align: center;
+                }
             }
 
             .container_link {

@@ -6,22 +6,33 @@
 	<link href="{{ asset('./contact_css/contact.css') }}" rel="stylesheet">
 {% endblock %}
 
+{% block script %}
+	{{ parent() }}
+
+	<script src="{{ asset('./js/password.js') }}"></script>
+{% endblock %}
+
 {% block title %}Hello ContactController!
 {% endblock %}
 
 {% block body %}
 	<div class="body_contact">
+    
 		<section class="contact_section">
+        
 			<div class="main">
+            
 				<div class="left">
+                
+     
 					<div class="container_contact">
-						<h2>Où nous trouver</h2>
+						<h2>Nos créations <br> originales</h2>
 						<div class="container_link">
-							<a href="" class="container_link_a">Chemin Des pommiers, 30100 Alès
+							<a href="" class="container_link_a">
 								<br></a>
-							<a href="" class="container_link_a">0007898787665
+							<a href="" class="container_link_a">
 								<br></a>
-							<a href="" class="container_link_a">argentfacile@vincentpasjerry.fr</a>
+							<a href="" class="container_link_a"></a>
 						</div>
 					</div>
 					<div class="logo_link">
@@ -58,13 +69,7 @@
 
 						<div class="mb-3">
 							<label for="exampleInputEmail1" class="form-label sr-only"></label>
-							<input type="name" class="form-control" id="exampleInputName" aria-describedby="emailHelp" placeholder="Pseudo">
-							<div id="emailHelp" class="form-text">Ou</div>
-						</div>
-                        
-						<div class="mb-3">
-							<label for="exampleInputEmail1" class="form-label sr-only"></label>
-							<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Adresse E-mail">
+							<input type="text" class="form-control" id="exampleInputName" aria-describedby="emailHelp" placeholder="Email ou Pseudo">
 							<div id="emailHelp" class="form-text">Votre email ne sera jamais partagé.</div>
 						</div>
 

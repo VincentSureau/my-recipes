@@ -113,6 +113,9 @@
   padding: 50px;
   justify-content: space-between;
 }
+.contact_section .main .left .container_contact h2 {
+  text-align: center;
+}
 .contact_section .main .left .container_link {
   display: flex;
   flex-direction: column;
