@@ -6,32 +6,94 @@
 {% block body %}
 	<header>
 		<h1 class="text-center shadow">NOS RECETTES</h1>
-		<div class="searchFilter flex-wrap">
+		<div class="searchFilter d-flex flex-column">
 			<div class="searchBar">
 				<form class="d-flex" role="search">
-					<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-					<button class="btn btn-outline-success" type="submit">Search</button>
+					<input class="form-control me-2" name="search" type="search" placeholder="Search" aria-label="Search">
+					<button class="btn btn-outline-success" name="send" type="submit">Search</button>
 				</form>
 			</div>
-			<div class="btn-group">
-				<button type="button" class="btn btn-success">Trier</button>
-				<button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-					<span class="visually-hidden">Toggle Dropdown</span>
-				</button>
-				<ul class="dropdown-menu">
-					<li>
-						<a class="dropdown-item" href="#">Saison</a>
-					</li>
-					<li>
-						<a class="dropdown-item" href="#">Difficulté</a>
-					</li>
-					<li>
-						<a class="dropdown-item" href="#">Salé</a>
-					</li>
-					<li>
-						<a class="dropdown-item" href="#">Sucré</a>
-					</li>
-				</ul>
+			<div class="sortBtn d-flex justify-content-center flex-wrap">
+				<div class="btn-group">
+					<button type="button" class="btn btn-success">Saison</button>
+					<button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+						<span class="visually-hidden">Toggle Dropdown</span>
+					</button>
+					<ul class="dropdown-menu">
+						<li>
+							<a class="dropdown-item" href="#">Été</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="#">Printemps</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="#">Automne</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="#">Hiver</a>
+						</li>
+					</ul>
+				</div>
+				<div class="btn-group">
+					<button type="button" class="btn btn-success">Plat</button>
+					<button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+						<span class="visually-hidden">Toggle Dropdown</span>
+					</button>
+					<ul class="dropdown-menu">
+						<li>
+							<a class="dropdown-item" href="#">Entrée</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="#">Plat</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="#">Dessert</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="#">Gourmandises</a>
+						</li>
+					</ul>
+
+				</div>
+				<div class="btn-group">
+					<button type="button" class="btn btn-success">Niveau</button>
+					<button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+						<span class="visually-hidden">Toggle Dropdown</span>
+					</button>
+					<ul class="dropdown-menu">
+						<li>
+							<a class="dropdown-item" href="#">Facile</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="#">Intermédiaire</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="#">Difficile</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="#">Chef étoilé </a>
+						</li>
+					</ul>
+
+				</div>
+				<div class="btn-group">
+					<button type="button" class="btn btn-success">Trier</button>
+					<button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+						<span class="visually-hidden">Toggle Dropdown</span>
+					</button>
+					<ul class="dropdown-menu">
+						<li>
+							<a class="dropdown-item" href="#">Les plus aimés</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="#">Les plus commentés</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="#">Les plus récentes</a>
+						</li>
+					</ul>
+
+				</div>
 			</div>
 		</div>
 	</header>
@@ -57,6 +119,25 @@
 				</div>
 			{% endfor %}
 		</div>
+			<nav aria-label="..." class="d-flex justify-content-center">
+				<ul class="pagination">
+					<li class="page-item disabled">
+						<span class="page-link text-success">Précédent</span>
+					</li>
+					<li class="page-item ">
+						<a class="page-link text-success" href="#">1</a>
+					</li>
+					<li class="page-item  active" aria-current="page">
+						<span class="page-link bg-success border-success ">2</span>
+					</li>
+					<li class="page-item ">
+						<a class="page-link text-success" href="#">3</a>
+					</li>
+					<li class="page-item">
+						<a class="page-link text-success" href="#">Suivant</a>
+					</li>
+				</ul>
+			</nav>
 	</main>
 
 {% endblock %}

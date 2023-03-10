@@ -6,12 +6,15 @@ header {
 .searchFilter {
     display: flex;
     justify-content: center;
-    padding: 50px 0;
+    padding: 10px 0;
+    width: 100%;
+    margin: auto;
 
 }
 
 .searchBar {
-    margin-right: 50px;
+    margin: auto;
+    width: 40%;
 }
 
 h1 {
@@ -24,14 +27,8 @@ h1 {
 .list {
     margin: auto;
     width: 70%;
-    
 }
 
-@media (max-width: 768px) {
-    .list {
-        width: 80%;
-    }
-}
 
 .card-body {
     height: 200px;
@@ -59,3 +56,39 @@ header {
     transform: scale(1.025);
     box-shadow: rgba(0, 0, 0, 0.24) 0 5px 10px
 }
+
+
+.sortBtn {
+    width: 100%;
+    margin: 20px auto;
+    
+}
+
+.btn-group {
+    margin: 15px 5px;
+}
+
+@media (max-width: 768px) {
+    .list {
+        width: 100%;
+    }
+
+    /* .btn-group {
+        margin: 5px 2px;
+    } */
+}
+
+@media (max-width: 576px) { 
+
+    .sortBtn {
+        width: 80%;
+    }
+
+    .searchBar {
+        width: 100%;
+    }
+
+    .btn-group {
+        margin: 10px 5px;
+        }
+ }
