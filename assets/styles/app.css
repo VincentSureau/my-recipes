@@ -1,5 +1,11 @@
 body {
+    box-sizing: border-box;
+    width: 100%;
     background-color: white;
+}
+
+.connexion_menu {
+    display: none;
 }
 
 .navbar-brand {
@@ -33,7 +39,31 @@ body {
 text-align: center;
 }
 
-.logo_nom {
+.logo {
     display: flex;
+    text-align: center;
+}
+
+.logo {
+    display: flex;
+}
+
+
+@media screen and (max-width: 576px){
+    .connexion {
+        display: none;
+    }
+
+    .connexion_menu {
+        display: flex;
+        justify-content: center;
+    }
+
+    .logo {
+        width: 100px;
+    }
     
+    #search {
+        display: none;
+    }
 }
