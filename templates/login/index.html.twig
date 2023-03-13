@@ -16,17 +16,24 @@
 {% endblock %}
 
 {% block body %}
+
+	{% if error %}
+		<div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+	{% endif %}
+
 	<div class="body_contact">
-    
+
 		<section class="contact_section">
-        
+
 			<div class="main">
-            
+
 				<div class="left left_login">
-                
-     
+
+
 					<div class="container_contact contain_Auth">
-						<h2>Nos créations <br> originales</h2>
+						<h2>Nos créations
+							<br>
+							originales</h2>
 						<div class="container_link">
 							<a href="" class="container_link_a">
 								<br></a>
@@ -63,25 +70,26 @@
 				</div>
 
 
-				<form class="right flex-grow-1">
+				<form class="right flex-grow-1" action="{{ path('app_login') }}" method="post">
 					<h2>Authentification</h2>
 					<div class="w-75">
 
 						<div class="mb-3">
-							<label for="exampleInputEmail1" class="form-label sr-only"></label>
-							<input type="text" class="form-control" id="exampleInputName" aria-describedby="emailHelp" placeholder="Email ou Pseudo">
+							<label for="username" class="form-label sr-only">Email:</label>
+							<input type="text" class="form-control" id="username" aria-describedby="emailHelp" name="_username" placeholder="Email ou Pseudo" value="{{ last_username }}">
 							<div id="emailHelp" class="form-text">Votre email ne sera jamais partagé.</div>
 						</div>
 
 						<div class="form-outline mb-3">
-							<label class="form-label sr-only" for="typePhone"></label>
-							<input type="password" name="password" id="typePhone" class="form-control" placeholder="Mot de passe"/>
-							<i class="bi bi-eye-slash show"  onclick="myFunction()"></i></input>
+							<label class="form-label sr-only" for="password"> Password:</label>
+							<input type="password" name="_password" id="password" class="form-control" placeholder="Mot de passe">
+								<i class="bi bi-eye-slash show" onclick="myFunction()"></i>
+							</input>
 						</div>
 						<button type="submit" class="btn btn-primary">Continue</button>
-                        <a href="{{ path('app_subscribed') }}">S'inscire ici !</a>
-                        							{# <div id="emailHelp" class="form-text">Vous n'avez toujours pas de compte ?</div>
-                        {# <button type="submit" class="btn btn-primary">Inscription</button> #}
+						<a href="{{ path('app_subscribed') }}">S'inscire ici !</a>
+						{# <div id="emailHelp" class="form-text">Vous n'avez toujours pas de compte ?</div>
+						                        {# <button type="submit" class="btn btn-primary">Inscription</button> #}
 					</div>
 
 				</form>
