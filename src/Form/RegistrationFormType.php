@@ -3,12 +3,16 @@
 namespace App\Form;
 
 use App\Entity\User;
+use PHPUnit\Framework\Constraint\IsFalse;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\DataMapper\CheckboxListMapper;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
+use Symfony\Component\Validator\Constraints\IsTrueValidator;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
@@ -18,7 +22,16 @@ class RegistrationFormType extends AbstractType
     {
         $builder
             ->add('email')
-            ->add('agreeTerms', CheckboxType::class, [
+            ->add ('username')
+            ->add("accepterLaNewsletter", CheckboxType::class, [
+                'mapped' => false,
+                'constraints'=> [
+                    new IsTrue ([
+                        'message' => 'Voulez vous recevoir la Newsletter',
+                    ]),
+                ],
+            ])
+            ->add("agreeTerms", CheckboxType::class, [
                 'mapped' => false,
                 'constraints' => [
                     new IsTrue([
