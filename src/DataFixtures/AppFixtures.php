@@ -8,7 +8,6 @@ use App\Entity\User;
 use App\Entity\Recipe;
 use App\Entity\Season;
 use DateTimeImmutable;
-use App\Entity\Comment;
 use App\Entity\Ingredient;
 use App\Entity\Newsletter;
 use App\Entity\RecipeIngredient;
