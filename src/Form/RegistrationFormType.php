@@ -21,7 +21,7 @@ class RegistrationFormType extends AbstractType
             ->add('email')
             ->add('is_subscribed', CheckboxType::class, [
                 'required' => false,
-                'label' => 'Subscribe to newsletter?',
+                'label' => 'Inscription à la newsletter.',
                 'data' => false,
             ])            
             
@@ -30,6 +30,7 @@ class RegistrationFormType extends AbstractType
                 // this is read and encoded in the controller
                 'mapped' => false,
                 'attr' => ['autocomplete' => 'new-password'],
+                'label' => 'Mot de passe',
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Please enter a password',
@@ -44,6 +45,7 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
+                'label' => 'Accepte les condition d\'utilisation',
                 'constraints' => [
                     new IsTrue([
                         'message' => 'You should agree to our terms.',

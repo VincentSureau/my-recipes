@@ -3,19 +3,122 @@
 {% block title %}Hello HomeController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+{# HEROE BANNER #}
+<div class="d-flex min-vh-100" lc-helper="background" style="background:url(https://images.unsplash.com/photo-1555243896-c709bfa0b564?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80)  center / cover no-repeat; background-color:#444; background-blend-mode: overlay;">
+	<div class="align-self-center text-center text-light col-md-8 offset-md-2">
+		<div class="lc-block mb-4">
+			<div editable="rich">
+				<h1 class="display-1 fw-bolder">Mangez local et équilibré facilement !</h1>
+			</div>
+		</div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/var/www/html/recipe-newsletter/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/var/www/html/recipe-newsletter/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
-        <button type="button" class="btn "><a href="{{ path('app_login') }}">Login</a> </button>
-    </ul>
+			<div class="lc-block">
+				<div editable="rich">
+					<h3>Inscrivez-vous à notre newsletter pour ne manquer aucune recette :</h3>
+
+					<form class="d-flex mt-5 justify-content-center">
+						<input id="email" type="email" class="form-control mx-4 w-50 shadow" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Votre adresse mail ...">
+						<button class="btn btn-success btn-lg shadow" href="#" type="submit">Envoyer</button>
+					</form>
+						<i class="fa-solid fa-2xl fa-arrow-down p-4 mt-5" style="border-radius: 100px; border: 1px solid white;"></i>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
+
+
+
+{# SECTION 1 - CONTENT #}
+<section class="pt-3" data-aos="fade-left" data-aos-duration="2000">
+	<div class="container px-4 px-lg-5 my-5">
+		<div class="row gx-4 gx-lg-5 align-items-center">
+			<div class="col-12 col-md-6"><img class="card-img-top mb-5 mb-md-0 rounded" src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1380&q=80" alt="..." />
+			</div>
+			<div class="col-12 col-md-6 container">
+				<h1 class="display-5 fw-bolder">Notre concept :</h1>
+				<p class="lead">
+					Notre application web vous aide à manger local et à petit prix en vous proposant chaque semaine un menu de recettes exclusivement basées sur les fruits et légumes de saison. Fini les fruits et légumes importés et coûteux, notre application vous offre des recettes délicieuses et saines, adaptées aux produits frais disponibles dans votre région.
+					Inscrivez-vous à notre newsletter hebdomadaire et recevez chaque semaine un menu savoureux, accompagné d'une liste de courses pratique pour faire vos achats en toute simplicité. Vous pourrez ainsi cuisiner des plats variés et équilibrés tout en préservant l'environnement et en soutenant les producteurs locaux.
+					Vous cherchez de l'inspiration pour cuisiner vos fruits et légumes de saison ? Pas de problème ! Notre application web vous permet également de consulter toutes nos newsletters en ligne et de rechercher parmi les recettes déjà proposées. Vous y trouverez des idées de plats pour toutes les saisons, des recettes légères pour l'été aux plats réconfortants pour l'hiver.
+					Avec notre application web, vous pouvez manger sainement, local et économiquement sans vous compliquer la vie. Inscrivez-vous dès maintenant et découvrez une nouvelle façon de cuisiner, respectueuse de l'environnement et de votre porte-monnaie !
+				</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+{# SECTION 2 - NEWSLETTER #}
+<section class="" data-aos="fade-right" data-aos-duration="2000">
+	<div class=" text-center py-4 py-md-6">
+		<div class="lc-block card border-0 text-center p-lg-6" style="background:url(https://images.unsplash.com/photo-1559239115-ce3eb7cb87ea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1688&q=80)  center / cover no-repeat;">
+			<div class="row card-body mb-3 mb-lg-4">
+				<div class="col-xl-11 col-xxl-9 mx-auto">
+					<div class="lc-block">
+						<div editable="rich">
+							<h3 class="fw-bold display-6 text-dark">Inscrivez vous à notre newsletter</h3>
+							<h4>Pour ne manquer aucune recette !</h4>
+						</div>
+						<form class="d-flex mt-5">
+							<input id="email" type="email" class="form-control mx-4 shadow" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Votre adresse mail ...">
+							<button class="btn btn-success btn-lg shadow" href="#" type="submit">Envoyer</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+{# SECTION 3 - RECETTES #}
+<h3 class="text-center mt-3" data-aos="fade-down" data-aos-duration="2000">Nos dernières recettes :</h3>
+<section class="container d-flex justify-content-evenly flex-wrap mb-5" data-aos="fade-down" data-aos-duration="2000">
+    <div class="card mt-3" style="width: 18rem;">
+    	<img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" class="card-img-top" alt="...">
+        <div class="card-body">
+		<div class="d-flex justify-content-between align-items-center mb-2">
+            <h5 class="card-title">Recette 1</h5>
+			<i class="fa-regular fa-lg fa-heart"></i>
+		</div>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+			<a href="#" class="btn btn-success">Voir la recette<i class="fa-solid fa-arrow-right ms-3"></i></a>
+        </div>
+    </div>
+	<div class="card mt-3" style="width: 18rem;">
+    	<img src="https://images.unsplash.com/photo-1498601761256-9e93c6f5c181?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1436&q=80" class="card-img-top" alt="...">
+        <div class="card-body">
+		<div class="d-flex justify-content-between align-items-center mb-2">
+            <h5 class="card-title">Recette 1</h5>
+			<i class="fa-regular fa-lg fa-heart"></i>
+		</div>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+			<a href="#" class="btn btn-success">Voir la recette<i class="fa-solid fa-arrow-right ms-3"></i></a>
+        </div>
+    </div>
+	    <div class="card mt-3" style="width: 18rem;">
+    	<img src="https://images.unsplash.com/photo-1494597564530-871f2b93ac55?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1413&q=80" class="card-img-top" alt="...">
+        <div class="card-body">
+		<div class="d-flex justify-content-between align-items-center mb-2">
+            <h5 class="card-title">Recette 1</h5>
+			<i class="fa-regular fa-lg fa-heart"></i>
+		</div>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+			<a href="#" class="btn btn-success">Voir la recette<i class="fa-solid fa-arrow-right ms-3"></i></a>
+        </div>
+    </div>
+	<div class="card mt-3" style="width: 18rem;">
+    	<img src="https://images.unsplash.com/photo-1467453678174-768ec283a940?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1444&q=80" class="card-img-top" alt="...">
+        <div class="card-body">
+		<div class="d-flex justify-content-between align-items-center mb-2">
+            <h5 class="card-title">Recette 1</h5>
+			<i class="fa-regular fa-lg fa-heart"></i>
+		</div>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+			<a href="#" class="btn btn-success">Voir la recette<i class="fa-solid fa-arrow-right ms-3"></i></a>
+        </div>
+    </div>
+</section>
+
 {% endblock %}
