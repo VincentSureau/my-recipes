@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "25d8d05860d8b73f82ea584c5f616f0b",
+    "content-hash": "910803fc0d37b8eb87bc457460bc9aa3",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -7063,7 +7063,7 @@
         },
         {
             "name": "symfonycasts/reset-password-bundle",
-            "version": "v1.17.0",
+            "version": "v1.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/SymfonyCasts/reset-password-bundle.git",
