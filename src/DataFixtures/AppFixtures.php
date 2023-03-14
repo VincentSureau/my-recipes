@@ -2,12 +2,12 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Comment;
 use Faker\Factory;
 use App\Entity\User;
 use App\Entity\Recipe;
 use App\Entity\Season;
 use DateTimeImmutable;
-use App\Entity\Comment;
 use App\Entity\Ingredient;
 use App\Entity\Newsletter;
 use App\Entity\RecipeIngredient;
@@ -34,14 +34,27 @@ class AppFixtures extends Fixture
                 ->setPassword($faker->sha256())
                 ->setIsSubscribed($faker->boolean())
                 ->setRoles(['ROLE_USER'])
-             
             ;
-    
+
+            $users[]=$user;
             $manager->persist($user);
             $users[] = $user;
         }
 
-
+        $ingredients=[];
+        for($i = 0; $i < 10; $i++)
+        {
+            $ingredient = new Ingredient;
+            $ingredient
+            
+                ->setType($faker->randomElement(['fruit', 'légume']))
+                ->setDescription($faker->text())
+                ->setImage($faker->imageUrl(640, 480, 'food', true))
+                ->setName($faker->word())
+            ;
+            $manager->persist($ingredient);
+            $ingredients[]=$ingredient; 
+        }
         
         $summerStart = new \DateTimeImmutable('2023-06-21');
         $fallStart = new \DateTimeImmutable('2023-09-23');
@@ -165,5 +178,4 @@ class AppFixtures extends Fixture
 
 
         $manager->flush();
-    }
-}
+}}
