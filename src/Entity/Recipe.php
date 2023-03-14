@@ -164,12 +164,12 @@ class Recipe
     /**
      * @return Collection<int, User>
      */
-    public function getUsers(): Collection
+    public function getLikedBy(): Collection
     {
         return $this->liked_by;
     }
 
-    public function addUser(User $user): self
+    public function addLikedBy(User $user): self
     {
         if (!$this->liked_by->contains($user)) {
             $this->liked_by->add($user);
@@ -179,7 +179,7 @@ class Recipe
         return $this;
     }
 
-    public function removeUser(User $user): self
+    public function removeLikedBy(User $user): self
     {
         if ($this->liked_by->removeElement($user)) {
             $user->removeLike($this);
