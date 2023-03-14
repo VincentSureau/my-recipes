@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Mets 4 Saisons - Register{% endblock %}
+
 {% block stylesheets %}
 	{{ parent() }}
 
@@ -10,9 +12,6 @@
 	{{ parent() }}
 
 	<script src="{{ asset('js/password.js') }}"></script>
-{% endblock %}
-
-{% block title %}Hello ContactController!
 {% endblock %}
 
 {% block body %}
@@ -56,49 +55,42 @@
 						</div>
 					</div>
 				</div>
-
-				{{ form_start(registrationForm, { 
-					'attr': {'class':"right flex-grow-1 d-flex align-items-center"}
+				
+				{{ form_start(registrationForm, {
+					'attr': {
+						'class': "right flex-grow-1 d-flex align-items-center",
+					},
 				}) }}
-				<form class=>
 					<h2>Inscription</h2>
 					<div class="w-75">
 
-						<div class="mb-3">
-							<label for="exampleInputName" class="form-label sr-only"></label>
-							
-							<input type="name" class="form-control" id="exampleInputName" aria-describedby="emailHelp" placeholder="Pseudo">
-						</div>
-
-						<div class="mb-3">
-							<label for="exampleInputEmail1" class="form-label sr-only"></label>
-							 {{ form_row(registrationForm.email) }}
-							<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Adresse E-mail">
-							<div id="emailHelp" class="form-text">Votre email ne sera jamais partagé.</div>
-						</div>
+						{{ _self.field_with_placeholder(registrationForm.username)}}
+						{{ _self.field_with_placeholder(registrationForm.email)}}
 
 						<div class="form-outline mb-3">
-							<label class="form-label sr-only" for="typePhone"></label>
-							<input type="password" id="password" class="form-control" placeholder="Mot de passe"></input>
-							 <i class="bi bi-eye-slash show"  onclick="myFunction()"></i>
+							{{ form_label(registrationForm.plainPassword.first, null, {
+								'label_attr': {'class': 'sr-only'}
+							}) }}
+							{{ form_widget(registrationForm.plainPassword.first, {
+								'attr': {
+									'placeholder': registrationForm.plainPassword.first.vars.label
+								}
+							})}}
+							<i class="bi bi-eye-slash show" onclick="myFunction()"></i>
 						</div>
-						<div class="form-outline mb-3">
-							<label class="form-label sr-only" for="typePhone"></label>
-							<input type="password" id="typePhone" class="form-control" placeholder="confirmer le mot de passe"></input>
-						</div>
-				
+
+						{{ _self.field_with_placeholder(registrationForm.plainPassword.second) }}
+						
 						<button type="submit" class="btn btn-primary">Continue</button>
 					</div>
 					<div class="subBtn">
-                        <div class="form-check form-switch">
-							<input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-							<label class="form-check-label" for="flexSwitchCheckDefault">J'accepte les condition d'utilisatoon</label>
-						</div>
-						<div class="form-check form-switch">
-							<input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-							<label class="form-check-label" for="flexSwitchCheckDefault">Inscription à la newsletter.</label>
-						</div>
-					
+						{% set checkboxOptions = {
+							'label_attr': {'class': 'checkbox-switch'}
+						} %}
+
+						{{ form_row(registrationForm.agreeTerms, checkboxOptions) }}
+
+						{{ form_row(registrationForm.isSubscribed, checkboxOptions) }}
 					</div>
 
 				{{ form_end(registrationForm) }}
@@ -106,3 +98,14 @@
 		</section>
 	</div>
 {% endblock %}
+
+{% macro field_with_placeholder(field) %}
+	{{ form_row(field, {
+		'attr': {
+			'placeholder': field.vars.label,
+		},
+		'label_attr': {
+			'class': 'sr-only',
+		},
+	}) }}
+{% endmacro %}
