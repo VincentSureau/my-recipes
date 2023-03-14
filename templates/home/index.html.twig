@@ -13,9 +13,9 @@
 
     This friendly message is coming from:
     <ul>
-        {% for user in users %}
-            <li>Nom d'utilisateur : {{ user.username }}, email : {{ user.email }}, inscrit à la newsletter : {{ user.isSubscribed ? 'Oui' : 'Non' }}</li>
-        {% endfor %}
+        <li>Your controller at <code><a href="{{ '/var/www/html/recipe-newsletter/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
+        <li>Your template at <code><a href="{{ '/var/www/html/recipe-newsletter/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
+        <button type="button" class="btn "><a href="{{ path('app_login') }}">Login</a> </button>
     </ul>
 </div>
 {% endblock %}

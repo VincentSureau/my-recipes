@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Comment;
 use Faker\Factory;
 use App\Entity\User;
 use App\Entity\Recipe;
@@ -21,9 +22,7 @@ class AppFixtures extends Fixture
         // $product = new Product();
         // $manager->persist($product);
         $faker = Factory::create('fr_FR');
-        
-       
-        $users = [];
+        $users=[];
         for($i = 0; $i < 10; $i++)
         {
             $user = new User;
@@ -34,15 +33,14 @@ class AppFixtures extends Fixture
                 ->setPassword($faker->sha256())
                 ->setIsSubscribed($faker->boolean())
                 ->setRoles(['ROLE_USER'])
-             
+                
             ;
-    
+
+            $users[]=$user;
             $manager->persist($user);
             $users[] = $user;
         }
 
-
-        
         $summerStart = new \DateTimeImmutable('2023-06-21');
         $fallStart = new \DateTimeImmutable('2023-09-23');
         $springStart = new \DateTimeImmutable('2023-03-20');
@@ -50,38 +48,36 @@ class AppFixtures extends Fixture
 
         $summer = new Season;
         $summer
-            ->setName('Summer')
-            ->setStartAt($summerStart)
-            ->setEndAt($fallStart)
+        ->setName('Summer')
+        ->setStartAt($summerStart)
+        ->setEndAt($fallStart)
         ;   
         $manager->persist($summer);
         
         $spring = new Season;
         $spring
-            ->setName('Spring')
-            ->setStartAt($springStart)
-            ->setEndAt($summerStart)
+        ->setName('Spring')
+        ->setStartAt($springStart)
+        ->setEndAt($summerStart)
         ;
         $manager->persist($spring);
         
         $winter = new Season;
         $winter
-            ->setName('Winter')
-            ->setStartAt($winterStart)
-            ->setEndAt($springStart)
+        ->setName('Winter')
+        ->setStartAt($winterStart)
+        ->setEndAt($springStart)
         ;
         $manager->persist($winter);
         
         $fall = new Season;
         $fall
-            ->setName('Fall')
-            ->setStartAt($fallStart)
-            ->setEndAt($winterStart)
+        ->setName('Fall')
+        ->setStartAt($fallStart)
+        ->setEndAt($winterStart)
         ;
         $manager->persist($fall);
-
-        $seasons = [$summer,$spring,$winter,$fall];
-
+        $seasons = [$summer, $spring, $fall,$winter];    
 
         $ingredients=[];
         for($i = 0; $i < 10; $i++)
@@ -98,43 +94,39 @@ class AppFixtures extends Fixture
             $manager->persist($ingredient);
             $ingredients[]=$ingredient; 
         }
-
-        $recipes = [];
-        for($i = 0; $i < 10; $i++ ) // recipe
+        $recipes=[];
+        for($i = 0; $i < 10; $i++)
         {
-            $recipe= new Recipe();
+            $recipe = new Recipe(); 
             $recipe
-                ->setName($faker->words(10, true))
-                ->setDescription($faker->text())
+                ->setName($faker->words(4, true))
+                ->setDescription(($faker->text()))
                 ->setLevel($faker->numberBetween(1,3))
                 ->setImage($faker->imageUrl(640, 480, 'recipe', true))
                 ->addSeason($faker->randomElement($seasons))
                 ->addUser($faker->randomElement($users))
-            
-            ;
-            $manager->persist($recipe);
-            $recipes[] = $recipe;
+                ;
+                $manager->persist($recipe);
+                $recipes[]=$recipe;
         }
-
-        $comments = [];
-        for ($i = 0; $i < 30; $i++) 
+        $comments=[];
+        for($i = 0; $i < 20; $i++)
         {
-            $comment = new Comment();
+            $comment = new Comment(); 
             $comment
-            ->setContent($faker->text())
-            ->setUser($faker->randomElement($users))
-            ->setRecipe($faker->randomElement($recipes))
-            ;
-            
-            $manager->persist($comment);  
-            $comments[] = $comment;
+                ->setContent($faker->sentence(12))
+                ->setRecipe($faker->randomElement($recipes))
+                ->setUser($faker->randomElement($users))
+                ;
+                $manager->persist($comment);
+                $comments[]=$comment;
         }
 
-        $newsletters = [];
-        for ($i = 0; $i < 10; $i++)
+        $newsletters=[];
+        for($i = 0; $i < 20; $i++)
         {
-            $newsletter = new Newsletter();
-            $newsletter 
+            $newsletter = new Newsletter(); 
+            $newsletter
                 ->setContent($faker->sentence(30))
                 ->setSendAt(DateTimeImmutable::createFromMutable($faker->dateTime()))
                 ->addRecipe($faker->randomElement($recipes))
@@ -165,5 +157,4 @@ class AppFixtures extends Fixture
 
 
         $manager->flush();
-    }
-}
+}}
