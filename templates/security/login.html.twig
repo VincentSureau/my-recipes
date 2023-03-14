@@ -1,0 +1,131 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!
+{% endblock %}
+
+
+{% block stylesheets %}
+	{{ parent() }}
+
+	<link href="{{ asset('./contact_css/contact.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block javascripts  %}
+	{{ parent() }}
+
+	<script src="{{ asset('js/password.js') }}"></script>
+{% endblock %}
+
+
+{% block body %}
+
+	{% if error %}
+		<div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+	{% endif %}
+
+
+	{% if error %}
+		<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+	{% endif %}
+
+
+	{#
+							        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+							        See https://symfony.com/doc/current/security/remember_me.html
+							
+							        <div class="checkbox mb-3">
+							            <label>
+							                <input type="checkbox" name="_remember_me"> Remember me
+							            </label>
+							        </div>
+							    #}
+
+
+</form>
+
+
+<div class="body_contact">
+
+	<section class="contact_section">
+
+		<div class="main">
+
+			<div class="left left_login">
+
+
+				<div class="container_contact contain_Auth">
+					<h2>Nos créations
+						<br>
+						originales</h2>
+					<div class="container_link">
+						<a href="" class="container_link_a">
+							<br></a>
+						<a href="" class="container_link_a">
+							<br></a>
+						<a href="" class="container_link_a"></a>
+					</div>
+				</div>
+				<div class="logo_link">
+
+					<div class="main_reseau">
+						<li class="content_reseau">
+							<a href="#">
+								<i class="fab fa-facebook-f icon"></i>
+							</a>
+						</li>
+						<li class="content_reseau">
+							<a href="#">
+								<i class="fab fa-pinterest icon"></i>
+							</a>
+						</li>
+						<li class="content_reseau">
+							<a href="#">
+								<i class="fab fa-instagram icon"></i>
+							</a>
+						</li>
+						<li class="content_reseau">
+							<a href="#">
+								<i class="fab fa-tiktok icon"></i>
+							</a>
+						</li>
+					</div>
+				</div>
+			</div>
+
+
+			<form class="right flex-grow-1" action="{{ path('app_login') }}" method="post">
+				<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+				<h2>Authentification</h2>
+				<div class="w-75">
+
+					<div class="mb-3">
+						<label for="inputEmail" class="form-label sr-only">Email:</label>
+						<input type="email" value="{{ last_username }}" aria-describedby="emailHelp" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus placeholder="Email ou Pseudo">
+						<div id="emailHelp" class="form-text">Votre email ne sera jamais partagé.</div>
+					</div>
+
+					<div class="form-outline mb-3">
+						<label class="form-label sr-only" for="inputPassword">
+							Password:</label>
+						<input type="password" name="password" id="inputPassword" class="form-control" placeholder="Mot de passe" autocomplete="current-password" required>
+							<i class="bi bi-eye-slash show" onclick="myFunction()"></i>
+						</input>
+					</div>
+					<button type="submit" class="btn btn-primary">Se connecter</button>
+
+					<a href="{{ path('app_register') }}">S'inscire ici !</a>
+					{# <div id="emailHelp" class="form-text">Vous n'avez toujours pas de compte ?</div>
+																																						                        {# <button type="submit" class="btn btn-primary">Inscription</button> #}
+					{% if app.user %}
+						<div class="mb-3">
+							Vous êtes connecter en tant que
+							{{ app.user.userIdentifier }},
+							<a href="{{ path('app_logout') }}">Se déconnecter</a>
+						</div>
+					{% endif %}
+				</div>
+
+			</form>
+		</div>
+	</section>
+</div>{% endblock %}
