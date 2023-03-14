@@ -113,7 +113,11 @@
 					</div>
 					<button type="submit" class="btn btn-primary">Se connecter</button>
 
+                    <div class="mt-2">
 					<a href="{{ path('app_register') }}">S'inscire ici !</a>
+                    <a  class ="ps-3" href="{{ path('app_forgot_password_request') }}">Mot de passe oublié!</a>
+                    </div>
+
 					{# <div id="emailHelp" class="form-text">Vous n'avez toujours pas de compte ?</div>
 																																						                        {# <button type="submit" class="btn btn-primary">Inscription</button> #}
 					{% if app.user %}

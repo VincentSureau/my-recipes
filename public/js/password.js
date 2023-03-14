@@ -1,5 +1,5 @@
 function myFunction(){
-    var x = document.getElementById('typePhone');
+    var x = document.getElementById('inputPassword');
     if(x.type === "password") {
         x.type = "text";
         document.getElementById('hide').style.display= "inline-block";
@@ -16,5 +16,5 @@ function myFunction(){
 document.querySelector('.show').addEventListener('click', function(event) {
     event.currentTarget.classList.toggle('bi-eye');
     event.currentTarget.classList.toggle('bi-eye-slash');
-    document.querySelector('#password').type = document.querySelector('#password').type == 'password' ? 'test' : 'password';
+    document.querySelector('#password').type = document.querySelector('#inputPassword').type == 'password' ? 'test' : 'password';
 })
