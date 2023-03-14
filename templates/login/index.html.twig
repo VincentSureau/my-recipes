@@ -63,14 +63,17 @@
 				</div>
 
 
-				<form class="right flex-grow-1">
+				<form class="right flex-grow-1" method="post">
 					<h2>Authentification</h2>
 					<div class="w-75">
 
 						<div class="mb-3">
 							<label for="exampleInputEmail1" class="form-label sr-only"></label>
-							<input type="text" class="form-control" id="exampleInputName" aria-describedby="emailHelp" placeholder="Email ou Pseudo">
+							<input type="text" class="form-control" id="exampleInputName" aria-describedby="emailHelp" placeholder="Email ou Pseudo" name="email" value="{{ last_username }}">
 							<div id="emailHelp" class="form-text">Votre email ne sera jamais partagé.</div>
+							 <input type="hidden" name="_csrf_token"
+                             value="{{ csrf_token('authenticate') }}" >
+                                                             
 						</div>
 
 						<div class="form-outline mb-3">

@@ -57,18 +57,22 @@
 					</div>
 				</div>
 
-				<form class="right flex-grow-1 d-flex align-items">
-				<form class="right flex-grow-1 d-flex align-items-center">
+				{{ form_start(registrationForm, { 
+					'attr': {'class':"right flex-grow-1 d-flex align-items-center"}
+				}) }}
+				<form class=>
 					<h2>Inscription</h2>
 					<div class="w-75">
 
 						<div class="mb-3">
-							<label for="exampleInputEmail1" class="form-label sr-only"></label>
+							<label for="exampleInputName" class="form-label sr-only"></label>
+							
 							<input type="name" class="form-control" id="exampleInputName" aria-describedby="emailHelp" placeholder="Pseudo">
 						</div>
 
 						<div class="mb-3">
 							<label for="exampleInputEmail1" class="form-label sr-only"></label>
+							 {{ form_row(registrationForm.email) }}
 							<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Adresse E-mail">
 							<div id="emailHelp" class="form-text">Votre email ne sera jamais partagé.</div>
 						</div>
@@ -82,7 +86,7 @@
 							<label class="form-label sr-only" for="typePhone"></label>
 							<input type="password" id="typePhone" class="form-control" placeholder="confirmer le mot de passe"></input>
 						</div>
-						
+				
 						<button type="submit" class="btn btn-primary">Continue</button>
 					</div>
 					<div class="subBtn">
@@ -97,7 +101,7 @@
 					
 					</div>
 
-				</form>
+				{{ form_end(registrationForm) }}
 			</div>
 		</section>
 	</div>
