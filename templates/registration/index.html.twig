@@ -1,0 +1,98 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+	{{ parent() }}
+
+	<link href="{{ asset('./contact_css/contact.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block javascripts  %}
+	{{ parent() }}
+
+	<script src="{{ asset('js/password.js') }}"></script>
+{% endblock %}
+
+{% block title %}Hello ContactController!{% endblock %}
+
+{% block body %}
+
+	{% for flash_error in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+    {% endfor %}
+
+
+	<div class="body_contact">
+		<section class="contact_section">
+			<div class="main">
+				<div class="left left_subsribed">
+					<div class="container_contact contain_sub">
+						<h2>Nos créations <br>Originales</h2>
+						<div class="container_link">
+							<a href="" class="container_link_a">
+								<br></a>
+							<a href="" class="container_link_a">
+								<br></a>
+							<a href="" class="container_link_a"></a>
+						</div>
+					</div>
+					<div class="logo_link">
+
+						<div class="main_reseau">
+							<li class="content_reseau">
+								<a href="#">
+									<i class="fab fa-facebook-f icon"></i>
+								</a>
+							</li>
+							<li class="content_reseau">
+								<a href="#">
+									<i class="fab fa-pinterest icon"></i>
+								</a>
+							</li>
+							<li class="content_reseau">
+								<a href="#">
+									<i class="fab fa-instagram icon"></i>
+								</a>
+							</li>
+							<li class="content_reseau">
+								<a href="#">
+									<i class="fab fa-tiktok icon"></i>
+								</a>
+							</li>
+						</div>
+					</div>
+				</div>
+
+					{{ form_start(registrationForm, {'attr':{'class':'right flex-grow-1 d-flex align-items-center'}})  }}
+
+						<h2>Inscription</h2>
+						<div class="w-75">
+
+								<div class="mb-3">
+									{{ form_row(registrationForm.username, {'attr':{'class':'form-control'}}) }}
+								</div>
+
+								<div class="mb-3">
+									{{ form_row(registrationForm.email, {'attr':{'class':'form-control'}}) }}
+									<div id="emailHelp" class="form-text">Votre email ne sera jamais partagé.</div>
+								</div>
+
+								<div class="form-outline mb-3">
+									{{ form_row(registrationForm.password, {'attr':{'class':'form-control'}}) }}
+							
+									<i class="bi bi-eye-slash show"  onclick="myFunction()"></i>
+								</div>
+							<button type="submit" class="btn btn-primary mb-3">Continue</button>
+						</div>
+
+
+						<div class="form-check form-switch">
+							{# <label class="form-check-label" for="flexSwitchCheckDefault"></label> #}
+							{{ form_row(registrationForm.agreeTerms, {'attr':{'class':'form-check-input'}}) }}
+							{{ form_row(registrationForm.isSubscribed, {'attr':{'class':'form-check-input'}}) }}
+						</div>
+
+					{{ form_end(registrationForm) }}
+			</div>
+		</section>
+	</div>
+{% endblock %}
