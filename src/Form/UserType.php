@@ -9,7 +9,6 @@ use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
@@ -19,15 +18,14 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('email', EmailType::class, options: [
-                'label' => 'Adresse E-mail',
-                // 'help' => 'Votre email ne sera jamais partagé.',
-                ])
-                ->add('username', options: [
-                    'label' => 'Pseudo',
-                ])
+            ->add('email', EmailType::class, [
+                'attr' => ['label' => 'E-mail',]
+            ])
+            ->add('username', options: [
+                'label' => 'Username'
+            ])
             // ->add('roles')
-            ->add('plainPassword', RepeatedType::class, options:[
+            ->add('password', RepeatedType::class, options: [
                 'type' => PasswordType::class,
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
@@ -49,17 +47,14 @@ class UserType extends AbstractType
                     ]),
                 ],
             ])
-            
-            ->add('avatar', TextType::class, options:[])
-
-            ->add('isSubscribed', options: [
-                'label' => "Inscription à la newsletter.",
+            ->add('avatar', FileType::class, options:[])
+            ->add('isSubscribed', options:[
+                'label' => 'Inscription à la newsletter ?',
             ])
-            ->add('isVerified', options: [
-                'label' => "Email vérifié.",
-            ])
-            // ->add('likes')
-        ;
+            ->add('isVerified', options:[
+                'label' => 'Email vérifié ?',
+            ]);
+            // ->add('likes');
     }
 
     public function configureOptions(OptionsResolver $resolver): void

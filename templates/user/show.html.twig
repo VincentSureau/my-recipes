@@ -6,7 +6,6 @@
     <h1 class="text-center text-success m-4">User</h1>
 
 
-    <div class="container p-5">
     
     <table class="table">
         <tbody>
@@ -50,5 +49,5 @@
     <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
 
     {{ include('user/_delete_form.html.twig') }}
-    </div>
+
 {% endblock %}

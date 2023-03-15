@@ -1,10 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ title }}{% endblock %}
+{% block title %}
+	{{ title }}
+{% endblock %}
 
 {% block body %}
-<div class="container p-5">
+	<div class="container p-5">
 
+<<<<<<< Updated upstream
     <div class="card shadow-lg">
         <div class="card-body p-0">
             {% block delete_form %}{% endblock %}
@@ -20,3 +23,18 @@
 </div>
     
 {% endblock %}
+=======
+		<div class="card shadow-lg">
+			<div class="card-body p-0">
+				{% block delete_form %}{% endblock %}
+				<h3 class="card-title bg-success text-white p-3">{{ title }}</h3>
+				<div class="p-3">
+					{% block form %}{% endblock %}
+				</div>
+			</div>
+		</div>
+
+		<a class="btn btn-success m-3" href="{{ path(route) }}">back to list</a>
+	</div>
+{% endblock %}
+>>>>>>> Stashed changes
