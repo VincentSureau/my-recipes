@@ -28,10 +28,10 @@ class Recipe
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
 
-    #[ORM\OneToMany(mappedBy: 'recipe', targetEntity: RecipeIngredient::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'recipe', targetEntity: RecipeIngredient::class, orphanRemoval: true, cascade: ['persist', 'remove'])]
     private Collection $recipeIngredients;
 
-    #[ORM\OneToMany(mappedBy: 'recipe', targetEntity: Comment::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'recipe', targetEntity: Comment::class, orphanRemoval: true, cascade:['remove'])]
     private Collection $comments;
 
     #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'likes')]
@@ -46,6 +46,11 @@ class Recipe
         $this->comments = new ArrayCollection();
         $this->liked_by = new ArrayCollection();
         $this->seasons = new ArrayCollection();
+    }
+
+    public function __toString() 
+    {
+        return $this->name;
     }
 
     public function getId(): ?int
@@ -164,12 +169,14 @@ class Recipe
     /**
      * @return Collection<int, User>
      */
-    public function getUsers(): Collection
+    
+    
+     public function getLikedBy(): Collection
     {
         return $this->liked_by;
     }
 
-    public function addUser(User $user): self
+    public function addLikedBy(User $user): self
     {
         if (!$this->liked_by->contains($user)) {
             $this->liked_by->add($user);
@@ -179,7 +186,7 @@ class Recipe
         return $this;
     }
 
-    public function removeUser(User $user): self
+    public function removeLikedBy(User $user): self
     {
         if ($this->liked_by->removeElement($user)) {
             $user->removeLike($this);
