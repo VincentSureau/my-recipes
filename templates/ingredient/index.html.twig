@@ -1,41 +1,53 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ingredient index{% endblock %}
+{% block title %}Ingredient index
+{% endblock %}
 
 {% block body %}
-    <h1>Ingredient index</h1>
+	<div class="d-flex justify-content-center align-items-center gap-5">
+		<h1 class=" py-3">Ingredient</h1>
+		<a class="btn btn-success" href="{{ path('app_ingredient_new') }}">Create new
+			<i class="fa-solid fa-plus ms-3"></i>
+		</a>
+	</div>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Type</th>
-                <th>Description</th>
-                <th>Image</th>
-                <th>Name</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for ingredient in ingredients %}
-            <tr>
-                <td>{{ ingredient.id }}</td>
-                <td>{{ ingredient.type }}</td>
-                <td>{{ ingredient.description }}</td>
-                <td>{{ ingredient.image }}</td>
-                <td>{{ ingredient.name }}</td>
-                <td>
-                    <a href="{{ path('app_ingredient_show', {'id': ingredient.id}) }}">show</a>
-                    <a href="{{ path('app_ingredient_edit', {'id': ingredient.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_ingredient_new') }}">Create new</a>
+	<div class="table-responsive container">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Type</th>
+					<th>Description</th>
+					<th>Image</th>
+					<th>Name</th>
+					<th>actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for ingredient in ingredients %}
+					<tr>
+						<td>{{ ingredient.id }}</td>
+						<td>{{ ingredient.type }}</td>
+						<td>{{ ingredient.description }}</td>
+						<td>{{ ingredient.image }}</td>
+						<td>{{ ingredient.name }}</td>
+						<td>
+							<div class="d-flex justify-content-center align-items-center gap-2">
+								<a class="btn btn-success" href="{{ path('app_ingredient_show', {'id': ingredient.id}) }}">
+									<i class="fa-solid fa-eye"></i>
+								</a>
+								<a class="btn btn-success" href="{{ path('app_ingredient_edit', {'id': ingredient.id}) }}">
+									<i class="fa-solid fa-pen"></i>
+								</a>
+							</div>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="6">no records found</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
 {% endblock %}
