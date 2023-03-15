@@ -15,9 +15,9 @@
                 <th>Id</th>
                 <th>Email</th>
                 <th>Roles</th>
-                <th>Password</th>
+                {# <th>Password</th> #}
                 <th>Username</th>
-                <th>Avatar</th>
+                {# <th>Avatar</th> #}
                 <th>IsSubscribed</th>
                 <th>IsVerified</th>
                 <th>actions</th>
@@ -29,9 +29,9 @@
                 <td>{{ user.id }}</td>
                 <td>{{ user.email }}</td>
                 <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-                <td>{{ user.password }}</td>
+                {# <td>{{ user.password }}</td> #}
                 <td>{{ user.username }}</td>
-                <td>{{ user.avatar }}</td>
+                {# <td>{{ user.avatar }}</td> #}
                 <td>{{ user.isSubscribed ? 'Yes' : 'No' }}</td>
                 <td>{{ user.isVerified ? 'Yes' : 'No' }}</td>
                 <td>
