@@ -39,6 +39,10 @@ class Ingredient
         $this->seasons = new ArrayCollection();
         $this->recipeIngredients = new ArrayCollection();
     }
+    public function __toString()
+    {
+        return $this->name;
+    }
 
     public function getId(): ?int
     {
