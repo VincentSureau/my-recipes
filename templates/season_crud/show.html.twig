@@ -17,11 +17,11 @@
             </tr>
             <tr>
                 <th>StartAt</th>
-                <td>{{ season.startAt ? season.startAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ season.startAt ? season.startAt|date('d/m/Y') : '' }}</td>
             </tr>
             <tr>
                 <th>EndAt</th>
-                <td>{{ season.endAt ? season.endAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ season.endAt ? season.endAt|date('d/m/Y') : '' }}</td>
             </tr>
         </tbody>
     </table>

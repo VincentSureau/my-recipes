@@ -13,8 +13,8 @@ class SeasonType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('startAt')
-            ->add('endAt')
+            ->add('startAt', options: ['widget' => 'single_text'])
+            ->add('endAt', options: ['widget' => 'single_text'])
             ->add('ingredients')
             ->add('recipes')
         ;
