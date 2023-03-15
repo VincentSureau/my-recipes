@@ -14,7 +14,6 @@ class RecipeType extends AbstractType
         $builder
             ->add('name')
             ->add('description')
-            ->add('level')
             ->add('image')
             // ->add('liked_by')
             ->add('seasons')
