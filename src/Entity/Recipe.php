@@ -47,7 +47,10 @@ class Recipe
         $this->liked_by = new ArrayCollection();
         $this->seasons = new ArrayCollection();
     }
-
+    public function __toString()
+    {
+        return $this-> name;
+    }
     public function getId(): ?int
     {
         return $this->id;
