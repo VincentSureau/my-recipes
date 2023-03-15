@@ -38,7 +38,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?bool $isSubscribed = null;
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Comment::class)]
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Comment::class, cascade: ["remove"])]
     private Collection $comments;
 
     #[ORM\ManyToMany(targetEntity: Recipe::class, inversedBy: 'liked_by')]
