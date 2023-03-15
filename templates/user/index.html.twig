@@ -3,19 +3,22 @@
 {% block title %}User index{% endblock %}
 
 {% block body %}
+
+<!doctype html>
+
     <h1>User index</h1>
 
-    <table class="table">
+    <table class="table table-dark table-striped">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Email</th>
-                <th>Roles</th>
-                <th>Password</th>
-                <th>Username</th>
-                <th>Avatar</th>
-                <th>IsSubscribed</th>
-                <th>actions</th>
+                <th class = "text-info">Id</th>
+                <th class = "text-info">Email</th>
+                <th class = "text-info">Roles</th>
+                <th class = "text-info">Password</th>
+                <th class = "text-info">Username</th>
+                <th class = "text-info">Avatar</th>
+                <th class = "text-info">IsSubscribed</th>
+                <th class = "text-info">actions</th>
             </tr>
         </thead>
         <tbody>
@@ -29,8 +32,8 @@
                 <td>{{ user.avatar }}</td>
                 <td>{{ user.isSubscribed ? 'Yes' : 'No' }}</td>
                 <td>
-                    <a href="{{ path('app_user_show', {'id': user.id}) }}">show</a>
-                    <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
+                    <a class = "btn btn-info"href="{{ path('app_user_show', {'id': user.id}) }}"><i class="fa-solid fa-circle-info"></i></a>
+                    <a class = "btn btn-danger"href="{{ path('app_user_edit', {'id': user.id}) }}"><i class="fa-solid fa-pen-to-square"></i></a>
                 </td>
             </tr>
         {% else %}
@@ -41,5 +44,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_user_new') }}">Create new</a>
+    <a class= "btn btn-secondary"href="{{ path('app_user_new') }}">Créer un Utilisateur</a>
 {% endblock %}
