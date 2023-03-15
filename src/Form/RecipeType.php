@@ -16,7 +16,7 @@ class RecipeType extends AbstractType
             ->add('description')
             ->add('level')
             ->add('image')
-            ->add('liked_by')
+            // ->add('liked_by')
             ->add('seasons')
         ;
     }

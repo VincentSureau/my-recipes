@@ -22,6 +22,7 @@ class Comment
     private ?Recipe $recipe = null;
 
     #[ORM\ManyToOne(inversedBy: 'comments')]
+    
     private ?User $user = null;
 
     public function getId(): ?int
