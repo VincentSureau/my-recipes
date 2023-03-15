@@ -22,11 +22,12 @@ class RegistrationFormType extends AbstractType
             ->add('email', EmailType::class, [
                 'label' => 'Adresse E-mail',
                 'help' => 'Votre email ne sera jamais partagé.',
+                
             ])
-            ->add('username', null, [
+            ->add('username', options: [
                 'label' => 'Pseudo',
             ])
-            ->add('isSubscribed', null, [
+            ->add('isSubscribed', options:[
                 'label' => "Inscription à la newsletter.",
             ])
             ->add('agreeTerms', CheckboxType::class, [

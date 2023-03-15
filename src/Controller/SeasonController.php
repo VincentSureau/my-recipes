@@ -37,6 +37,8 @@ class SeasonController extends AbstractController
         return $this->renderForm('season/new.html.twig', [
             'season' => $season,
             'form' => $form,
+            'title' => 'Saisons',
+            'route' => 'app_season_index'
         ]);
     }
 
