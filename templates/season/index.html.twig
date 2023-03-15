@@ -20,8 +20,8 @@
             <tr>
                 <td>{{ season.id }}</td>
                 <td>{{ season.name }}</td>
-                <td>{{ season.startAt ? season.startAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ season.endAt ? season.endAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ season.startAt ? season.startAt|date('d/m/y') : '' }}</td>
+                <td>{{ season.endAt ? season.endAt|date('d/m/y') : '' }}</td>
                 <td>
                     <a href="{{ path('app_season_show', {'id': season.id}) }}">show</a>
                     <a href="{{ path('app_season_edit', {'id': season.id}) }}">edit</a>
