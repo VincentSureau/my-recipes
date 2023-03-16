@@ -1,13 +1,8 @@
-{% extends 'base.html.twig' %}
+{% set cancel_route = "app_admin_recipe_index" %}
+{% set title = "Modifier la recette" %}
+{% extends 'admin_with_form.html.twig' %}
 
-{% block title %}Edit Recipe{% endblock %}
-
-{% block body %}
-    <h1>Edit Recipe</h1>
-
-    {{ include('admin/recipe/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('app_admin_recipe_index') }}">back to list</a>
-
+{% block forms %}
     {{ include('admin/recipe/_delete_form.html.twig') }}
+    {{ include('admin/recipe/_form.html.twig', {'button_label': 'Enregistrer'}) }}
 {% endblock %}
