@@ -30,8 +30,8 @@ class IngredientType extends AbstractType
                 'download_label' => true,
                 'download_uri' => true,
                 'image_uri' => true,
-                'imagine_pattern' => 'images_ingredients_320x240',
-                'asset_helper' => true,
+                'imagine_pattern' => null,
+                'asset_helper' => false,
                 'storage_resolve_method' => VichImageType::STORAGE_RESOLVE_PATH_RELATIVE,
             ])
             ->add('type', ChoiceType::class, [
