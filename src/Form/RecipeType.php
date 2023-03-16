@@ -19,10 +19,14 @@ class RecipeType extends AbstractType
             ->add('name', TextType::class, [
                 'label' => 'Nom de la recette'
             ])
-            ->add('imageFile', VichImageType::class)
+            ->add('imageFile', VichImageType::class, [
+                'label' => 'Image'
+            ])
             ->add('description')
             ->add('level')
-            ->add('seasons')
+            ->add('seasons', TextType::class, [
+                'label' => 'Saisons'
+            ])
         ;
     }
 
