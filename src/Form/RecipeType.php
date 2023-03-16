@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Recipe;
+use App\Entity\Season;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -24,8 +25,10 @@ class RecipeType extends AbstractType
             ])
             ->add('description')
             ->add('level')
-            ->add('seasons', TextType::class, [
-                'label' => 'Saisons'
+            ->add('seasons', EntityType::class, [
+                'class' => Season::class,
+                'label' => 'Saisons',
+                'multiple' => true
             ])
         ;
     }
