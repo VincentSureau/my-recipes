@@ -1,38 +1,35 @@
-{% extends 'admin.html.twig' %}
+{% set title = "Liste des saisons" %}
+{% extends 'admin_with_table.html.twig' %}
 
-{% block title %}Season index{% endblock %}
+{% block actions %}
+    <a class="btn btn-success" href="{{ path('app_admin_season_new') }}">Ajouter</a>
+{% endblock %}
 
-{% block body %}
-    <h1>Season index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>StartAt</th>
-                <th>EndAt</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for season in seasons %}
-            <tr>
-                <td>{{ season.id }}</td>
-                <td>{{ season.name }}</td>
-                <td>{{ season.startAt ? season.startAt|date('d/m/Y') : '' }}</td>
-                <td>{{ season.endAt ? season.endAt|date('d/m/Y') : '' }}</td>
-                <td>
-                    <a href="{{ path('app_admin_season_edit', {'id': season.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_admin_season_new') }}">Create new</a>
+{% block table_content %}
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Début</th>
+            <th>Fin</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for season in seasons %}
+        <tr>
+            <td>{{ season.id }}</td>
+            <td>{{ season.name }}</td>
+            <td>{{ season.startAt ? season.startAt|date('d/m/Y') : '' }}</td>
+            <td>{{ season.endAt ? season.endAt|date('d/m/Y') : '' }}</td>
+            <td>
+                <a href="{{ path('app_admin_season_edit', {'id': season.id}) }}">Modifier</a>
+            </td>
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="5">no records found</td>
+        </tr>
+    {% endfor %}
+    </tbody>
 {% endblock %}

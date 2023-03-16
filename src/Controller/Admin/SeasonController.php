@@ -18,6 +18,7 @@ class SeasonController extends AbstractController
     {
         return $this->render('admin/season/index.html.twig', [
             'seasons' => $seasonRepository->findAll(),
+            // 'title' => 'Liste des saisons'
         ]);
     }
 
