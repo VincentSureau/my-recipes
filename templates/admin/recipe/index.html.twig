@@ -1,0 +1,42 @@
+{% set title = "Liste des recette" %}
+{% extends 'admin_with_table.html.twig' %}
+
+{% block actions %}
+<a class="btn btn-success" href="{{ path('app_admin_recipe_new') }}">Create new</a>
+{% endblock %}
+
+
+
+{% block table_content %}
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Level</th>
+                <th>Image</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for recipe in recipes %}
+            <tr>
+                <td>{{ recipe.id }}</td>
+                <td>{{ recipe.name }}</td>
+                <td>{{ recipe.description }}</td>
+                <td>{{ recipe.level }}</td>
+                <td><img src="{{ vich_uploader_asset(recipe, 'imageFile') }}" alt="{{ recipe.image }}"></td>
+                {# <td>{{ recipe.imageName }}</td>
+                <td>{{ recipe.imageSize }}</td> #}
+                {# <td>{{ recipe.updatedAt ? recipe.updatedAt|date('Y-m-d H:i:s') : '' }}</td> #}
+                <td>
+                    <a href="{{ path('app_admin_recipe_edit', {'id': recipe.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+{% endblock %}
