@@ -6,6 +6,7 @@ use App\Entity\Recipe;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 
 class RecipeType extends AbstractType
 {
@@ -15,7 +16,7 @@ class RecipeType extends AbstractType
             ->add('name')
             ->add('description')
             ->add('level')
-            ->add('image')
+            ->add('imageFile', VichFileType::class)
             ->add('liked_by')
             ->add('seasons')
         ;
