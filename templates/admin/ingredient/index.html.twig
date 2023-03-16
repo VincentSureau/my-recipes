@@ -22,7 +22,7 @@
         <tr>
             <td>{{ ingredient.id }}</td>
             <td>{{ ingredient.name }}</td>
-            <td><img width="50" src="{{ ingredient.image }}" /></td>
+            <td><img width=50 src="{{ vich_uploader_asset(ingredient, 'imageFile') }}" alt="{{ ingredient.name }}" /></td>
             <td>{{ ingredient.type }}</td>
             <td>{{ ingredient.description }}</td>
             <td>

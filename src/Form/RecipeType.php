@@ -2,33 +2,35 @@
 
 namespace App\Form;
 
+use App\Entity\Recipe;
 use App\Entity\Season;
-use App\Entity\Ingredient;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Vich\UploaderBundle\Form\Type\VichImageType;
+use Symfony\Component\Form\Extension\Core\DataTransformer\ChoicesToValuesTransformer;
 
-class IngredientType extends AbstractType
+
+class RecipeType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'Nom de l\'ingrédient'
-            ])
-            ->add('imageFile', VichImageType::class)
-            ->add('type', ChoiceType::class, [
-                'choices'  => [
-                    'Fruit' => 'Fruit',
-                    'Légume' => "Légume",
-                    'Condiment' => "Condiment",
+                'label' => 'Nom de la recette'
+                ])
+            ->add('description')
+            ->add('level', ChoiceType::class,[
+                'choices' =>[
+                    '1'=>'1',
+                    '2' => '2',
+                    '3' => '3',
                 ],
             ])
-            ->add('description')
+            ->add('imageFile', VichImageType::class)
             ->add('seasons', EntityType::class, [
                 'class' => Season::class,
                 'label' => 'Saisons',
@@ -40,7 +42,7 @@ class IngredientType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Ingredient::class,
+            'data_class' => Recipe::class,
         ]);
     }
 }

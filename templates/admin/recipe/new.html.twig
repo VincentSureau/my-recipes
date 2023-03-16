@@ -1,0 +1,9 @@
+{% set cancel_route = "app_admin_recipe_index" %}
+{% set title = "Ajouter une recette" %}
+{% extends 'admin_with_form.html.twig' %}
+
+
+{% block forms %}
+    {{ include('admin/recipe/_form.html.twig', ) }}
+{% endblock %}
+
