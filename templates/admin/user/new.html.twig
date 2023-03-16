@@ -1,0 +1,11 @@
+{% set cancel_route = "app_admin_user_index" %}
+{% set title = "Ajouter un User" %}
+{% extends 'admin_with_form.html.twig' %}
+
+{% block title %}New Recipe{% endblock %}
+
+
+{% block forms %}
+    {{ include('admin/user/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+{% endblock %}
+

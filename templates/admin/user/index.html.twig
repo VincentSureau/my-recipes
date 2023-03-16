@@ -1,0 +1,47 @@
+{% set title = "Liste des Utilisateurs" %}
+{% extends 'admin_with_table.html.twig' %}
+
+{% block actions %}
+ <a class="btn btn-outline-success" href="{{ path('app_admin_user_new') }}">Ajouter un Utilisateur</a>
+{% endblock %}
+
+{% block table_content %}
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Roles</th>
+                <th>Password</th>
+                <th>Username</th>
+                <th>Avatar</th>
+                <th>IsSubscribed</th>
+                <th>IsVerified</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                <td>{{ user.password }}</td>
+                <td>{{ user.username }}</td>
+                <td><img width="50" src="{{ vich_uploader_asset(user, 'imageFile') }}" alt="{{ user.username }}"/></td>
+                <td>{{ user.isSubscribed ? 'Yes' : 'No' }}</td>
+                <td>{{ user.isVerified ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('app_admin_user_show', {'id': user.id}) }}">show</a>
+                    <a href="{{ path('app_admin_user_edit', {'id': user.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}

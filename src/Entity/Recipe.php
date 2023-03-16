@@ -274,4 +274,8 @@ class Recipe
      {
          return $this->imageSize;
      }
+     public function __toString()
+     {
+        return $this->name;
+     }
 }

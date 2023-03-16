@@ -26,6 +26,7 @@ class RecipeType extends AbstractType
                 'imagine_pattern' => null,
                 'asset_helper' => false,
                 'storage_resolve_method' => VichImageType::STORAGE_RESOLVE_PATH_RELATIVE,
+                'label'=> 'Fichier image'
             ])
             ->add('liked_by')
             ->add('seasons')
