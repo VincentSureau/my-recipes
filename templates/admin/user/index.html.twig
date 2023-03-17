@@ -1,0 +1,45 @@
+{% set title = "Liste des utilisateurs" %}
+{% extends 'admin_with_table.html.twig' %}
+
+{% block actions %}
+<a class="btn btn-success" href="{{ path('app_admin_user_new') }}">Ajouter</a>
+{% endblock %}
+
+
+{% block table_content %}
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Avatar</th>
+                <th>Roles</th>
+                <th>Password</th>
+                <th>Username</th>
+                <th>IsSubscribed</th>
+                <th>IsVerified</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.avatar }}</td>
+                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                <td>{{ user.password }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.isSubscribed ? 'Yes' : 'No' }}</td>
+                <td>{{ user.isVerified ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('app_admin_user_edit', {'id': user.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

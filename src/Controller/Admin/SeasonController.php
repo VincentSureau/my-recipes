@@ -5,10 +5,10 @@ namespace App\Controller\Admin;
 use App\Entity\Season;
 use App\Form\SeasonType;
 use App\Repository\SeasonRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/admin/season')]
 class SeasonController extends AbstractController
@@ -16,6 +16,7 @@ class SeasonController extends AbstractController
     #[Route('/', name: 'app_admin_season_index', methods: ['GET'])]
     public function index(SeasonRepository $seasonRepository): Response
     {
+        throw new Exception();
         return $this->render('admin/season/index.html.twig', [
             'seasons' => $seasonRepository->findAll(),
             // 'title' => 'Liste des saisons'
