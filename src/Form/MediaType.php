@@ -17,8 +17,9 @@ class MediaType extends AbstractType
                 'required' => true,
                 'allow_delete' => true,
                 'asset_helper' => true,
-                'label' => 'Image',
-                'required' => false
+                'label' => false,
+                'required' => false,
+                'empty_data' => ''
             ])
         ;
     }
