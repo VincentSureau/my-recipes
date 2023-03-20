@@ -6,6 +6,7 @@
 {% block body %}
 	<header>
 		<h1 class="text-center shadow">NOS RECETTES</h1>
+		
 		<div class="searchFilter d-flex flex-column">
 			<div class="searchBar">
 				<form class="d-flex" role="search">
@@ -103,7 +104,7 @@
 			{% for recipe in recipes %}
 				<div class="col">
 					<div class="card shadow mb-5 bg-body-tertiary rounded-4 image">
-						<img src="{{recipe.image}}" class="card-img-top" alt="image de la recette">
+						<img src="{{vich_uploader_asset(recipe, 'imageFile')}}" class="card-img-top" alt="image de la recette">
 						<div class="card-body overflow-hidden">
 							<h5 class="card-title text-center text-justify fs-5 text-success">{{recipe.name}}</h5>
 							<p class="card-text">{{recipe.description}}</p>
@@ -119,25 +120,9 @@
 				</div>
 			{% endfor %}
 		</div>
-			<nav aria-label="..." class="d-flex justify-content-center">
-				<ul class="pagination">
-					<li class="page-item disabled">
-						<span class="page-link text-success">Précédent</span>
-					</li>
-					<li class="page-item ">
-						<a class="page-link text-success" href="#">1</a>
-					</li>
-					<li class="page-item  active" aria-current="page">
-						<span class="page-link bg-success border-success ">2</span>
-					</li>
-					<li class="page-item ">
-						<a class="page-link text-success" href="#">3</a>
-					</li>
-					<li class="page-item">
-						<a class="page-link text-success" href="#">Suivant</a>
-					</li>
-				</ul>
-			</nav>
+		<nav class="navigation d-flex justify-content-center">
+			{{ knp_pagination_render(recipes) }}
+		</nav>
 	</main>
 
 {% endblock %}
