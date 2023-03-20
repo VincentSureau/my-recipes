@@ -103,7 +103,7 @@
 			{% for recipe in recipes %}
 				<div class="col">
 					<div class="card shadow mb-5 bg-body-tertiary rounded-4 image">
-						<img src="{{recipe.image}}" class="card-img-top" alt="image de la recette">
+						<img src="{{ vich_uploader_asset(recipe, 'imageFile') }}" class="card-img-top" alt="image de la recette">
 						<div class="card-body overflow-hidden">
 							<h5 class="card-title text-center text-justify fs-5 text-success">{{recipe.name}}</h5>
 							<p class="card-text">{{recipe.description}}</p>
