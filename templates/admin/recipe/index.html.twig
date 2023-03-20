@@ -1,18 +1,18 @@
-{% set title = "Liste des Recipes" %}
+{% set title = "Liste des recettes" %}
 {% extends 'admin_with_table.html.twig' %}
 
 {% block actions %}
-    <a class="btn btn-success" href="{{ path('app_admin_recipe_new') }}">Ajouter</a>
+<a class="btn btn-success" href="{{ path('app_admin_recipe_new') }}">Ajouter</a>
 {% endblock %}
 
 {% block table_content %}
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Name</th>
+                <th>Nom</th>
                 <th>Description</th>
-                <th>Level</th>
                 <th>Image</th>
+                <th>Level</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -23,9 +23,9 @@
                 <td>{{ recipe.name }}</td>
                 <td>{{ recipe.description }}</td>
                 <td>{{ recipe.level }}</td>
-                <td><img width = "100" src="{{ vich_uploader_asset(recipe) }}" alt="{{ recipe.name }}"></td>
+                <td><img width=50 src="{{ vich_uploader_asset(recipe, 'imageFile') }}" alt="{{ recipe.name }}"></td>
                 <td>
-                    <a href="{{ path('app_admin_recipe_edit', {'id': recipe.id}) }}">modifier</a>
+                    <a href="{{ path('app_admin_recipe_edit', {'id': recipe.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
