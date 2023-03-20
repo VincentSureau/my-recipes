@@ -2,12 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\RecipeRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\RecipeRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\BrowserKit\Request;
+use Doctrine\Common\Collections\Collection;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\File\File;
+use Doctrine\Common\Collections\ArrayCollection;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[Vich\Uploadable]
@@ -60,7 +63,6 @@ class Recipe
         $this->seasons = new ArrayCollection();
         $this->images = new ArrayCollection();
     }
-
     public function getId(): ?int
     {
         return $this->id;
