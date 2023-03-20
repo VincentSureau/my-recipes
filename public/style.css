@@ -3,6 +3,11 @@ header {
     width: 70%;
 }
 
+body {
+    background-color: white;
+}
+
+
 .searchFilter {
     display: flex;
     justify-content: center;
@@ -19,7 +24,7 @@ header {
 
 h1 {
     padding: 40px 0;
-    font-family: 'cursive';
+    font-family: 'lobster';
     font-size: 3rem;
     color: green;
 }
