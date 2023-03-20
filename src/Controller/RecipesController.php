@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Form\SearchRecipesType;
 use App\Repository\RecipeRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,6 +15,8 @@ class RecipesController extends AbstractController
     #[Route('/recipes', name: 'recipes')]
     public function index(RecipeRepository $recipeRepository, \Doctrine\ORM\EntityManagerInterface $em, PaginatorInterface $paginator, Request $request): Response
     {
+        $form = $this->createForm(SearchRecipesType::class, );
+        $form->handleRequest($request);
         // recuperer les donnée de la base de donnée
         $recipes = $recipeRepository->findAll();
         $pagination = $paginator->paginate(
@@ -22,7 +25,9 @@ class RecipesController extends AbstractController
             10 /*limit per page*/
         );
         return $this->render('recipes/index.html.twig', [
-            'recipes' => $recipes,'pagination' => $pagination
+            'recipes' => $recipes,
+            'pagination' => $pagination,
+            'form' => $form,
         ]);
     }
 
