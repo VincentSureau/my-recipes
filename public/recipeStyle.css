@@ -97,3 +97,14 @@ header {
         margin: 10px 5px;
         }
  }
+
+ .pagination {
+    --bs-pagination-color: #198754;
+    --bs-pagination-active-bg : #198754;
+    --bs-pagination-active-border-color: #198754;
+ }
+
+ .navigation {
+    display: flex;
+    justify-content: center;
+ }
