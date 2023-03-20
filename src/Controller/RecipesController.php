@@ -19,7 +19,7 @@ class RecipesController extends AbstractController
         $pagination = $paginator->paginate(
             $recipes, /* query NOT result */
             $request->query->getInt('page', 1), /*page number*/
-            3 /*limit per page*/
+            6 /*limit per page*/
         );
 
         return $this->render('recipes/index.html.twig', [
