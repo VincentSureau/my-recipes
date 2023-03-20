@@ -154,9 +154,6 @@ class AppFixtures extends Fixture
             $recipeIngredients[] = $recipeIngredient;
         }
 
-        // $seasons = [$summer,$spring,$winter,$fall];
-
-
         $manager->flush();
     }
 }
