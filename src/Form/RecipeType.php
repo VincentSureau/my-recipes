@@ -3,13 +3,10 @@
 namespace App\Form;
 
 use App\Entity\Recipe;
-use App\Entity\Season;
 use App\Form\MediaType;
 use Symfony\Component\Form\AbstractType;
 use Vich\UploaderBundle\Form\Type\VichFileType;
-use Vich\UploaderBundle\Form\Type\VichImageType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -44,7 +41,7 @@ class RecipeType extends AbstractType
                 'label' => 'Difficulté'
             ])
             ->add('level',ChoiceType::class,[
-                'label' => 'Saisons'
+                'label' => 'Saisons',
                 'choices'=>[
                     '1'=>'1',
                     '2'=>'2',
