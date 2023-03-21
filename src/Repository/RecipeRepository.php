@@ -3,8 +3,11 @@
 namespace App\Repository;
 
 use App\Entity\Recipe;
+use App\Entity\Season;
+use App\Form\RecipeSearchType;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @extends ServiceEntityRepository<Recipe>
@@ -39,6 +42,37 @@ class RecipeRepository extends ServiceEntityRepository
         }
     }
 
+   
+
+   /**
+    * @return Recipe[] Returns an array of Recipe objects
+    */
+   public function findByExampleField($criteria)
+   {
+
+    $qb=$this->createQueryBuilder('r');
+
+    if (!empty ($criteria['season'])){
+
+        $qb
+            ->join('r.seasons', 's')
+            ->andWhere('s IN (:season)')
+            ->setParameter('season', $criteria['season'])
+        ;
+    }
+
+    if (!empty($criteria['level'])){
+
+        $qb
+            ->andWhere('r.level = :level')
+            ->setParameter('level', $criteria['level'])
+        ;   
+    }
+
+    return $qb
+        ->getQuery()
+    ;
+   }
 //    /**
 //     * @return Recipe[] Returns an array of Recipe objects
 //     */
@@ -53,7 +87,6 @@ class RecipeRepository extends ServiceEntityRepository
 //            ->getResult()
 //        ;
 //    }
-
 //    public function findOneBySomeField($value): ?Recipe
 //    {
 //        return $this->createQueryBuilder('r')

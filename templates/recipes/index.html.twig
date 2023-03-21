@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Recettes
+{% endblock %}
+
+{% block body %}
+	<header>
+		<h1 class="text-center shadow">NOS RECETTES</h1>
+		<div class="searchFilter d-flex flex-column">
+			
+
+				</div>
+
+		{{ form_start(form) }}
+			<div class="pb-3 d-flex justify-content-center align-items-center gap-3 flex-column ">
+					{# {{ form_row(form.search, { 'attr': {'class': 'px-4'} }) }} #}
+					<button class=" btn btn-outline-success px-5" name="send" type="submit">Recherche</button>
+			</div>
+			<div class="d-flex justify-content-center align-items-center gap-3">    
+			    {{ form_row(form.level, { 'attr': {'class': 'btn btn-success px-5'} }) }}
+				{{ form_row(form.season, { 'attr': {'class': 'btn btn-success px-5'} }) }}
+			</div>
+		{{ form_end(form) }}
+		
+			</div>
+		</div>
+	</header>
+
+	<main>
+		<div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4 list">
+			{% for recipe in recipes %}
+				<div class="col">
+					<div class="card shadow mb-5 bg-body-tertiary rounded-4 image">
+						<img src="{{ vich_uploader_asset(recipe, 'imageFile') }}" class="card-img-top" alt="image de la recette">
+						<div class="card-body overflow-hidden">
+							<h5 class="card-title text-center text-justify fs-5 text-success">{{recipe.name}}</h5>
+							<p class="card-text">{{recipe.description}}</p>
+						</div>
+						<div class="d-flex justify-content-between info">
+							<p class="saison">Saison</p>
+							<span class="material-symbols-outlined">
+								favorite
+							</span>
+						</div>
+					</div>
+				
+				</div>
+			{% endfor %}
+		</div>
+
+			<div class="navigation d-flex justify-content-center ">
+				{{ knp_pagination_render(recipes) }}
+			</div>
+	</main>
+{# {{ form_start(form) }} #}
+	
+ {# {{ form_end(form) }} #}
+{% endblock %}
