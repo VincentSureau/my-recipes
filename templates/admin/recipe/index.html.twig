@@ -25,7 +25,7 @@
                 <td>{{ recipe.level }}</td>
                 <td><img width=50 src="{{ vich_uploader_asset(recipe, 'imageFile') }}" alt="{{ recipe.name }}"></td>
                 <td>
-                    <a href="{{ path('app_admin_recipe_edit', {'id': recipe.id}) }}">edit</a>
+                    <a href="{{ path('app_admin_recipe_edit', {'id': recipe.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
