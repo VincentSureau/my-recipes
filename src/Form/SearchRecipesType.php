@@ -15,22 +15,28 @@ class SearchRecipesType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-     
+
         $builder
-            ->add('name',TextType::class, [
+            ->setMethod("GET")
+            ->add('name', TextType::class, [
                 'label' => 'Nom de la recette',
                 'required' => false,
             ])
-            ->add('level',ChoiceType::class,[
+            ->add('level', ChoiceType::class, [
                 'label' => 'Difficulté',
-                'choices'=>[
-                    '1'=>'1',
-                    '2'=>'2',
-                    '3'=>'3'
+                'placeholder' => "Difficulté",
+                'required' => false,
+                'choices' => [
+                    'Facile' => 1,
+                    'Intermédiaire' => 2,
+                    'Difficile' => 3,
                 ],
             ])
             ->add('seasons', EntityType::class, [
-                'class' => Season::class
+                'label' => "Saison",
+                'placeholder' => "Saison",
+                'required' => false,
+                'class' => Season::class,
             ])
         ;
     }

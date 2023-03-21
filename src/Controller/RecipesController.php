@@ -13,12 +13,29 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class RecipesController extends AbstractController
 {
     #[Route('/recipes', name: 'recipes')]
-    public function index(RecipeRepository $recipeRepository, \Doctrine\ORM\EntityManagerInterface $em, PaginatorInterface $paginator, Request $request): Response
+    public function index(RecipeRepository $recipeRepository, PaginatorInterface $paginator, Request $request): Response
     {
-        $form = $this->createForm(SearchRecipesType::class, );
+        $form = $this->createForm(SearchRecipesType::class);
         $form->handleRequest($request);
+
+        $recipes = $recipeRepository->createQueryBuilder("recipe"); // SELECT * FROM recipe
+        $data = $form->getData();
+        
+        if (!empty($data["name"])) {
+            $recipes->andWhere('recipe.name LIKE :name'); // WHERE name LIKE '%name%'
+            $recipes->setParameter("name",  "%". addcslashes($data["name"], "\\%_") . "%");
+        }
+        if (!empty($data["level"])) {
+            $recipes->andWhere("recipe.level = :level");
+            $recipes->setParameter("level", $data["level"]);
+        }
+        if (!empty($data["seasons"]))  {
+            $recipes->join("recipe.seasons", "season");
+            $recipes->andWhere("season = :season");
+            $recipes->setParameter("season", $data["seasons"]);
+        }
+
         // recuperer les donnée de la base de donnée
-        $recipes = $recipeRepository->findAll();
         $pagination = $paginator->paginate(
             $recipes, 
             $request->query->getInt('page', 1), /*page number*/
