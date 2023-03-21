@@ -39,28 +39,42 @@ class RecipeRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Recipe[] Returns an array of Recipe objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('r')
-//            ->andWhere('r.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('r.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+   public function findByExampleField($criteria)
+   {
+    $qb = $this->createQueryBuilder('r')
+    ;
+    
+    if(!empty ($criteria['seasons'])){
 
-//    public function findOneBySomeField($value): ?Recipe
-//    {
+        $qb
+        ->join('r.seasons', 's')
+        ->andWhere('s IN (:seasons)')
+        ->setParameter('seasons', $criteria['seasons'])
+        ;
+    }
+    
+    if(!empty ($criteria['level'])){
+        
+        $qb
+        
+        ->andWhere('r.level = :level')
+        ->setParameter('level', $criteria['level'])
+        ;
+    }
+    
+    return $qb
+        ->getQuery()
+    ;
+}
+}
+
+//     public function findOneBySomeField($value): ?Recipe
+//     {
 //        return $this->createQueryBuilder('r')
 //            ->andWhere('r.exampleField = :val')
 //            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
-}
+//             ->getQuery()
+//             ->getOneOrNullResult()
+//         ;
+//     }
+// }
