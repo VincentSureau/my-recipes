@@ -39,8 +39,42 @@ class RecipeRepository extends ServiceEntityRepository
         }
     }
 
+  
+   public function findByExampleField($criteria)
+   {
+
+        $qb=$this->createQueryBuilder('r')
+        ;
+
+        if(!empty ($criteria['season'])){
+
+            $qb
+            ->join('r.seasons', 's')
+            ->andwhere('s IN (:season)')
+            ->setParameter('season',$criteria['season'])
+            ;
+        }
+
+        
+        if(!empty ($criteria['level'])){
+
+            $qb
+
+            ->andWhere('r.level = :level')
+            ->setParameter('level', $criteria['level'])
+            ;
+        }
+        
+        return $qb
+        
+             ->getQuery() 
+       ;
+   }
+
+
 //    /**
-//     * @return Recipe[] Returns an array of Recipe objects
+//   
+//    }  * @return Recipe[] Returns an array of Recipe objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -52,7 +86,6 @@ class RecipeRepository extends ServiceEntityRepository
 //            ->getQuery()
 //            ->getResult()
 //        ;
-//    }
 
 //    public function findOneBySomeField($value): ?Recipe
 //    {
