@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Repository\RecipeRepository;
-use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,7 +18,7 @@ class RecipesController extends AbstractController
         $pagination = $paginator->paginate(
             $recipes, /* query NOT result */
             $request->query->getInt('page', 1), /*page number*/
-            10 /*limit per page*/
+            9 /*limit per page*/
         );
 
         return $this->render('recipes/index.html.twig', [
