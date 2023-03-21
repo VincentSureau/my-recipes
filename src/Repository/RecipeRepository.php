@@ -61,6 +61,15 @@ class RecipeRepository extends ServiceEntityRepository
         ->setParameter('level', $criteria['level'])
         ;
     }
+
+    if(!empty ($criteria['search'])){
+        
+        $qb
+        
+        ->andWhere('r.name LIKE :search')
+        ->setParameter('search', "%".$criteria['search']."%")
+        ;
+    }
     
     return $qb
         ->getQuery()

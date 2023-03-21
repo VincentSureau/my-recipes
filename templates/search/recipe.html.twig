@@ -8,14 +8,19 @@
 		<h1 class="text-center shadow">NOS RECETTES</h1>
 		
 		{{ form_start(form) }}
-		<div class="pb-3 d-flex justify-content-center align-items-center gap-3 flex-column">
+
+		
+		<div class="pb-3 d-flex justify-content-center align-items-center gap-3">
+		{{ form_row(form.search, {'attr': {'class' : 'px-4'}}) }}
 		{{ form_row(form.submit) }}
 		</div>
+		
 
-		<div class="pb-3 d-flex justify-content-center align-items-center gap-3 flex-column">
+		<div class="pb-3 d-flex justify-content-center align-items-center gap-3">
 		{{ form_row(form.level, {'attr': {'class' : "btn btn-success px-5"}}) }}
 		{{ form_row(form.seasons, {'attr': {'class' : "btn btn-success px-5"}}) }}
 		</div>
+
 		{{ form_end(form) }}
 	</header>
 
@@ -46,4 +51,18 @@
 				{{ knp_pagination_render(pagination) }}
 			</div>
 	</main>
+
+	<script>
+		const level = document.getElementById('search_recipe_level');
+		const seasons = document.getElementById('search_recipe_seasons');
+		const form = document.querySelector("[name='search_recipe']");
+
+		function onChange() {
+			form.submit();
+		}
+
+		level.addEventListener('change', onChange);
+		seasons.addEventListener('change', onChange);
+	</script>
+
 {% endblock %}
