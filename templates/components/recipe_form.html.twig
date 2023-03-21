@@ -1,0 +1,26 @@
+<div{{ attributes }}>
+    {{ form_start(form) }}
+        {{ form_row(form.name) }}
+        {{ form_row(form.imageFile) }}
+        <div>
+            <ul>
+                {% for imageForm in form.images %}
+                    <li class="d-flex">
+                        <div>
+                            {{ form_row(imageForm.imageFile) }}
+                        </div>
+                        <div>
+                            {{ form_row(imageForm.vars.button_delete, { label: 'X', attr: { class: 'btn btn-outline-danger' } }) }}
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+            {{ form_widget(form.images.vars.button_add, { label: '+ Ajouter une image', attr: { class: 'btn btn-outline-primary' } }) }}
+        </div>
+        {{ form_row(form.description) }}
+        {{ form_row(form.level) }}
+        {{ form_row(form.seasons) }}
+        {{ form_widget(form) }}
+        <button class="btn btn-success" formnovalidate>{{ button_label|default('Enregistrer') }}</button>
+    {{ form_end(form) }}
+</div>

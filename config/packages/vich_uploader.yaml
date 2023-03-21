@@ -1,0 +1,24 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        ingredients:
+           uri_prefix: /upload/ingredients
+           upload_destination: '%kernel.project_dir%/public/upload/ingredients'
+           namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+           delete_on_update: false
+           delete_on_remove: false
+
+        recipe:
+           uri_prefix: /upload/recipe
+           upload_destination: '%kernel.project_dir%/public/upload/recipe'
+           namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+           delete_on_update: false
+           delete_on_remove: false
+
+        media:
+           uri_prefix: /upload/media
+           upload_destination: '%kernel.project_dir%/public/upload/media'
+           namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+           delete_on_update: false
+           delete_on_remove: false

@@ -1,0 +1,7 @@
+{% set cancel_route = "app_admin_ingredient_index" %}
+{% set title = "Ajouter un ingredient" %}
+{% extends 'admin_with_form.html.twig' %}
+
+{% block forms %}
+    {{ include('admin/ingredient/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+{% endblock %}
