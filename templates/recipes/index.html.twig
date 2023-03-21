@@ -45,4 +45,15 @@
 		</div>
 	</main>
 
+	<script>
+		const level = document.getElementById('recipe_search_level');
+		const season = document.getElementById('recipe_search_seasons');
+		const form = document.querySelector("[name='recipe_search']");
+		function onChange() {
+			form.submit();
+		}
+		level.addEventListener('change', onChange);
+		season.addEventListener('change', onChange);
+	</script>
+
 {% endblock %}
