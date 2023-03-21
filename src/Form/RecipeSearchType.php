@@ -3,12 +3,14 @@
 namespace App\Form;
 
 use App\Entity\Season;
+use App\Utils\RecipeTypes;
 use App\Utils\SearchRecipe;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\EnumType;
 use Symfony\Component\Form\Extension\Core\Type\SearchType;
 
 class RecipeSearchType extends AbstractType
@@ -18,7 +20,10 @@ class RecipeSearchType extends AbstractType
         $builder
             ->add('query', SearchType::class, [
                 'label' => "Rechercher",
-                'required' => false
+                'required' => false,
+                'attr' => [
+                    'placeholder' => "Rechercher"
+                ]
             ])
             ->add('season', EntityType::class, [
                 'attr' => [
@@ -28,6 +33,15 @@ class RecipeSearchType extends AbstractType
                 'class' => Season::class,
                 'required' => false,
                 'placeholder' => 'Saison'
+            ])
+            ->add('type', EnumType::class, [
+                'class' => RecipeTypes::class,
+                'choice_label' => 'value',
+                'attr' => [
+                    'class' => 'bg-success text-white'
+                ],
+                'required' => false,
+                'placeholder' => 'Type'
             ])
             ->add('level', ChoiceType::class, [
                 'attr' => [
