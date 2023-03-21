@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Repository\RecipeRepository;
-use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

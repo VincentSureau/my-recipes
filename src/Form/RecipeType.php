@@ -37,6 +37,7 @@ class RecipeType extends AbstractType
             ->add('description', TextareaType::class, [
                 'label' => 'Description'
             ])
+
             ->add('level',ChoiceType::class,[
                 'label' => 'Difficulté',
                 'choices'=>[
@@ -46,6 +47,7 @@ class RecipeType extends AbstractType
                 ],
             ])
             ->add('seasons', null, [
+                'label' => 'Saisons',
             ])
         ;
     }
