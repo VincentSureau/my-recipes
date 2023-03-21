@@ -111,7 +111,9 @@ class AppFixtures extends Fixture
                 ->setLevel($faker->numberBetween(1, 3))
                 ->setImage($faker->imageUrl(640, 480, 'recipe', true))
                 ->addSeason($faker->randomElement($seasons))
-                ->addLikedBy($faker->randomElement($users));
+                ->addLikedBy($faker->randomElement($users))
+                ->setType($faker->randomElement(['Entrée', 'Plat', 'Dessert']));
+
             $manager->persist($recipe);
             $recipes[] = $recipe;
         }

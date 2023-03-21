@@ -22,6 +22,7 @@
 				<div class="d-flex justify-content-center align-items-center gap-3">
 					{{ form_row(search_form.level) }}
 					{{ form_row(search_form.season) }}
+					{{ form_row(search_form.type) }}
 				</div>
 			{{ form_end(search_form)}}
 	</header>
@@ -54,6 +55,7 @@
 	<script>
 		const level = document.getElementById('recipe_search_level');
 		const season = document.getElementById('recipe_search_season');
+		const type = document.getElementById('recipe_search_type');
 		const form = document.querySelector("[name='recipe_search']");
 
 		function onChange() {
@@ -62,6 +64,7 @@
 
 		level.addEventListener('change', onChange);
 		season.addEventListener('change', onChange);
+		type.addEventListener('change', onChange);
 	</script>
 
 

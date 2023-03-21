@@ -58,6 +58,13 @@ class RecipeRepository extends ServiceEntityRepository
         ;
     }
 
+    if(!empty($criteria['type'])) {
+        $qb
+        ->andWhere('r.type = :type')
+        ->setParameter('type', $criteria ['type'])
+        ;
+    }
+
     if(!empty($criteria['search'])){
         $qb
         ->andWhere('r.name LIKE :search')

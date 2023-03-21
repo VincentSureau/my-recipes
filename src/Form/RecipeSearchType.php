@@ -34,6 +34,17 @@ class RecipeSearchType extends AbstractType
                 'required' => false
             ])
 
+            ->add('type', ChoiceType::class, [
+                'label' => false,
+                'placeholder' => 'Type',
+                'required' => false,
+                'choices' => [
+                    'Entrée' => 'Entrée',
+                    'Plat' => 'Plat',
+                    'Dessert' => 'Dessert',
+                ]
+            ])
+
             ->add('submit', SubmitType::class, [
                 'label' => 'Envoyer',
                 'attr' => [
