@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Recipe;
 use App\Entity\Season;
+use Doctrine\DBAL\Types\TextType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
