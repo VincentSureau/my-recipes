@@ -1,0 +1,23 @@
+<div class="container">
+    {{ form_start(form) }}
+        <div class="row align-items-center justify-content-center">
+            <div class="col-auto p-1">
+                {{ form_widget(form.query) }}
+            </div>
+            <div class="col-auto p-1">
+                <button class="btn btn-outline-success">Rechercher</button>
+            </div>
+        </div>
+        <div class="row align-items-center justify-content-center mt-3">
+            <div class="col-auto p-1">
+                {{ form_widget(form.season) }}
+            </div>
+            <div class="col-auto p-1">
+                {{ form_widget(form.type) }}
+            </div>
+            <div class="col-auto p-1">
+                {{ form_widget(form.level) }}
+            </div>
+        </div>
+    {{ form_end(form) }}
+</div>

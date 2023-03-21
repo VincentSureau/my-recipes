@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Recettes
+{% endblock %}
+
+{% block body %}
+	<header>
+		<h1 class="text-center shadow">NOS RECETTES</h1>
+	</header>
+
+	<main>
+		{{ component('recipes') }}
+	</main>
+
+{% endblock %}

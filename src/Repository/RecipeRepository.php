@@ -3,8 +3,10 @@
 namespace App\Repository;
 
 use App\Entity\Recipe;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use App\Utils\SearchRecipe;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query;
 
 /**
  * @extends ServiceEntityRepository<Recipe>
@@ -38,6 +40,40 @@ class RecipeRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+
+   /**
+    * @return Recipe[] Returns an array of Recipe objects
+    */
+   public function search(SearchRecipe $search): Query
+   {
+        $query = $this->createQueryBuilder('r');
+
+        if(!empty($search->getSeason())) {
+            $query
+                ->join('r.seasons', 's')
+                ->andWhere('s IN (:season)')
+                ->setParameter('season', $search->getSeason())
+            ;
+        }
+
+        if(!empty($search->getLevel())) {
+            $query
+                ->andWhere('r.level = :level')
+                ->setParameter('level', $search->getLevel())
+            ;
+        }
+
+        if(!empty($search->getQuery())) {
+            $query
+                ->andWhere('r.name like :query')
+                ->setParameter('query', '%'.$search->getQuery().'%')
+            ;
+        }
+        //    ->orderBy('r.id', 'ASC')
+           
+        //    ->getResult()
+       return $query->getQuery();
+   }
 
 //    /**
 //     * @return Recipe[] Returns an array of Recipe objects
