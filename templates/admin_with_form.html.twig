@@ -1,0 +1,16 @@
+{% extends 'admin.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="card shadow-lg">
+            <h1 class="card-header">{{ title|default('Ajouter / Modifier') }}</h1>
+            <div class="card-body">
+                {% block forms %}
+                {{ include('admin/season/_delete_form.html.twig') }}
+                {{ include('admin/season/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+                {% endblock %}
+            </div>
+        </div>
+        <a href="{{ path(cancel_route|default('app_home')) }}">retour</a>
+    </div>
+{% endblock %}

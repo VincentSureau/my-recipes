@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Error 404{% endblock %}
+
+{% block body %}
+
+<div class="container d-flex justify-content-center align-items-center flex-column min-vh-100 min-vw-100" style="background:url(https://images.unsplash.com/photo-1631294012419-2d5ee9da5f5c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3024&q=80)  center / cover no-repeat; background-color:#444; background-blend-mode: overlay;">
+	<div class="d-flex flex-column justify-content-center align-self-center text-light">
+        <h2 class="display-1 fw-bolder text-center" style="text-shadow: 2px 2px 2px rgba(0,0,0,0.17);">OUPS!
+            <span class="text-danger">404<span>
+        </h2>
+        <p class=" lead text-center">La page recherchée n'a pas été trouvée ...</p>
+        <a href="{{ path('app_home') }}" class="btn btn-success" style="box-shadow: 2px 2px 2px rgba(0,0,0,0.17);">Retourner à l'accueil</a>
+	</div>
+</div>
+
+{% endblock %}

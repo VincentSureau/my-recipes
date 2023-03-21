@@ -2,12 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\IngredientRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\IngredientRepository;
+use Doctrine\Common\Collections\Collection;
+use Symfony\Component\HttpFoundation\File\File;
+use Doctrine\Common\Collections\ArrayCollection;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
+#[Vich\Uploadable]
 #[ORM\Entity(repositoryClass: IngredientRepository::class)]
 class Ingredient
 {
@@ -25,6 +28,9 @@ class Ingredient
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
 
+    #[Vich\UploadableField(mapping:"ingredients", fileNameProperty:"image")]
+    private ?File $imageFile = null; 
+
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
@@ -33,6 +39,9 @@ class Ingredient
 
     #[ORM\OneToMany(mappedBy: 'ingredient', targetEntity: RecipeIngredient::class, orphanRemoval: true)]
     private Collection $recipeIngredients;
+
+    #[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $updatedAt = null;
 
     public function __construct()
     {
@@ -143,6 +152,44 @@ class Ingredient
                 $recipeIngredient->setIngredient(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * Get the value of imageFile
+     */ 
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+    /**
+     * Set the value of imageFile
+     *
+     * @return  self
+     */ 
+    public function setImageFile(File $image = null)
+    {
+        $this->imageFile = $image;
+
+        // VERY IMPORTANT:
+        // It is required that at least one field changes if you are using Doctrine,
+        // otherwise the event listeners won't be called and the file is lost
+        if ($image) {
+            // if 'updatedAt' is not defined in your entity, use another property
+            $this->updatedAt = new \DateTimeImmutable('now');
+        }
+    }
+
+    public function getUpdatedAt(): ?\DateTimeImmutable
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(\DateTimeImmutable $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }

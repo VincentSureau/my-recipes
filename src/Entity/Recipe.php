@@ -2,12 +2,16 @@
 
 namespace App\Entity;
 
-use App\Repository\RecipeRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Utils\RecipeTypes;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\RecipeRepository;
+use Doctrine\Common\Collections\Collection;
+use Symfony\Component\HttpFoundation\File\File;
+use Doctrine\Common\Collections\ArrayCollection;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
+#[Vich\Uploadable]
 #[ORM\Entity(repositoryClass: RecipeRepository::class)]
 class Recipe
 {
@@ -28,6 +32,9 @@ class Recipe
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
 
+    #[Vich\UploadableField(mapping:"recipe", fileNameProperty:"image")]
+    private ?File $imageFile = null; 
+
     #[ORM\OneToMany(mappedBy: 'recipe', targetEntity: RecipeIngredient::class, orphanRemoval: true)]
     private Collection $recipeIngredients;
 
@@ -39,6 +46,15 @@ class Recipe
 
     #[ORM\ManyToMany(targetEntity: Season::class, inversedBy: 'recipes')]
     private Collection $seasons;
+    
+    #[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $updatedAt = null;
+
+    #[ORM\OneToMany(mappedBy: 'recipe', targetEntity: Media::class, orphanRemoval: true, cascade: ['persist'])]
+    private Collection $images;
+
+    #[ORM\Column(length: 255, nullable: true, enumType: RecipeTypes::class)]
+    private ?string $type = null;
 
     public function __construct()
     {
@@ -46,6 +62,7 @@ class Recipe
         $this->comments = new ArrayCollection();
         $this->liked_by = new ArrayCollection();
         $this->seasons = new ArrayCollection();
+        $this->images = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -164,12 +181,12 @@ class Recipe
     /**
      * @return Collection<int, User>
      */
-    public function getUsers(): Collection
+    public function getLikedBy(): Collection
     {
         return $this->liked_by;
     }
 
-    public function addUser(User $user): self
+    public function addLikedBy(User $user): self
     {
         if (!$this->liked_by->contains($user)) {
             $this->liked_by->add($user);
@@ -179,7 +196,7 @@ class Recipe
         return $this;
     }
 
-    public function removeUser(User $user): self
+    public function removeLikedBy(User $user): self
     {
         if ($this->liked_by->removeElement($user)) {
             $user->removeLike($this);
@@ -208,6 +225,72 @@ class Recipe
     public function removeSeason(Season $season): self
     {
         $this->seasons->removeElement($season);
+
+        return $this;
+    }
+
+
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+    /**
+     * Set the value of imageFile
+     *
+     * @return  self
+     */ 
+    public function setImageFile(File $image = null)
+    {
+        $this->imageFile = $image;
+
+        // VERY IMPORTANT:
+        // It is required that at least one field changes if you are using Doctrine,
+        // otherwise the event listeners won't be called and the file is lost
+        if ($image) {
+            // if 'updatedAt' is not defined in your entity, use another property
+            $this->updatedAt = new \DateTimeImmutable('now');
+        }
+    }
+
+    /**
+     * @return Collection<int, Media>
+     */
+    public function getImages(): Collection
+    {
+        return $this->images;
+    }
+
+    public function addImage(Media $image): self
+    {
+        if (!$this->images->contains($image)) {
+            $this->images->add($image);
+            $image->setRecipe($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImage(Media $image): self
+    {
+        if ($this->images->removeElement($image)) {
+            // set the owning side to null (unless already changed)
+            if ($image->getRecipe() === $this) {
+                $image->setRecipe(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(?string $type): self
+    {
+        $this->type = $type;
 
         return $this;
     }

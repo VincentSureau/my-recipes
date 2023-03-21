@@ -3,10 +3,6 @@
 {% block title %}Nom de la recette{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 <main class="bg-light container">
     <div class="card mb-3 mt-5">
         <img src="{{ asset('images/paella.jpg') }}" class="card-img-top" alt="Image recipe">
@@ -18,7 +14,8 @@
             <h5 class="card-title fs-3 text-success">Paëlla fruits de mer, chorizo et poulet de Patou</h5>
             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
             <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            <section class="ingredients">
+        </div>
+            <section class="ingredients p-3">
                 <h2 class="fs-3 mt-5 text-success">Ingredients</h2>
 
                 <ul class="nav nav-pills mb-3 ingredients--tab-switcher" role="tablist">
@@ -101,14 +98,14 @@
                 </div>
 
             </section>
-
-            <h2 class="fs-3 mt-5 text-success">Etapes</h2>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item"><span class="text-success">1 -</span> Découper le poulet en morceaux, nettoyer les moules, émincer le chorizo et les poivrons, peler et concasser les tomates, hacher les oignons et l'ail.</li>
-                <li class="list-group-item"><span class="text-success">2 -</span> Mettre l'huile dans le plat et faire dorer les morceaux de poulet. Ajouter les calamars, les oignons tout en remuant puis mettre les tomates, les poivrons, l'ail, le safran, le sel et le poivre. Laisser cuire 5 minutes en remuant avant d'incorporer le riz, le chorizo et le bouillon.</li>
-                <li class="list-group-item"><span class="text-success">3 -</span> Y plonger les crevettes et les moules, porter à ébullition puis laisser cuire environ 30-35 minutes.</li>
-            </ul>
-        </div>
+            <div class="p-3">
+                <h2 class="fs-3 mt-5 text-success">Etapes</h2>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><span class="text-success">1 -</span> Découper le poulet en morceaux, nettoyer les moules, émincer le chorizo et les poivrons, peler et concasser les tomates, hacher les oignons et l'ail.</li>
+                    <li class="list-group-item"><span class="text-success">2 -</span> Mettre l'huile dans le plat et faire dorer les morceaux de poulet. Ajouter les calamars, les oignons tout en remuant puis mettre les tomates, les poivrons, l'ail, le safran, le sel et le poivre. Laisser cuire 5 minutes en remuant avant d'incorporer le riz, le chorizo et le bouillon.</li>
+                    <li class="list-group-item"><span class="text-success">3 -</span> Y plonger les crevettes et les moules, porter à ébullition puis laisser cuire environ 30-35 minutes.</li>
+                </ul>
+            </div>
     </div>
 
     <div class="mb-3 mt-3">
