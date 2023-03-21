@@ -16,6 +16,7 @@
 <div class="d-flex justify-content-center align-items-center gap-3 ">
 {{ form_row(form.level, { 'attr' : {'class': 'btn btn-success px-5'}})}}
 {{ form_row(form.seasons, { 'attr' : {'class': 'btn btn-success px-5'}})}}
+{{ form_row(form.type, { 'attr' : {'class': 'btn btn-success px-5'}})}}
 </div>
 {{ form_end(form)}}
 	</header>
@@ -49,12 +50,14 @@
 	<script>
 		const level = document.getElementById('recipe_search_level');
 		const season = document.getElementById('recipe_search_seasons');
+		const type = document.getElementById('recipe_search_type');
 		const form = document.querySelector("[name='recipe_search']");
 		function onChange() {
 			form.submit();
 		}
 		level.addEventListener('change', onChange);
 		season.addEventListener('change', onChange);
+		type.addEventListener('change', onChange);
 	</script>
 
 {% endblock %}

@@ -47,6 +47,17 @@ class RecipeSearchType extends AbstractType
                     'class' => 'btn btn-success'
                 ]
             ])
+
+            ->add('type', ChoiceType::class,[
+                'label'=>false,
+                'required'=>false,
+                'placeholder'=>'type',
+                'choices'=>[
+                    'Entrée'=>'Entrée',
+                    'Plat'=>'Plat',
+                    'Dessert'=>'Dessert'
+                ]
+            ])
         ;
     }
 

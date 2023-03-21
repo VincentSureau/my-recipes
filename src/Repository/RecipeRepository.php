@@ -64,6 +64,16 @@ class RecipeRepository extends ServiceEntityRepository
             ->setParameter('level', $criteria['level'])
             ;
         }
+
+        if(!empty ($criteria['type'])){
+
+            $qb
+
+            ->andWhere('r.type = :type')
+            ->setParameter('type', $criteria['type'])
+            ;
+        }
+
         if(!empty($criteria['search'])){
             $qb
 
