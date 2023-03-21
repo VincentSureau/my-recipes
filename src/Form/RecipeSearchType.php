@@ -4,11 +4,11 @@ namespace App\Form;
 
 use App\Entity\Recipe;
 use App\Entity\Season;
-use Doctrine\DBAL\Types\TextType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
@@ -38,6 +38,14 @@ class RecipeSearchType extends AbstractType
                 'label' => 'Envoyer',
                 'attr' => [
                     'class' => 'btn btn-outline-success'
+                ]
+            ])
+
+            ->add('search', TextType::class, [
+                'required' => false,
+                'label' => false,
+                'attr' => [
+                    'placeholder' => 'Entrer un mot clé'
                 ]
             ])
         ;
