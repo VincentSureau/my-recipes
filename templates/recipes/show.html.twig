@@ -1,0 +1,139 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nom de la recette{% endblock %}
+
+{% block body %}
+<main class="bg-light container">
+    <div class="card mb-3 mt-5">
+        <img src="{{ asset('images/paella.jpg') }}" class="card-img-top" alt="Image recipe">
+        <div class="card-body">
+            <div class="d-flex justify-content-end align-items-center gap-1">
+                <button type="button" class="btn btn-success btn-lg rounded-4 d-flex align-items-center"><span class="material-symbols-outlined">favorite</span></button>
+                <p class="mb-0 text-secondary">150k<p>
+            </div>
+            <h5 class="card-title fs-3 text-success">Paëlla fruits de mer, chorizo et poulet de Patou</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+            <section class="ingredients p-3">
+                <h2 class="fs-3 mt-5 text-success">Ingredients</h2>
+
+                <ul class="nav nav-pills mb-3 ingredients--tab-switcher" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="ingredient-images-tab" data-bs-toggle="pill" data-bs-target="#ingredient-images" type="button" role="tab" aria-controls="ingredient-images" aria-selected="true">Etendu</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="ingredient-list-tab" data-bs-toggle="pill" data-bs-target="#ingredient-list" type="button" role="tab" aria-controls="ingredient-list" aria-selected="false">Compact</button>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane fade show active ingredients--image-tab" id="ingredient-images" role="tabpanel" aria-labelledby="ingredient-images-tab">
+                        <div class="row row-cols-1 row-cols-md-4 g-4">
+                            <div class="col">
+                                <div class="card">
+                                    <img src="{{ asset('images/ingredient/tomate.jpg') }}" class="bd-placeholder-img card-img-top sizeImage" alt="Image recipe">
+                                    <div class="card-body">
+                                        <p class="card-text">1/4 tomates</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card">
+                                    <img src="{{ asset('images/ingredient/poivron.jpg') }}" class="bd-placeholder-img card-img-top sizeImage" alt="Image recipe">
+                                    <div class="card-body">
+                                        <p class="card-text">1/2 poivrons</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card">
+                                    <img src="{{ asset('images/ingredient/poivron.jpg') }}" class="bd-placeholder-img card-img-top sizeImage" alt="Image recipe">
+                                    <div class="card-body">
+                                        <p class="card-text">1/2 poivrons</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card">
+                                    <img src="{{ asset('images/ingredient/poivron.jpg') }}" class="bd-placeholder-img card-img-top sizeImage" alt="Image recipe">
+                                    <div class="card-body">
+                                        <p class="card-text">1/2 poivrons</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card">
+                                    <img src="{{ asset('images/ingredient/poivron.jpg') }}" class="bd-placeholder-img card-img-top sizeImage" alt="Image recipe">
+                                    <div class="card-body">
+                                        <p class="card-text">1/2 poivrons</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade ingredients--compact-tab" id="ingredient-list" role="tabpanel" aria-labelledby="ingredient-list-tab">
+                        <ul class="ingredient-list">
+                            <li class="ingredient-list--item">   
+                                <input type="checkbox" value="coding">
+                                <label for="coding">1/4 tomates</label>   
+                            </li>
+                            <li class="ingredient-list--item">   
+                                <input type="checkbox" value="coding">
+                                <label for="coding">1/2 poivrons</label>   
+                            </li>
+                            <li class="ingredient-list--item">   
+                                <input type="checkbox" value="coding">
+                                <label for="coding">1/2 poivrons</label>   
+                            </li>
+                            <li class="ingredient-list--item">   
+                                <input type="checkbox" value="coding">
+                                <label for="coding">1/2 poivrons</label>   
+                            </li>
+                            <li class="ingredient-list--item">   
+                                <input type="checkbox" value="coding">
+                                <label for="coding">1/2 poivrons</label>   
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </section>
+            <div class="p-3">
+                <h2 class="fs-3 mt-5 text-success">Etapes</h2>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><span class="text-success">1 -</span> Découper le poulet en morceaux, nettoyer les moules, émincer le chorizo et les poivrons, peler et concasser les tomates, hacher les oignons et l'ail.</li>
+                    <li class="list-group-item"><span class="text-success">2 -</span> Mettre l'huile dans le plat et faire dorer les morceaux de poulet. Ajouter les calamars, les oignons tout en remuant puis mettre les tomates, les poivrons, l'ail, le safran, le sel et le poivre. Laisser cuire 5 minutes en remuant avant d'incorporer le riz, le chorizo et le bouillon.</li>
+                    <li class="list-group-item"><span class="text-success">3 -</span> Y plonger les crevettes et les moules, porter à ébullition puis laisser cuire environ 30-35 minutes.</li>
+                </ul>
+            </div>
+    </div>
+
+    <div class="mb-3 mt-3">
+        <form methode="POST">
+            <label for="exampleFormControlTextarea1" class="form-label">Comment</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <input class="btn btn-success mt-2" type="submit" value="envoie">
+        </form>
+    </div>
+
+    <div class="mt-5">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="d-flex media g-mb-30 media-comment">
+                    <img class="d-flex rounded-circle img-fluid w-50 h-50" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Image Description">
+                    <div class="media-body u-shadow-v18 g-bg-secondary g-pa-30">
+                        <div class="g-mb-15">
+                            <h5 class="h5 mb-0 text-success">John Doe</h5>
+                            <span class="g-font-size-12 text-secondary">5 days ago</span>
+                        </div>
+                    
+                        <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue
+                        felis in faucibus ras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock %}

@@ -11,8 +11,16 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class RecipesController extends AbstractController
 {
+    #[Route('/recipes/0', name: 'recipes.show')]
+    public function index(): Response
+    {
+        return $this->render('recipes/show.html.twig', [
+            'controller_name' => 'RecipesController',
+        ]);
+    }
+
     #[Route('/recipes', name: 'recipes')]
-    public function index(RecipeRepository $recipeRepository, PaginatorInterface $paginator, Request $request): Response
+    public function list(RecipeRepository $recipeRepository, PaginatorInterface $paginator, Request $request): Response
     {
         $pagination = $paginator->paginate(
             $recipeRepository->findAll(), /* query NOT result */
