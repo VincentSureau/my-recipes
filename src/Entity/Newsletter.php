@@ -25,6 +25,9 @@ class Newsletter
     #[ORM\ManyToMany(targetEntity: Recipe::class)]
     private Collection $recipes;
 
+    // #[ORM\Column(length: 255, nullable: true)]
+    // private ?string $description = null;
+
     public function __construct()
     {
         $this->recipes = new ArrayCollection();
@@ -82,4 +85,16 @@ class Newsletter
 
         return $this;
     }
+
+    // public function getDescription(): ?string
+    // {
+    //     return $this->description;
+    // }
+
+    // public function setDescription(?string $description): self
+    // {
+    //     $this->description = $description;
+
+    //     return $this;
+    // }
 }

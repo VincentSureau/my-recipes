@@ -3,6 +3,7 @@ twig:
     form_themes: 
         - 'bootstrap_5_layout.html.twig'
         - '/form/vich_fields.html.twig'
+        - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
 
 when@test:
     twig:

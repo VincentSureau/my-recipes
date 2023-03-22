@@ -1,0 +1,7 @@
+{% set cancel_route = "app_admin_newsletter_index" %}
+{% set title = "Ajouter une newsletter" %}
+{% extends 'admin_with_form.html.twig' %}
+
+{% block forms %}
+    {{ include('admin/newsletter/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+{% endblock %}
