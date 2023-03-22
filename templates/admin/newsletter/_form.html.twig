@@ -1,4 +1,5 @@
 {{ form_start(form) }}
     {{ form_widget(form) }}
+    {{ include('admin/newsletter/_recipes.html.twig') }}
     <button class="btn btn-success">{{ button_label|default('Enregistrer') }}</button>
 {{ form_end(form) }}

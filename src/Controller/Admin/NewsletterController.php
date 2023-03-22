@@ -4,11 +4,12 @@ namespace App\Controller\Admin;
 
 use App\Entity\Newsletter;
 use App\Form\NewsletterType;
+use App\Repository\RecipeRepository;
 use App\Repository\NewsletterRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/admin/newsletter')]
 class NewsletterController extends AbstractController
@@ -22,8 +23,10 @@ class NewsletterController extends AbstractController
     }
 
     #[Route('/new', name: 'app_admin_newsletter_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, NewsletterRepository $newsletterRepository): Response
+    public function new(RecipeRepository $recipeRepository, Request $request, NewsletterRepository $newsletterRepository): Response
     {
+        $recipes = $recipeRepository->findAll();
+
         $newsletter = new Newsletter();
         $form = $this->createForm(NewsletterType::class, $newsletter);
         $form->handleRequest($request);
@@ -37,12 +40,16 @@ class NewsletterController extends AbstractController
         return $this->renderForm('admin/newsletter/new.html.twig', [
             'newsletter' => $newsletter,
             'form' => $form,
+            'recipes' => $recipes
         ]);
     }
 
     #[Route('/{id}/edit', name: 'app_admin_newsletter_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Newsletter $newsletter, NewsletterRepository $newsletterRepository): Response
+    public function edit(RecipeRepository $recipeRepository, Request $request, Newsletter $newsletter, NewsletterRepository $newsletterRepository): Response
     {
+
+        $recipes = $recipeRepository->findAll();
+
         $form = $this->createForm(NewsletterType::class, $newsletter);
         $form->handleRequest($request);
 
@@ -55,6 +62,7 @@ class NewsletterController extends AbstractController
         return $this->renderForm('admin/newsletter/edit.html.twig', [
             'newsletter' => $newsletter,
             'form' => $form,
+            'recipes' => $recipes
         ]);
     }
 
