@@ -9,7 +9,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
-
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use App\Entity\Recipe;
 
 class NewsletterType extends AbstractType
 {
@@ -18,17 +19,20 @@ class NewsletterType extends AbstractType
         $builder
             ->add('content', CKEditorType::class, [
                 'label' => 'Description de la newsletter',
-                'config' => array(
+                'config' => [
                 'uiColor' => '#ffffff',
-                ),
+                ],
             ])     
             ->add('sendAt', DateType::class, [ 
             'label' => 'Date d\'envoi',
             'widget' => 'single_text',
             'input'  => 'datetime_immutable'
             ])
-            ->add('recipes', null, [
-                'label' => 'Recettes'
+            ->add('recipes', EntityType::class, [
+                'class' => Recipe::class,
+                'label' => 'Recettes',
+                'multiple' => true
+
             ])
         ;
     }

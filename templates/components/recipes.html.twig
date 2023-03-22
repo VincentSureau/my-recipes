@@ -1,5 +1,6 @@
 <div{{ attributes }}>
     {% include 'components/_search_form.html.twig' %}
+
     <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4 list">
         {% for recipe in this.recipes %}
             <div class="col">
@@ -10,7 +11,7 @@
                         <p class="card-text">{{recipe.description}}</p>
                     </div>
                     <div class="d-flex justify-content-between info">
-                        <p class="saison">Saison</p>
+                        <p class="saison">{{season.name}}</p>
                         <span class="material-symbols-outlined">
                             favorite
                         </span>

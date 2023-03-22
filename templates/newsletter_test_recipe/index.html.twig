@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+<div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4 m-auto list">
+{% for recipe in recipes %}
+    <div class="col">
+        <div class="card shadow mb-5 bg-body-tertiary rounded-4 image">
+            <img src="{{vich_uploader_asset(recipe, 'imageFile')}}" class="card-img-top" alt="image de la recette">
+            <div class="card-body overflow-hidden">
+                <h5 class="card-title text-center text-justify fs-5 text-success">{{recipe.name}}</h5>
+                <p class="card-text">{{recipe.description}}</p>
+            </div>
+            <div class="d-flex justify-content-between info">
+            {% for season in recipe.seasons %}
+                <p class="saison">{{season.name}}</p>
+                
+            {% endfor %}
+                <span class="material-symbols-outlined">
+                    favorite
+                </span>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+</div>
+{% endblock %}
