@@ -1,0 +1,10 @@
+{% set cancel_route = "app_admin_newsletter_index" %}
+{% extends 'admin_with_form.html.twig' %}
+
+{% set title = "Modifier la Newsletter" %}
+
+{% block forms %}
+    {{ include('admin/newsletter/_delete_form.html.twig') }}
+    {{ include('admin/newsletter/_form.html.twig', {'button_label': 'Update'}) }}
+
+{% endblock %}

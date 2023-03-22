@@ -1,0 +1,10 @@
+{% set cancel_route = "app_admin_newsletter_index" %}
+{% set title = "Ajouter une Newsletter"%}
+{% extends 'admin_with_form.html.twig' %}
+
+{% block forms %}
+
+    {{ include('admin/newsletter/_form.html.twig') }}
+    <a href="{{ path('app_admin_newsletter_index') }}">back to list</a>
+
+{% endblock %}
