@@ -111,7 +111,9 @@ class AppFixtures extends Fixture
                 ->setLevel($faker->numberBetween(1,3))
                 ->setImage("http://www.cuisine-francaise.org/blog/wp-content/uploads/2009/10/COQUILLES-SAINT-JACQUES-PIERRTTES-GUIDE.jpg")
                 ->addSeason($faker->randomElement($seasons))
-                ->addLikedBy($faker->randomElement($users));
+                ->addLikedBy($faker->randomElement($users))
+                ->setType(RecypeTypes::Starter)
+                ;
             $manager->persist($recipe);
             $recipes[] = $recipe;
         }

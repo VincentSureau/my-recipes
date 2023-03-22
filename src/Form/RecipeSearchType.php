@@ -34,15 +34,15 @@ class RecipeSearchType extends AbstractType
                 'required' => false,
                 'placeholder' => 'Saison'
             ])
-            ->add('type', EnumType::class, [
-                'class' => RecipeTypes::class,
-                'choice_label' => 'value',
-                'attr' => [
-                    'class' => 'bg-success text-white'
-                ],
-                'required' => false,
-                'placeholder' => 'Type'
-            ])
+            // ->add('type', EnumType::class, [
+            //     'class' => RecipeTypes::class,
+            //     'choice_label' => 'value',
+            //     'attr' => [
+            //         'class' => 'bg-success text-white'
+            //     ],
+            //     'required' => false,
+            //     'placeholder' => 'Type'
+            // ])
             ->add('level', ChoiceType::class, [
                 'attr' => [
                     'class' => 'bg-success text-white'
