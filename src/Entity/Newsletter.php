@@ -82,4 +82,5 @@ class Newsletter
 
         return $this;
     }
+    
 }
