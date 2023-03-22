@@ -4,12 +4,14 @@ namespace App\Form;
 
 use App\Entity\Recipe;
 use App\Form\MediaType;
+use App\Utils\RecipeKind;
 use Symfony\Component\Form\AbstractType;
 use Vich\UploaderBundle\Form\Type\VichFileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\EnumType;
 use Symfony\UX\LiveComponent\Form\Type\LiveCollectionType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
@@ -34,21 +36,23 @@ class RecipeType extends AbstractType
                 'allow_delete' => true,
                 'by_reference' => false,
             ])
+            
             ->add('description', TextareaType::class, [
                 'label' => 'Description'
             ])
-            ->add('level', null, [
-                'label' => 'Difficulté'
-            ])
             ->add('level',ChoiceType::class,[
-                'label' => 'Saisons',
+                'label' => 'Difficulté',
                 'choices'=>[
                     '1'=>'1',
                     '2'=>'2',
                     '3'=>'3'
                 ],
             ])
+            ->add('type', EnumType::class, [
+                "class" => RecipeKind::class,
+            ])
             ->add('seasons', null, [
+                'label' => 'Saisons',
             ])
         ;
     }

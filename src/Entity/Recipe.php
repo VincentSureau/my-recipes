@@ -2,12 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\RecipeRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Utils\RecipeKind;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\RecipeRepository;
+use Doctrine\Common\Collections\Collection;
 use Symfony\Component\HttpFoundation\File\File;
+use Doctrine\Common\Collections\ArrayCollection;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[Vich\Uploadable]
@@ -51,6 +52,9 @@ class Recipe
 
     #[ORM\OneToMany(mappedBy: 'recipe', targetEntity: Media::class, orphanRemoval: true, cascade: ['persist'])]
     private Collection $images;
+
+    #[ORM\Column(type: 'string', length: 255, enumType: RecipeKind::class, nullable: true)]
+    private ?RecipeKind $type = null;
 
     public function __construct()
     {
@@ -275,6 +279,18 @@ class Recipe
                 $image->setRecipe(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getType(): ?RecipeKind
+    {
+        return $this->type;
+    }
+
+    public function setType(?RecipeKind $type): self
+    {
+        $this->type = $type;
 
         return $this;
     }
