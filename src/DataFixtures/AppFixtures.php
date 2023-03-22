@@ -108,10 +108,11 @@ class AppFixtures extends Fixture
             $recipe
                 ->setName($faker->words(10, true))
                 ->setDescription($faker->text())
-                ->setLevel($faker->numberBetween(1, 3))
-                ->setImage($faker->imageUrl(640, 480, 'recipe', true))
+                ->setLevel($faker->numberBetween(1,3))
+                ->setImage("http://www.cuisine-francaise.org/blog/wp-content/uploads/2009/10/COQUILLES-SAINT-JACQUES-PIERRTTES-GUIDE.jpg")
                 ->addSeason($faker->randomElement($seasons))
-                ->addLikedBy($faker->randomElement($users));
+                ->addLikedBy($faker->randomElement($users))
+                ->setType($faker->randomElement(['Entrée', 'Plat', 'Dessert']));
             $manager->persist($recipe);
             $recipes[] = $recipe;
         }
@@ -153,9 +154,6 @@ class AppFixtures extends Fixture
             $manager->persist($recipeIngredient);
             $recipeIngredients[] = $recipeIngredient;
         }
-
-        // $seasons = [$summer,$spring,$winter,$fall];
-
 
         $manager->flush();
     }

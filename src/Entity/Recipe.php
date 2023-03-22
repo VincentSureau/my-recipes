@@ -52,6 +52,9 @@ class Recipe
     #[ORM\OneToMany(mappedBy: 'recipe', targetEntity: Media::class, orphanRemoval: true, cascade: ['persist'])]
     private Collection $images;
 
+    #[ORM\Column(length: 255)]
+    private ?string $type = null;
+
     public function __construct()
     {
         $this->recipeIngredients = new ArrayCollection();
@@ -275,6 +278,18 @@ class Recipe
                 $image->setRecipe(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(string $type): self
+    {
+        $this->type = $type;
 
         return $this;
     }
