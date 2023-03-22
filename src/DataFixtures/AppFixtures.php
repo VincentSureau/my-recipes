@@ -106,6 +106,7 @@ class AppFixtures extends Fixture
         {
             $recipe = new Recipe();
             $recipe
+                ->setType($faker->randomElement(['Entrée', 'Plat', 'Dessert']))
                 ->setName($faker->words(10, true))
                 ->setDescription($faker->text())
                 ->setLevel($faker->numberBetween(1,3))
