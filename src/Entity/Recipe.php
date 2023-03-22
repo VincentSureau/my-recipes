@@ -11,10 +11,15 @@ use Doctrine\Common\Collections\Collection;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Form\FormBuilder;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[Vich\Uploadable]
 #[ORM\Entity(repositoryClass: RecipeRepository::class)]
+/**
+ * @ORM\Table(name="new_table_name")
+ * @ORM\Entity(repositoryClass="App\Repository\NewRepository")
+ */
 class Recipe
 {
     #[ORM\Id]
@@ -280,4 +285,17 @@ class Recipe
 
         return $this;
     }
+    public function trierRecettes(Request $request)
+    {
+        $seasons = array(
+            array('name' => 'Hiver', 'start' => '21/12', 'end' => '20/03'),
+            array('name' => 'Printemps', 'start' => '21/03', 'end' => '20/06'),
+            array('name' => 'Été', 'start' => '21/06', 'end' => '20/09'),
+            array('name' => 'Automne', 'start' => '21/09', 'end' => '20/12')
+        );
+        
+        usort($seasons, function($a, $b) {
+            return strcmp($a['name'], $b['name']);
+        });
+}
 }

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Form\SearchType;
 use App\Repository\RecipeRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
@@ -13,22 +14,35 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class RecipesController extends AbstractController
 {
     #[Route('/recipes', name: 'recipes')]
-    public function index(RecipeRepository $recipeRepository ,PaginatorInterface $paginator, Request $request): Response
+    public function index(RecipeRepository $recipeRepository, PaginatorInterface $paginator, Request $request, ): Response
     {
 
-        $recipes = $recipeRepository->findAll();
+        // On déclare form
+        $form = $this->createForm(SearchType::class);
+        $form->handleRequest($request);
+        
         $pagination = $paginator->paginate(
-            $recipes, /* query NOT result */
+            $recipeRepository->findAll(), /* query NOT result */
             $request->query->getInt('page', 1), /*page number*/
-            2 /*limit per page*/
+            8 /*limit per page*/
         );
         return $this->render('recipes/index.html.twig', [
-            'recipes' => $recipes,
+            // 'recipes' => $recipes,
             'pagination' => $pagination,
-        ]);
+            'form' => $form
+            
 
+        ]);
     }
-    // App\Controller\ArticleController.php
-    
-    
+    // public function findBySeason($seasons)
+    // {
+    //     $entityManager = $this->getDoctrine()->getManager();
+
+    //     $products = $entityManager->getRepository(Product::class)
+    //         ->findBySeason($seasons);
+
+    //     return $this->render('recipe/index.html.twig', [
+    //         'season' => $seasons,
+    //     ]);
+    // }
 }
