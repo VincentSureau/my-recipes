@@ -2,8 +2,10 @@
 {% set title = "Modifier la newsletter" %}
 {% extends 'admin_with_form.html.twig' %}
 
+
 {% block forms %}
     {{ include('admin/newsletter/_delete_form.html.twig') }}
     {{ include('admin/newsletter/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+    {{ include('admin/newsletter/recipe_form.html.twig') }}
 {% endblock %}
 

@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Newsletter;
 use App\Form\NewsletterType;
 use App\Repository\NewsletterRepository;
+use App\Repository\RecipeRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -49,8 +50,9 @@ class NewsletterController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_admin_newsletter_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Newsletter $newsletter, NewsletterRepository $newsletterRepository): Response
+    public function edit(Request $request, Newsletter $newsletter, NewsletterRepository $newsletterRepository ,RecipeRepository $recipeRepository): Response
     {
+        $recipes = $recipeRepository->findAll(); /* query NOT result */
         $form = $this->createForm(NewsletterType::class, $newsletter);
         $form->handleRequest($request);
 
@@ -63,6 +65,9 @@ class NewsletterController extends AbstractController
         return $this->renderForm('admin/newsletter/edit.html.twig', [
             'newsletter' => $newsletter,
             'form' => $form,
+            'recipes' => $recipes,
+
+
         ]);
     }
 
