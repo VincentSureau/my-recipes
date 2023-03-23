@@ -3,26 +3,34 @@
 {% block title %}Hello TestController!{% endblock %}
 
 {% block body %}
-    <main>
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4 list">
-            {% for recipe in recipes %}
-                <div class="col">
-                    <div class="card shadow mb-5 bg-body-tertiary rounded-4 image">
-                        <img src="{{vich_uploader_asset(recipe, 'imageFile')}}" class="card-img-top" alt="image de la recette">
-                        <div class="card-body overflow-hidden">
-                            <h5 class="card-title text-center text-justify fs-5 text-success">{{recipe.name}}</h5>
-                            <p class="card-text">{{recipe.description}}</p>
-                        </div>
-                        <div class="d-flex justify-content-between info">
-                            <p class="saison">Saison</p>
-                            <span class="material-symbols-outlined">
-                                favorite
-                            </span>
-                        </div>
-                    </div>
+	<main class="container">
+		<h2>:</h2>
+		<div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4 selected-recipes"></div>
+		<h2>Selectioner vos recettes:</h2>
+		<div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4 recipe-list">
+			{% for recipe in recipes %}
+				<div class="col">
+					<div class="card shadow mb-5 bg-body-tertiary rounded-4 image" data-recipe-id="{{recipe.id}}">
+						<img src="{{vich_uploader_asset(recipe, 'imageFile')}}" class="card-img-top" alt="image de la recette">
+						<div class="card-body overflow-hidden">
+							<h5 class="card-title text-center text-justify fs-5 text-success">{{recipe.name}}</h5>
+							<p class="card-text">{{recipe.description}}</p>
+						</div>
+						<div class="d-flex justify-content-between info">
+							<p class="saison">Saison</p>
+							<span class="material-symbols-outlined">
+								favorite
+							</span>
+						</div>
+					</div>
 
-                </div>
-            {% endfor %}
-        </div>
-    </main>
+				</div>
+			{% endfor %}
+		</div>
+	</main>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset("js/recipe-selector.js") }}"></script>
 {% endblock %}
