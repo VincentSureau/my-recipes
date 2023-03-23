@@ -57,6 +57,8 @@ i {
 
 .card:hover {
     transform: scale(1.025);
+    -webkit-box-shadow: 0px 0px 11px 7px rgba(20,164,77,0.63); 
+    box-shadow: 0px 0px 11px 7px rgba(20,164,77,0.63);
 }
 
 
