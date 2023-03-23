@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Newsletter;
 use App\Form\NewsletterType;
 use App\Repository\NewsletterRepository;
+use App\Repository\RecipeRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,7 +23,7 @@ class NewsletterController extends AbstractController
     }
 
     #[Route('/new', name: 'app_admin_newsletter_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, NewsletterRepository $newsletterRepository): Response
+    public function new(Request $request, NewsletterRepository $newsletterRepository, RecipeRepository $recipeRepository): Response
     {
         $newsletter = new Newsletter();
         $form = $this->createForm(NewsletterType::class, $newsletter);
@@ -37,6 +38,8 @@ class NewsletterController extends AbstractController
         return $this->renderForm('admin/newsletter/new.html.twig', [
             'newsletter' => $newsletter,
             'form' => $form,
+            'recipes' => $recipeRepository->findAll()
+
         ]);
     }
 

@@ -13,7 +13,7 @@
 		<div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4 m-auto list">
 			{% for recipe in recipes %}
 				<div class="col">
-					<div class="card mb-5 bg-body-tertiary rounded-4 image">
+					<div class="card card-select mb-5 bg-body-tertiary rounded-4 image">
 						<img src="{{vich_uploader_asset(recipe, 'imageFile')}}" class="card-img-top" alt="image de la recette">
 						<div class="card-body overflow-hidden">
 							<h5 class="card-title text-center text-justify fs-5 text-success">{{recipe.name}}</h5>
@@ -33,7 +33,7 @@
 	</div>
 
 	<script>
-		const cards = document.querySelectorAll('.card');
+		const cards = document.querySelectorAll('.card-select');
 		const cardToCopy = document.querySelectorAll('.col')
 		const destination = document.querySelector('.container1')
 
@@ -44,32 +44,31 @@
 		btnSearch.addEventListener('click', searchRecipe)
 
 		function searchRecipe(event) {
-		const inputValue = input.value.toLowerCase()
-			
-		cards.forEach((card) => {
-			const title = card.querySelector('h5').textContent.toLowerCase();
-		if(title.includes(inputValue)) {
-			card.style.display = "";
-		} else { 
-			card.style.display = "none";
-		}
-		})
-		}
-
-
-		cards.forEach((_, i) => {
-		const copyCard = cardToCopy[i].cloneNode(true)
-
-		cards[i].addEventListener('click', cardClick)
-
-		function cardClick() {
-			destination.appendChild(copyCard)
-			
-			copyCard.addEventListener('click', cardUnclick, {once : true})
+			const inputValue = input.value.toLowerCase()
+				
+			cards.forEach((card) => {
+				const title = card.querySelector('h5').textContent.toLowerCase();
+				if(title.includes(inputValue)) {
+					card.style.display = "";
+				} else { 
+					card.style.display = "none";
+				}
+			})
 		}
 
-		function cardUnclick() {
-				destination.removeChild(copyCard)
+		cards.forEach((i, card) => {
+			const copyCard = cardToCopy[i].cloneNode(true)
+
+			card.addEventListener('click', cardClick)
+
+			function cardClick() {
+				destination.appendChild(copyCard)
+				
+				copyCard.addEventListener('click', cardUnclick, {once : true})
+			}
+
+			function cardUnclick() {
+					destination.removeChild(copyCard)
 			}
 
 		})
