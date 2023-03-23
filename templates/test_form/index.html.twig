@@ -3,6 +3,8 @@
 {% block title %}Hello TestFormController!{% endblock %}
 
 {% block body %}
+<div class="container pt-3 row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4 list">
+</div>
 <label for="seacrh" type="text" ></label>
 <input class="pb-3" type="text" id="search">
 <button class="pb-3" type="submit" id="submit">Rechercher</button>
@@ -54,12 +56,24 @@
     const card = event.currentTarget;
     card.classList.add('image-2')
 
-    console.log('ca marche');
+   
   }
 
   // Ajouter un écouteur d'événements de clic pour chaque div avec la classe `.cards`
   getCards.forEach(card => {
         card.addEventListener('click', addShadow);
+  });
+
+function filterCard(event) {
+    const card = event.currentTarget;
+    card.classList.remove('image-2');
+    
+    const container = document.querySelector('.container');
+    container.appendChild(card);
+  }
+
+   getCards.forEach(card => {
+        card.addEventListener('dblclick', filterCard);
   });
 
 
