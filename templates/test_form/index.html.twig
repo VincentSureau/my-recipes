@@ -40,19 +40,28 @@
 
     getCards.forEach(function (card)
     {
-         if 
-         (card.querySelector('h5').textContent.includes(getValue))
-        {
+        if (card.querySelector('h5').textContent.includes(getValue)) {
            card.style.display='flex' 
+        } else {
+          card.style.display='none'
         }
-         else
-        {
-            card.style.display='none'
-        }
-    }
-   ) 
-        }
+    })
+  }
 
-         lightenning (function )
+
+  function addShadow(event) {
+    // Enlever l'effet shadow de la div précédente avec la classe `.cards`
+    const card = event.currentTarget;
+    card.classList.add('image-2')
+
+    console.log('ca marche');
+  }
+
+  // Ajouter un écouteur d'événements de clic pour chaque div avec la classe `.cards`
+  getCards.forEach(card => {
+        card.addEventListener('click', addShadow);
+  });
+
+
 </script>
 {% endblock %}
