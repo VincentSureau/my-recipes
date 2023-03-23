@@ -4,6 +4,7 @@
 
 {% block body %}
 	<main class="container">
+        <input id="search" type="search">
 		<h2>:</h2>
 		<div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4 selected-recipes"></div>
 		<h2>Selectioner vos recettes:</h2>
@@ -28,6 +29,12 @@
 			{% endfor %}
 		</div>
 	</main>
+{% endblock %}
+{% block stylesheets %}
+    <style>
+    .selected {
+        box-shadow: 0 .5rem 1rem red !important;
+    }</style>
 {% endblock %}
 
 {% block javascripts %}
