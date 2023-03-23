@@ -3,10 +3,13 @@
     color:rgba(0, 0, 0, 0.2);
 }
     </style>
+    <div id="cloneContainer" class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4 list">
+
+    </div>
     <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4 list">
         {% for recipe in recipes %}
             <div  class="col">
-                <div id class=" card shadow mb-5 bg-body-tertiary rounded-4 image">
+                <div id class=" card r-kelly shadow mb-5 bg-body-tertiary rounded-4 image">
                     <img src="{{vich_uploader_asset(recipe, 'imageFile')}}" class="card-img-top" alt="image de la recette">
                     <div class="card-body overflow-hidden">
                         <h5 class="card-title text-center text-justify fs-5 text-success">{{recipe.name}}</h5>
@@ -24,16 +27,22 @@
         {% endfor %}
     </div>
     <script>
+
     function addclick(card){
     card.classList.toggle("shadow");
     }; 
-    let cards = document.querySelectorAll(".card");
+    let cloneContainer = document.getElementById("cloneContainer");
+
+    let cards = document.querySelectorAll(".r-kelly");
     cards.forEach((card) => {
   card.addEventListener('click', () => {
     console.log("ok");
     addclick(card);
+    let card_prime = card.cloneNode(true);
+    cloneContainer.appendChild(card_prime);
   });
 });
+    console.log(card_prime);
 
 
     </script>
