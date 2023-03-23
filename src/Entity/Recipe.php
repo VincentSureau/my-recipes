@@ -54,7 +54,7 @@ class Recipe
     private Collection $images;
 
     #[ORM\Column(length: 255, nullable: true, enumType: RecipeTypes::class)]
-    private ?string $type = null;
+    private ?RecipeTypes $type = null;
 
     public function __construct()
     {
