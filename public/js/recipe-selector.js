@@ -1,9 +1,9 @@
 const list = document.querySelector(".recipe-list");
 
-list.querySelectorAll(".card")
+const elementSelector = "[data-recipe-id]";
 
 list.addEventListener("click", (event) => {
-    const elem = event.target.closest(".card");
+    const elem = event.target.closest(elementSelector);
     if (!elem) return;
     if (!list.contains(elem)) return;
 
@@ -25,7 +25,7 @@ list.addEventListener("click", (event) => {
 function searchRecipe() {
     let input = document.getElementById("search").value;
     input = input.toLowerCase();
-    let x = list.querySelectorAll(".card");
+    let x = list.querySelectorAll(elementSelector);
 
     for (i = 0; i < x.length; i++) {
         if (!x[i].innerHTML.toLowerCase().includes(input)) {

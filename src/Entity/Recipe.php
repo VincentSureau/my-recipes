@@ -283,12 +283,12 @@ class Recipe
         return $this;
     }
 
-    public function getType(): ?string
+    public function getType(): ?RecipeTypes
     {
         return $this->type;
     }
 
-    public function setType(?string $type): self
+    public function setType(?RecipeTypes $type): self
     {
         $this->type = $type;
 

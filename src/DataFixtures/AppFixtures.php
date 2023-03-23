@@ -2,14 +2,15 @@
 
 namespace App\DataFixtures;
 
-use DateTimeImmutable;
 use Faker\Factory;
 use App\Entity\User;
 use App\Entity\Recipe;
 use App\Entity\Season;
+use DateTimeImmutable;
 use App\Entity\Comment;
 use App\Entity\Ingredient;
 use App\Entity\Newsletter;
+use App\Utils\RecipeTypes;
 use App\Entity\RecipeIngredient;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -112,7 +113,7 @@ class AppFixtures extends Fixture
                 ->setImage("http://www.cuisine-francaise.org/blog/wp-content/uploads/2009/10/COQUILLES-SAINT-JACQUES-PIERRTTES-GUIDE.jpg")
                 ->addSeason($faker->randomElement($seasons))
                 ->addLikedBy($faker->randomElement($users))
-                ->setType(RecypeTypes::Starter)
+                ->setType($faker->randomElement(RecipeTypes::cases()))
                 ;
             $manager->persist($recipe);
             $recipes[] = $recipe;
