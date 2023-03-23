@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello TestFormController!{% endblock %}
+
+{% block body %}
+<label for="seacrh" type="text" ></label>
+<input class="pb-3" type="text" id="search">
+<button class="pb-3" type="submit" id="submit">Rechercher</button>
+<div class="pt-3 row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4 list">
+		{% for recipe in recipes %}
+			<div class="b-3 b-success col">
+				<div class="card shadow mb-5 bg-body-tertiary rounded-4 image">
+					<img src="{{vich_uploader_asset(recipe, 'imageFile')}}" class="card-img-top" alt="image de la recette">
+					<div class="card-body overflow-hidden">
+						<h5 class="card-title text-center text-justify fs-5 text-success">{{recipe.name}}</h5>
+						<p class="card-text">{{recipe.description}}</p>
+					</div>
+					<div class="d-flex justify-content-between info">
+						<p class="saison">Saison</p>
+						<span class="material-symbols-outlined">
+							favorite
+						</span>
+					</div>
+				</div>
+
+			</div>
+		{% endfor %}
+</div>
+<script>
+  const inputElt = document.getElementById("search")
+  const submitBtn = document.getElementById('submit')
+  const getCards = document.querySelectorAll('.card')
+  
+  inputElt.addEventListener('keyup', filterWord)
+  submitBtn.addEventListener('click', filterWord)
+
+  function filterWord(event) {
+    const getValue = inputElt.value.toLowerCase();
+   
+
+    getCards.forEach(function (card)
+    {
+         if 
+         (card.querySelector('h5').textContent.includes(getValue))
+        {
+           card.style.display='flex' 
+        }
+         else
+        {
+            card.style.display='none'
+        }
+    }
+   ) 
+        }
+
+         lightenning (function )
+</script>
+{% endblock %}
