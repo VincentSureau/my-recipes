@@ -1,0 +1,34 @@
+{% set title = "Liste des newsletter" %}
+{% extends 'admin_with_table.html.twig' %}
+
+{% block actions %}
+    <a class="btn btn-success" href="{{ path('app_admin_newsletter_new') }}">Ajouter</a>
+{% endblock %}
+
+
+{% block table_content %}
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Content</th>
+                <th>SendAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for newsletter in newsletters %}
+            <tr>
+                <td>{{ newsletter.id }}</td>
+                <td>{{ newsletter.content }}</td>
+                <td>{{ newsletter.sendAt ? newsletter.sendAt|date('d-m-Y H:i:s') : '' }}</td>
+                <td>
+                    {# <a href="{{ path('app_admin_newsletter_edit', {'id': newsletter.id}) }}">edit</a> #}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+            <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+{% endblock %}
