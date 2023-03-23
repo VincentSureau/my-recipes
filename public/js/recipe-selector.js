@@ -18,3 +18,21 @@ list.addEventListener("click", (event) => {
     }
 })
 
+
+
+// search
+
+function searchRecipe() {
+    let input = document.getElementById("search").value;
+    input = input.toLowerCase();
+    let x = list.querySelectorAll(".card");
+
+    for (i = 0; i < x.length; i++) {
+        if (!x[i].innerHTML.toLowerCase().includes(input)) {
+            x[i].style.display = "none";
+        }
+        else {
+            x[i].style.display = "";
+        }
+    }
+}
