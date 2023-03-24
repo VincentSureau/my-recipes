@@ -31,14 +31,33 @@
             <td>{{ user.isSubscribed ? 'Yes' : 'No' }}</td>
             <td>{{ user.isVerified ? 'Yes' : 'No' }}</td>
             <td>
+              {% for role in user.roles %}
+                            {% if role == "ROLE_USER" %}
+                                Utilisateur
+                            {% elseif role == "ROLE_EDITOR" %}
+                                Editeur
+                            {% elseif role == "ROLE_ADMIN" %}
+                                Administrateur
+                            {% endif %}
+                        {% endfor %}
+                    </td>
+                    {# <td>{{ user.articles|length }}</td> #}
+                    {# <td><a href="{{ path('admin_modifier_utilisateur', {'id': user.id}) }}">Modifier</a></td> #}
+                </tr>
+                
+            {# {% else %} #}
+                <p>Aucun utilisateur inscrit</p>
                 <a href="{{ path('app_admin_user_show', {'id': user.id}) }}">show</a>
                 <a href="{{ path('app_admin_user_edit', {'id': user.id}) }}">edit</a>
             </td>
+
         </tr>
     {% else %}
         <tr>
             <td colspan="9">no records found</td>
         </tr>
+    
     {% endfor %}
+
     </tbody>
 {% endblock %}

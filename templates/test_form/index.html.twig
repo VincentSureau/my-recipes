@@ -3,35 +3,37 @@
 {% block title %}Hello TestFormController!{% endblock %}
 
 {% block body %}
-<div class="container pt-3 row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4 list">
+<div class=" container-up row row-cols-1 row-cols-sm-2 row-cols-md-3">
 </div>
 <label for="seacrh" type="text" ></label>
 <input class="pb-3" type="text" id="search">
 <button class="pb-3" type="submit" id="submit">Rechercher</button>
-<div class="pt-3 row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4 list">
-		{% for recipe in recipes %}
-			<div class="b-3 b-success col">
-				<div class="card shadow mb-5 bg-body-tertiary rounded-4 image">
-					<img src="{{vich_uploader_asset(recipe, 'imageFile')}}" class="card-img-top" alt="image de la recette">
-					<div class="card-body overflow-hidden">
-						<h5 class="card-title text-center text-justify fs-5 text-success">{{recipe.name}}</h5>
-						<p class="card-text">{{recipe.description}}</p>
-					</div>
-					<div class="d-flex justify-content-between info">
-						<p class="saison">Saison</p>
-						<span class="material-symbols-outlined">
-							favorite
-						</span>
-					</div>
-				</div>
-
-			</div>
-		{% endfor %}
+<div class="container">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
+    {% for recipe in recipes %}
+    <div class="p-2 card-container">
+        <div class="shadow h-100 card mb-5 bg-body-tertiary rounded-4 image  col">
+            <img class="card-img-top" src="{{ vich_uploader_asset(recipe) }}" alt="{{ recipe.name }}">
+            <div class="card-body overflow-hidden">
+                <h5 class="card-title text-center text-justify fs-5 text-success">{{recipe.name}}</h5>
+                <p class="card-text">{{recipe.description}}</p>
+            </div>
+            <div class="d-flex justify-content-between px-3 info">
+                <p class="saison">Saison</p>
+                <span class="material-symbols-outlined">
+                    <i class="fa-regular fa-lg fa-heart" style="color: #000000;"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    </div>
 </div>
+
 <script>
   const inputElt = document.getElementById("search")
   const submitBtn = document.getElementById('submit')
-  const getCards = document.querySelectorAll('.card')
+  const getCards = document.querySelectorAll('.card-container')
   
   inputElt.addEventListener('keyup', filterWord)
   submitBtn.addEventListener('click', filterWord)
@@ -42,21 +44,26 @@
 
     getCards.forEach(function (card)
     {
-        if (card.querySelector('h5').textContent.includes(getValue)) {
-           card.style.display='flex' 
+        if (card.firstElementChild.querySelector('h5').textContent.includes(getValue)) {
+           card.firstElementChild.style.display='flex' 
         } else {
-          card.style.display='none'
+          card.firstElementChild.style.display='none'
         }
     })
   }
 
 
   function addShadow(event) {
-    // Enlever l'effet shadow de la div précédente avec la classe `.cards`
-    const card = event.currentTarget;
-    card.classList.add('image-2')
+      // Enlever l'effet shadow de la div précédente avec la classe `.cards`
+      getCards.forEach(card => {
+      if (card !== event.currentTarget) {
+        card.firstElementChild.classList.remove('image-2');
+      }
+    });
 
-   
+    // Ajouter la classe `image-2` à la carte sélectionnée
+    const card = event.currentTarget;
+    card.firstElementChild.classList.add('image-2');
   }
 
   // Ajouter un écouteur d'événements de clic pour chaque div avec la classe `.cards`
@@ -64,11 +71,14 @@
         card.addEventListener('click', addShadow);
   });
 
+
+{# fonction pour filtrer les cartes, en deplacer une de la liste actuelle vers
+le haut de page  #}
 function filterCard(event) {
     const card = event.currentTarget;
     card.classList.remove('image-2');
     
-    const container = document.querySelector('.container');
+    const container = document.querySelector('.container-up');
     container.appendChild(card);
   }
 
