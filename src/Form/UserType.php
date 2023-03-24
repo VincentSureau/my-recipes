@@ -25,9 +25,11 @@ class UserType extends AbstractType
                 'label'=>'Statut',
                 'choices'=>[
 
-                    'admin'=>'1',
-                    'user'=>'2',
-                    'editor'=>'3'
+                    // il faut écrire de la meme facon que la BD MYSQL pour que symfony le comprenne
+                    //  admin'=>'ROLE_ADMIN',
+                    'admin'=>'ROLE_ADMIN',
+                    'user'=>'ROLE_USER',
+                    'editor'=>'ROLE_EDITOR'
                 ],
                 'multiple'=> true
 
